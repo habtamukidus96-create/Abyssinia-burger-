@@ -3,470 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyssinia Burger | Premium Gourmet Burgers</title>
-    
-    <!-- Premium Fonts -->
+    <title>Abyssinia Burger - Fresh, Hot & Made To Love</title>
+    <!-- Google Fonts for that bold, premium look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="family">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- Reset & Base Styles --- */
+        /* --- DESIGN SYSTEM (Inspired by Bold Orange Restaurant Website Design — Perfect for Pizza Lovers!.jpeg) --- */
+        :root {
+            --primary-red: #b62323;
+            --primary-orange: #ffb703;
+            --bg-cream: #f9f5eb;
+            --dark-brown: #1a0f0f;
+            --text-dark: #2b2b2b;
+            --text-light: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        html {
+            font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            letter-spacing: 0.5px;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, .brand-name, .btn-submit, .input-label {
-            font-family: 'Cormorant Garamond', serif;
+        h1, h2, h3, .brand-name {
+            font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
         }
 
-        .container {
-            max-width: 940px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- Luxury Header --- */
+        /* --- NAVIGATION & HAMBURGER --- */
         header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .nav-container {
+            background-color: var(--primary-red);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: #fff;
+        /* Hamburger Menu Icon */
+        .hamburger {
+            font-size: 24px;
+            color: var(--text-light);
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
         }
-
-        .brand-logo {
-            width: 36px;
-            height: 36px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            font-family: 'Cormorant Garamond', serif;
+        .hamburger:hover {
+            color: var(--primary-orange);
         }
 
         .brand-name {
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: 3px;
+            color: var(--primary-orange);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        nav a {
-            color: #ffffff;
+        .cta-nav-btn {
+            background-color: var(--primary-orange);
+            color: var(--dark-brown);
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
-        }
-
-        /* --- Hero Showcase (Direct Inspiration from Image) --- */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 80px;
-            text-align: center;
-            background: #0b0b0b;
-        }
-
-        .hero h1 {
-            font-size: 5.5rem;
-            line-height: 1.05;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .hero-image-wrapper {
-            max-width: 620px;
-            margin: 0 auto 60px auto;
-        }
-
-        .hero-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* --- Embedded Book A Table Section --- */
-        .booking-hero-embed {
-            max-width: 750px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .booking-hero-embed h2 {
-            font-size: 2.2rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1.2fr 1.2fr 1fr 0.8fr;
-            gap: 15px;
-            align-items: flex-end;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .input-label {
-            font-size: 14px;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .form-control {
-            background-color: #1a1a1a;
-            border: none;
-            padding: 14px 16px;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            width: 100%;
-        }
-
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .form-control:focus {
-            outline: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .btn-submit {
-            background-color: #d4cdc3;
-            color: #0b0b0b;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: background-color 0.3s, color 0.3s;
-            text-align: center;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .cta-nav-btn:hover {
+            background-color: #e09f00;
         }
 
-        .btn-submit:hover {
-            background-color: #ffffff;
-        }
-
-        /* --- Sections Configuration --- */
-        .section {
-            padding: 100px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            text-align: center;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 60px;
-        }
-
-        /* --- Pure Burger Menu --- */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .menu-item {
+        /* Sidebar Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--dark-brown);
+            padding: 80px 40px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 25px;
+            gap: 25px;
+            transition: left 0.4s ease;
+            z-index: 999;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
         }
 
-        .menu-header {
+        .nav-menu.active {
+            left: 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-orange);
+            padding-left: 10px;
+        }
+
+        /* Close Button inside Sidebar */
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 24px;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
+            background-color: var(--primary-red);
+            min-height: 90vh;
+            padding: 120px 5% 60px 5%;
             display: flex;
+            flex-wrap: wrap;
+            align-items: center;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
+            color: var(--text-light);
         }
 
-        .menu-header h3 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: none;
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
         }
 
-        .price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #d4cdc3;
+        .hero-text h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-text h1 span {
+            color: var(--primary-orange);
         }
 
-        .menu-desc {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 300;
-            max-width: 90%;
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
         }
 
-        /* --- About Section --- */
-        .about-text {
-            max-width: 680px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 20px;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 0.5px;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-orange);
+            color: var(--dark-brown);
+            padding: 15px 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+        .hero-btn:hover {
+            transform: scale(1.05);
         }
 
-        .about-text p {
-            margin-bottom: 25px;
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
         }
 
-        /* --- Location Section --- */
-        .location-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+        }
+
+        /* --- FEATURES / HIGHLIGHTS SECTION --- */
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 80px 5%;
             gap: 40px;
             align-items: center;
         }
 
-        .location-meta h3 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-            color: #d4cdc3;
+        .feature-img-block {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
         }
 
-        .location-meta p {
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.6);
+        .feature-img-block img {
+            max-width: 85%;
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+        .features-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .features-content h2 {
+            font-size: 3rem;
+            line-height: 1.1;
             margin-bottom: 30px;
         }
 
-        .luxury-map {
-            width: 100%;
-            height: 300px;
-            background-color: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            letter-spacing: 2px;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.3);
+            gap: 10px;
         }
 
-        /* --- Premium Footer --- */
+        .feature-item h3 i {
+            color: var(--primary-red);
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- MENU SECTION --- */
+        #menu {
+            padding: 80px 5%;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        #menu h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-red);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .menu-card {
+            background-color: var(--bg-cream);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-card img {
+            max-width: 180px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        .menu-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .menu-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            font-family: 'Oswald', sans-serif;
+        }
+
+        /* --- ABOUT US SECTION (Split Accent style from layout) --- */
+        #about {
+            background-color: var(--primary-orange);
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            padding: 80px 5%;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-brown);
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-img img {
+            max-width: 85%;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+        }
+
+        /* --- BOOKING SECTION --- */
+        #booking {
+            padding: 80px 5%;
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #8f1b1b;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            background-color: var(--dark-brown);
+            color: var(--text-light);
+            padding: 60px 5% 30px 5%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .contact-col h3 {
+            color: var(--primary-orange);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-col p, .contact-col li {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-orange);
+        }
+
         footer {
             text-align: center;
-            padding: 60px 0;
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            text-transform: uppercase;
+            padding-top: 30px;
+            border-top: 1px solid #332222;
+            font-size: 0.85rem;
+            opacity: 0.6;
         }
 
-        /* --- Responsive Viewports --- */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 3.8rem; }
-            .form-row { grid-template-columns: 1fr; gap: 20px; }
-            .menu-grid { grid-template-columns: 1fr; gap: 40px; }
-            .location-wrapper { grid-template-columns: 1fr; text-align: center; }
-            .nav-container { padding: 20px; }
-            nav ul { display: none; } /* Premium mobile simplicity */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 3rem; }
+            .features-content h2, #menu h2, #about h2 { font-size: 2.2rem; }
+            .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Luxury Header Layout -->
+    <!-- --- HEADER / NAVIGATION --- -->
     <header>
-        <div class="nav-container">
-            <a href="#" class="brand">
-                <div class="brand-logo">११</div>
-                <div class="brand-name">Abyssinia</div>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#location">Location</a></li>
-                </ul>
-            </nav>
+        <!-- Hamburger Menu Button -->
+        <div class="hamburger" id="hamburgerBtn">
+            <i class="fas fa-bars"></i>
         </div>
+        
+        <div class="brand-name">Abyssinia Burger</div>
+        
+        <a href="#booking" class="cta-nav-btn">Book Table</a>
     </header>
 
-    <!-- Main Visual Stage -->
-    <section class="hero">
-        <div class="container">
-            <h1>Gourmet<br>Burgers & Fries</h1>
-            
-            <div class="hero-image-wrapper">
-                <!-- Premium standalone clean background burger asset matching the requested layout archetype -->
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop" alt="Abyssinia Premium Burger Selection" class="hero-img">
-            </div>
+    <!-- Side Slide-out Navigation Panel -->
+    <nav class="nav-menu" id="navMenu">
+        <div class="close-menu" id="closeBtn">&times;</div>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#booking" class="nav-link">Booking</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
+    </nav>
 
-            <!-- Booking Section embedded inline right under asset framework -->
-            <div class="booking-hero-embed">
-                <h2>Book A Table</h2>
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Reservation Confirmed.');">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <span class="input-label">Name</span>
-                            <input type="text" class="form-control" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-label">Email</span>
-                            <input type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-label">Date</span>
-                            <input type="date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <span class="input-label">Time</span>
-                            <input type="time" class="form-control" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-submit">Book Now</button>
-                </form>
-            </div>
+
+    <!-- --- HERO SECTION --- -->
+    <section id="home">
+        <div class="hero-text">
+            <h1>Fresh Hot &<br><span>Made To Love.</span></h1>
+            <p>Experience the definitive taste of premium, flame-grilled perfection. Sourced with local ingredients, crafted with absolute passion.</p>
+            <a href="#menu" class="hero-btn">Order Now</a>
+        </div>
+        <div class="hero-image">
+            <!-- Placeholder standard high-quality burger graphic -->
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80" alt="Abyssinia Signature Burger">
         </div>
     </section>
 
-    <!-- Exclusively Burgers Premium Menu Grid -->
-    <section class="section" id="menu">
-        <div class="container">
-            <h2 class="section-title">The Burger Menu</h2>
-            <div class="menu-grid">
-                
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <h3>Abyssinia Prime Imperial</h3>
-                        <span class="price">$24</span>
-                    </div>
-                    <p class="menu-desc">Aged dry-rib beef masterfully seasoned with smoked salt, layered with thick melted white cheddar, house heritage spread, on toasted brioche.</p>
-                </div>
 
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <h3>The Spicy Awaze Truffle</h3>
-                        <span class="price">$26</span>
-                    </div>
-                    <p class="menu-desc">Prime cut Wagyu blend glazed in reduced authentic hot awaze, topped with wild shaved truffles, and crisp organic leaf greens.</p>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <h3>Berbere Crisp Heirloom</h3>
-                        <span class="price">$22</span>
-                    </div>
-                    <p class="menu-desc">Crispy hand-pressed chicken breast infused with rich berbere spice profiles, heirloom tomato slice, and a velvety signature creme cheese.</p>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-header">
-                        <h3>The Addis Velvet Steakhouse</h3>
-                        <span class="price">$28</span>
-                    </div>
-                    <p class="menu-desc">Elite cut strip steak patty, slow charred onions, reduced balsamic glaze, finished beautifully under a targeted house creme spread.</p>
-                </div>
-
-            </div>
+    <!-- --- FEATURES SECTION --- -->
+    <section class="features-container">
+        <div class="feature-img-block">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80" alt="Delicious Burger Prep">
         </div>
-    </section>
-
-    <!-- Luxury About Story Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">Our Philosophy</h2>
-            <div class="about-text">
-                <p>Abyssinia Burger redefines contemporary gourmet dynamics. We strip away the unnecessary noise of modern multi-food menus to completely absolute the craft of the premium burger.</p>
-                <p>Every dynamic element present on our line is sourced natively, handled with strict artisan precision, and framed uniquely to bring a distinct cultural elevation to classic luxury culinary staples.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Location Dynamics Section -->
-    <section class="section" id="location">
-        <div class="container">
-            <h2 class="section-title">The Location</h2>
-            <div class="location-wrapper">
-                <div class="location-meta">
-                    <h3>Abyssinia Flagship</h3>
-                    <p>742 Elite Boulevard, Culinary Heights District</p>
-                    
-                    <h3>Hours of Service</h3>
-                    <p>Monday — Sunday<br>12:00 PM — 11:00 PM</p>
+        <div class="features-content">
+            <h2>Fresh-Hot & Made<br>To Perfection</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3><i class="fas fa-home"></i> Local Heritage</h3>
+                    <p>Rooted in rich traditional values bringing premium comfort food right to your neighborhood.</p>
                 </div>
-                <div class="luxury-map">
-                    [ Interactive Location Cartography ]
+                <div class="feature-item">
+                    <h3><i class="fas fa-heart"></i> Crafted With Love</h3>
+                    <p>Every single patty is hand-pressed and grilled exactly to perfection on every order.</p>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-leaf"></i> Organic Sourcing</h3>
+                    <p>We source crisp seasonal greens and farm-fresh dairy from sustainable farms.</p>
+                </div>
+                <div class="feature-item">
+                    <h3><i class="fas fa-bolt"></i> Fast Delivery</h3>
+                    <p>Fresh, piping-hot burgers brought straight to your doorstep before they even get a chance to cool.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Minimal Footer Section -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Abyssinia Burger. Architectural Digital Presence.</p>
+
+    <!-- --- MENU SECTION --- -->
+    <section id="menu">
+        <h2>Our Premium Burgers</h2>
+        <p class="section-subtitle">Taste the legend</p>
+        
+        <div class="menu-grid">
+            <!-- Burger 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Classic Burger">
+                <h3>The Abyssinia Classic</h3>
+                <p>100% Premium beef patty, cheddar, signature house sauce, pickles, toasted brioche.</p>
+                <div class="menu-price">$9.99</div>
+            </div>
+            <!-- Burger 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Spicy Burger">
+                <h3>The Rift Valley Fire</h3>
+                <p>Spicy jalapeño blend, pepper jack cheese, smoky chipotle spread, crisp lettuce.</p>
+                <div class="menu-price">$11.49</div>
+            </div>
+            <!-- Burger 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Double Cheese">
+                <h3>Lasta Mountain Double</h3>
+                <p>Two flame-grilled beef patties, double layers of melted cheddar, crispy onions.</p>
+                <div class="menu-price">$13.99</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- --- ABOUT US SECTION --- -->
+    <section id="about">
+        <div class="about-text">
+            <h2>With Worldwide Premium Standards</h2>
+            <p>At Abyssinia Burger, we redefined the simple American burger concept using world-class presentation and vibrant hospitality. Our recipes blend modern standards with exceptionally bold culinary execution.</p>
+            <p>Whether stopping by for a fast midday break or celebrating over meals with friends, your experience is always guaranteed hot, fresh, and unforgettable.</p>
+        </div>
+        <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=80" alt="Premium Loaded Burger">
+        </div>
+    </section>
+
+
+    <!-- --- BOOKING SECTION --- -->
+    <section id="booking">
+        <h2>Book A Table</h2>
+        <p class="section-subtitle">Secure your dining experience</p>
+        
+        <div class="booking-form">
+            <form action="#" method="POST" onsubmit="alert('Thank you for booking with Abyssinia Burger! Your reservation is confirmed.'); return false;">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests">
+                        <option>2 People</option>
+                        <option>4 People</option>
+                        <option>6+ People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date & Time</label>
+                    <input type="datetime-local" id="date" required>
+                </div>
+                <button type="submit" class="submit-btn">Confirm Reservation</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- --- CONTACT SECTION --- -->
+    <footer id="contact">
+        <div class="contact-grid">
+            <div class="contact-col">
+                <h3>Abyssinia Burger</h3>
+                <p>Delivering premier flame-grilled burger experiences globally without compromising home-cooked heart.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home" style="color: inherit; text-decoration: none;">Home</a></li>
+                    <li><a href="#menu" style="color: inherit; text-decoration: none;">Our Menu</a></li>
+                    <li><a href="#about" style="color: inherit; text-decoration: none;">About Us</a></li>
+                    <li><a href="#booking" style="color: inherit; text-decoration: none;">Book Table</a></li>
+                </ul>
+            </div>
+            <div class="contact-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +1 (555) 234-5678</p>
+                <p><i class="fas fa-envelope"></i> hello@abyssiniaburger.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 100 Gourmet Way, Food District</p>
+            </div>
+        </div>
+        
+        <div>
+            <p>&copy; 2026 Abyssinia Burger House. All Rights Reserved.</p>
         </div>
     </footer>
 
+
+    <!-- --- JAVASCRIPT FOR INTERACTION --- -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const closeBtn = document.getElementById('closeBtn');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Open Sidebar
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.add('active');
+        });
+
+        // Close Sidebar via Close Button
+        closeBtn.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+
+        // Close Sidebar automatically when clicking any Nav Link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
