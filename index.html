@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abyssinia Burger - Fresh, Hot & Made To Love</title>
-    <!-- Google Fonts for that bold, premium look -->
+    <title>Abyssinia Burger — Fresh Hot & Made to Love</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="family">
-    <!-- FontAwesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- DESIGN SYSTEM (Inspired by Bold Orange Restaurant Website Design — Perfect for Pizza Lovers!.jpeg) --- */
         :root {
-            --primary-red: #b62323;
-            --primary-orange: #ffb703;
-            --bg-cream: #f9f5eb;
-            --dark-brown: #1a0f0f;
-            --text-dark: #2b2b2b;
+            --primary-red: #9e1c1c;
+            --accent-orange: #f2a922;
+            --bg-cream: #f4edd9;
+            --text-dark: #1e1b18;
             --text-light: #ffffff;
         }
 
@@ -36,642 +32,592 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .brand-name {
+        h1, h2, h3, h4, .logo, .nav-center a, .btn-orange {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
         }
 
-        /* --- NAVIGATION & HAMBURGER --- */
+        /* --- 1. FIXED TOP HEADER BAR --- */
         header {
             background-color: var(--primary-red);
-            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 4%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        /* Hamburger Menu Icon */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .hamburger {
-            font-size: 24px;
             color: var(--text-light);
+            font-size: 1.5rem;
             cursor: pointer;
-            z-index: 1001;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
         .hamburger:hover {
-            color: var(--primary-orange);
+            color: var(--accent-orange);
         }
 
-        .brand-name {
-            color: var(--primary-orange);
+        .logo {
+            color: var(--text-light);
             font-size: 1.8rem;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--accent-orange);
         }
 
-        .cta-nav-btn {
-            background-color: var(--primary-orange);
-            color: var(--dark-brown);
-            padding: 10px 20px;
-            border-radius: 25px;
+        .nav-center {
+            display: flex;
+            gap: 25px;
+        }
+        .nav-center a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.2s;
         }
-        .cta-nav-btn:hover {
-            background-color: #e09f00;
+        .nav-center a:hover {
+            color: var(--text-light);
         }
 
-        /* Sidebar Navigation Menu */
-        .nav-menu {
+        .header-rights {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-dark {
+            background-color: #2b0b0b;
+            color: var(--text-light);
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-orange {
+            background-color: var(--accent-orange);
+            color: #2b0b0b;
+            padding: 8px 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- 2. SLIDE DRAWER WINDOW --- */
+        .drawer-menu {
             position: fixed;
             top: 0;
-            left: -300px;
+            left: -320px;
             width: 300px;
             height: 100vh;
-            background-color: var(--dark-brown);
-            padding: 80px 40px;
+            background-color: #1e0505;
+            padding: 80px 30px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
-            transition: left 0.4s ease;
+            gap: 20px;
+            transition: left 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
             z-index: 999;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+            box-shadow: 5px 0 25px rgba(0,0,0,0.4);
         }
-
-        .nav-menu.active {
+        .drawer-menu.active {
             left: 0;
         }
-
-        .nav-menu a {
+        .drawer-menu a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 500;
-            transition: color 0.3s, padding-left 0.3s;
+            font-size: 1.4rem;
+            transition: color 0.2s;
         }
-
-        .nav-menu a:hover {
-            color: var(--primary-orange);
-            padding-left: 10px;
+        .drawer-menu a:hover {
+            color: var(--accent-orange);
         }
-
-        /* Close Button inside Sidebar */
-        .close-menu {
+        .close-drawer {
             position: absolute;
             top: 20px;
             right: 25px;
-            font-size: 24px;
+            font-size: 2rem;
             color: var(--text-light);
             cursor: pointer;
         }
 
-        /* --- HERO SECTION --- */
-        #home {
+        /* --- 3. HERO SPLIT SECTION --- */
+        .hero-section {
             background-color: var(--primary-red);
-            min-height: 90vh;
-            padding: 120px 5% 60px 5%;
+            padding: 150px 6% 100px 6%;
+            width: 100%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 320px;
             color: var(--text-light);
         }
 
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 20px;
-        }
-
-        .hero-text h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
+        .hero-content h1 {
+            font-size: 4.8rem;
+            line-height: 0.95;
             margin-bottom: 20px;
+            font-weight: 700;
         }
-        .hero-text h1 span {
-            color: var(--primary-orange);
+        .hero-content h1 span {
+            color: var(--accent-orange);
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
+        .hero-content p {
+            font-size: 0.95rem;
+            opacity: 0.75;
             margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 500px;
+            max-width: 440px;
+            line-height: 1.5;
         }
 
-        .hero-btn {
-            display: inline-block;
-            background-color: var(--primary-orange);
-            color: var(--dark-brown);
-            padding: 15px 35px;
-            font-weight: bold;
-            text-transform: uppercase;
+        .hero-pill-btn {
+            background-color: #e64a4a;
+            color: var(--text-light);
+            padding: 10px 28px;
+            border-radius: 20px;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
-        }
-        .hero-btn:hover {
-            transform: scale(1.05);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
         }
 
-        .hero-image {
+        .hero-display {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             display: flex;
             justify-content: center;
-            position: relative;
         }
 
-        .hero-image img {
-            max-width: 100%;
+        .hero-display img {
+            max-width: 110%;
             height: auto;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
         }
 
-        /* --- FEATURES / HIGHLIGHTS SECTION --- */
-        .features-container {
+        /* --- 4. OVERLAPPING PROMO SECTION UNDERNEATH --- */
+        .promo-container {
+            max-width: 1200px;
+            margin: -50px auto 50px auto;
+            padding: 0 6%;
             display: flex;
+            gap: 30px;
             flex-wrap: wrap;
-            padding: 80px 5%;
-            gap: 40px;
-            align-items: center;
+            position: relative;
+            z-index: 10;
         }
 
-        .feature-img-block {
+        .promo-left-card {
+            flex: 1.2;
+            min-width: 320px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .promo-left-card img {
+            width: 40%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .promo-left-text h4 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .promo-left-text p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .promo-orange-card {
             flex: 1;
             min-width: 300px;
+            background-color: var(--accent-orange);
+            border-radius: 24px;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #2b0b0b;
+        }
+
+        .promo-orange-info h3 {
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .promo-orange-info p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            max-width: 180px;
+            line-height: 1.4;
+        }
+
+        .promo-orange-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+        }
+
+        /* --- 5. DATA FEATURES SECTION --- */
+        .features-section {
+            padding: 60px 6% 80px 6%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-visual {
+            flex: 1;
+            min-width: 320px;
             text-align: center;
         }
-
-        .feature-img-block img {
-            max-width: 85%;
-            border-radius: 20px;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        .features-visual img {
+            max-width: 95%;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
         }
 
-        .features-content {
-            flex: 1;
-            min-width: 300px;
+        .features-data {
+            flex: 1.2;
+            min-width: 320px;
+        }
+        .features-data h2 {
+            font-size: 3.5rem;
+            line-height: 0.95;
+            margin-bottom: 35px;
         }
 
-        .features-content h2 {
-            font-size: 3rem;
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-
-        .feature-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 30px;
         }
-
-        .feature-item h3 {
+        .feature-box h4 {
             font-size: 1.3rem;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
-        .feature-item h3 i {
-            color: var(--primary-red);
+        .feature-box p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.5;
         }
 
-        .feature-item p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* --- MENU SECTION --- */
+        /* --- 6. BURGER PRODUCTS MENU --- */
         #menu {
-            padding: 80px 5%;
-            background-color: #fff;
+            padding: 80px 6%;
+            background: #fff;
             text-align: center;
         }
-
-        #menu h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            color: var(--primary-red);
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-
+        #menu h2 { font-size: 3.5rem; margin-bottom: 40px; }
+        
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        .menu-card {
+        .menu-item {
             background-color: var(--bg-cream);
-            border-radius: 20px;
-            padding: 25px;
+            padding: 35px 20px;
+            border-radius: 24px;
             text-align: center;
-            transition: transform 0.3s;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
-
-        .menu-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .menu-card img {
-            max-width: 180px;
+        .menu-item img {
+            width: 180px;
             margin-bottom: 15px;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
         }
+        .menu-item h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .menu-item p { font-size: 0.85rem; color: #666; margin-bottom: 15px; min-height: 40px; }
+        .price { font-size: 1.6rem; color: var(--primary-red); font-weight: 700; }
 
-        .menu-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        /* --- 7. ACCENT LOWER STRIP --- */
+        .accent-banner {
+            background-color: var(--accent-orange);
+            padding: 60px 6%;
         }
-
-        .menu-card p {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 15px;
-            height: 40px;
-            overflow: hidden;
-        }
-
-        .menu-price {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-red);
-            font-family: 'Oswald', sans-serif;
-        }
-
-        /* --- ABOUT US SECTION (Split Accent style from layout) --- */
-        #about {
-            background-color: var(--primary-orange);
+        .accent-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-wrap: wrap-reverse;
             align-items: center;
-            padding: 80px 5%;
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 40px;
         }
+        .accent-text h2 { font-size: 3.5rem; line-height: 1; margin-bottom: 15px; }
+        .accent-text p { max-width: 500px; font-size: 0.95rem; line-height: 1.6; }
+        .accent-banner img { max-width: 400px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); }
 
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-text h2 {
-            font-size: 3rem;
-            color: var(--dark-brown);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            line-height: 1.6;
-            color: var(--dark-brown);
-        }
-
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .about-img img {
-            max-width: 85%;
-            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
-        }
-
-        /* --- BOOKING SECTION --- */
+        /* --- 8. BOOKING FORM SECTION --- */
         #booking {
-            padding: 80px 5%;
-            background-color: var(--bg-cream);
+            padding: 80px 6%;
             text-align: center;
         }
-
-        .booking-form {
-            max-width: 600px;
+        .booking-box {
+            max-width: 550px;
             margin: 0 auto;
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
         }
-
-        .form-group {
-            margin-bottom: 20px;
+        .input-row {
+            margin-bottom: 18px;
             text-align: left;
         }
+        .input-row label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+        .input-row input, .input-row select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem; }
+        .book-submit { background-color: var(--primary-red); color: white; width: 100%; padding: 14px; border: none; font-size: 1.1rem; border-radius: 8px; cursor: pointer; text-transform: uppercase; font-weight: 700; }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-red);
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: var(--primary-red);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #8f1b1b;
-        }
-
-        /* --- CONTACT SECTION --- */
+        /* --- 9. FOOTER CONTACT END --- */
         #contact {
-            background-color: var(--dark-brown);
+            background-color: #1a0f0f;
             color: var(--text-light);
-            padding: 60px 5% 30px 5%;
+            padding: 60px 6% 30px 6%;
         }
-
-        .contact-grid {
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #332525;
         }
+        .footer-col h3 { color: var(--accent-orange); margin-bottom: 15px; font-size: 1.3rem; }
+        .footer-col p, .footer-col li { font-size: 0.85rem; opacity: 0.7; line-height: 1.8; list-style: none; }
+        .footer-bottom { text-align: center; padding-top: 25px; font-size: 0.8rem; opacity: 0.5; }
 
-        .contact-col h3 {
-            color: var(--primary-orange);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .contact-col p, .contact-col li {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.8;
-            list-style: none;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
-            color: var(--primary-orange);
-        }
-
-        footer {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #332222;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 768px) {
-            .hero-text h1 { font-size: 3rem; }
-            .features-content h2, #menu h2, #about h2 { font-size: 2.2rem; }
-            .feature-grid { grid-template-columns: 1fr; }
+        /* RESPONSIVE SCALING BREAKPOINTS */
+        @media (max-width: 900px) {
+            .nav-center { display: none; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .features-data h2, #menu h2, .accent-text h2 { font-size: 2.4rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .promo-container { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- --- HEADER / NAVIGATION --- -->
     <header>
-        <!-- Hamburger Menu Button -->
-        <div class="hamburger" id="hamburgerBtn">
-            <i class="fas fa-bars"></i>
+        <div class="header-left">
+            <div class="hamburger" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">Abyssinia<span>.</span></div>
         </div>
         
-        <div class="brand-name">Abyssinia Burger</div>
+        <div class="nav-center">
+            <a href="#home">Crunchies</a>
+            <a href="#menu">Burgers</a>
+            <a href="#booking">Reservations</a>
+            <a href="#contact">Contact</a>
+        </div>
         
-        <a href="#booking" class="cta-nav-btn">Book Table</a>
+        <div class="header-rights">
+            <a href="#" class="btn-dark">Sign In</a>
+            <a href="#menu" class="btn-orange">Order Now</a>
+        </div>
     </header>
 
-    <!-- Side Slide-out Navigation Panel -->
-    <nav class="nav-menu" id="navMenu">
-        <div class="close-menu" id="closeBtn">&times;</div>
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#menu" class="nav-link">Menu</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#booking" class="nav-link">Booking</a>
-        <a href="#contact" class="nav-link">Contact Us</a>
-    </nav>
+    <div class="drawer-menu" id="drawer">
+        <div class="close-drawer" id="closeBtn">&times;</div>
+        <a href="#home" class="d-link">Home</a>
+        <a href="#menu" class="d-link">Menu</a>
+        <a href="#booking" class="d-link">Booking</a>
+        <a href="#contact" class="d-link">Contact Us</a>
+    </div>
 
-
-    <!-- --- HERO SECTION --- -->
-    <section id="home">
-        <div class="hero-text">
-            <h1>Fresh Hot &<br><span>Made To Love.</span></h1>
-            <p>Experience the definitive taste of premium, flame-grilled perfection. Sourced with local ingredients, crafted with absolute passion.</p>
-            <a href="#menu" class="hero-btn">Order Now</a>
-        </div>
-        <div class="hero-image">
-            <!-- Placeholder standard high-quality burger graphic -->
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80" alt="Abyssinia Signature Burger">
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Fresh Hot &<br><span>Made To Love.</span></h1>
+                <p>Experience the boldest flavor profiles in the city. Sourced locally, grilled with complete pride, and styled exactly to perfection.</p>
+                <a href="#menu" class="hero-pill-btn">Discover More</a>
+            </div>
+            <div class="hero-display">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80" alt="Abyssinia Premium Burger">
+            </div>
         </div>
     </section>
 
-
-    <!-- --- FEATURES SECTION --- -->
-    <section class="features-container">
-        <div class="feature-img-block">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80" alt="Delicious Burger Prep">
+    <section class="promo-container">
+        <div class="promo-left-card">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&auto=format&fit=crop&q=80" alt="Daily Prep">
+            <div class="promo-left-text">
+                <h4>Handcrafted Daily</h4>
+                <p>Pure freshness grilled directly into your local daily experience.</p>
+            </div>
         </div>
-        <div class="features-content">
-            <h2>Fresh-Hot & Made<br>To Perfection</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h3><i class="fas fa-home"></i> Local Heritage</h3>
-                    <p>Rooted in rich traditional values bringing premium comfort food right to your neighborhood.</p>
+        <div class="promo-orange-card">
+            <div class="promo-orange-info">
+                <h3>Dek Floud</h3>
+                <p>Crispy crust additions and items tailored for real enthusiasts.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&auto=format&fit=crop&q=80" alt="Promo Pizza Graphic">
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-visual">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=80" alt="Main Product Stack">
+        </div>
+        <div class="features-data">
+            <h2>Fresh-Hot & Made<br>To CNB ROAAR</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h4><i class="fas fa-home" style="color:var(--primary-red)"></i> Haradnping</h4>
+                    <p>Meticulously structured fresh buns prepared at dawn inside local house ovens.</p>
                 </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-heart"></i> Crafted With Love</h3>
-                    <p>Every single patty is hand-pressed and grilled exactly to perfection on every order.</p>
+                <div class="feature-box">
+                    <h4><i class="fas fa-heart" style="color:var(--primary-red)"></i> Baradliurgs</h4>
+                    <p>Flame-seared premium organic cuts featuring custom flavor spice locks.</p>
                 </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-leaf"></i> Organic Sourcing</h3>
-                    <p>We source crisp seasonal greens and farm-fresh dairy from sustainable farms.</p>
+                <div class="feature-box">
+                    <h4><i class="fas fa-seedling" style="color:var(--primary-red)"></i> Regaroles</h4>
+                    <p>Handpicked crispy harvest greens layered beautifully inside every order.</p>
                 </div>
-                <div class="feature-item">
-                    <h3><i class="fas fa-bolt"></i> Fast Delivery</h3>
-                    <p>Fresh, piping-hot burgers brought straight to your doorstep before they even get a chance to cool.</p>
+                <div class="feature-box">
+                    <h4><i class="fas fa-shipping-fast" style="color:var(--primary-red)"></i> Retery Lirrer</h4>
+                    <p>Express fulfillment cycles keeping your products structurally hot.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- --- MENU SECTION --- -->
     <section id="menu">
-        <h2>Our Premium Burgers</h2>
-        <p class="section-subtitle">Taste the legend</p>
-        
+        <h2>Explore Our Menu</h2>
         <div class="menu-grid">
-            <!-- Burger 1 -->
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Classic Burger">
-                <h3>The Abyssinia Classic</h3>
-                <p>100% Premium beef patty, cheddar, signature house sauce, pickles, toasted brioche.</p>
-                <div class="menu-price">$9.99</div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Classic">
+                <h3>Abyssinia Classic</h3>
+                <p>Juicy fire-grilled premium beef, melted sharp cheddar, house craft spreads.</p>
+                <div class="price">$9.50</div>
             </div>
-            <!-- Burger 2 -->
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Spicy Burger">
-                <h3>The Rift Valley Fire</h3>
-                <p>Spicy jalapeño blend, pepper jack cheese, smoky chipotle spread, crisp lettuce.</p>
-                <div class="menu-price">$11.49</div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Spicy">
+                <h3>Rift Valley Fire</h3>
+                <p>Stacked jalapeño crunch slices, hot pepper jack layers, cayenne dusting.</p>
+                <div class="price">$11.00</div>
             </div>
-            <!-- Burger 3 -->
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Double Cheese">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Double">
                 <h3>Lasta Mountain Double</h3>
-                <p>Two flame-grilled beef patties, double layers of melted cheddar, crispy onions.</p>
-                <div class="menu-price">$13.99</div>
+                <p>Two grand seasoned beef patties, extra cheese blankets, crisp local onions.</p>
+                <div class="price">$13.50</div>
             </div>
         </div>
     </section>
 
-
-    <!-- --- ABOUT US SECTION --- -->
-    <section id="about">
-        <div class="about-text">
-            <h2>With Worldwide Premium Standards</h2>
-            <p>At Abyssinia Burger, we redefined the simple American burger concept using world-class presentation and vibrant hospitality. Our recipes blend modern standards with exceptionally bold culinary execution.</p>
-            <p>Whether stopping by for a fast midday break or celebrating over meals with friends, your experience is always guaranteed hot, fresh, and unforgettable.</p>
-        </div>
-        <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=80" alt="Premium Loaded Burger">
+    <section class="accent-banner">
+        <div class="accent-container">
+            <div class="accent-text">
+                <h2>With Worldwide<br>Premium Standards</h2>
+                <p>Our operation guidelines from individual sourcing chains straight to custom premium presentations meet rigorous premium parameters.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&auto=format&fit=crop&q=80" alt="Assembled Loaded Burger">
         </div>
     </section>
 
-
-    <!-- --- BOOKING SECTION --- -->
     <section id="booking">
-        <h2>Book A Table</h2>
-        <p class="section-subtitle">Secure your dining experience</p>
-        
-        <div class="booking-form">
-            <form action="#" method="POST" onsubmit="alert('Thank you for booking with Abyssinia Burger! Your reservation is confirmed.'); return false;">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required placeholder="John Doe">
+        <div class="booking-box">
+            <h2 style="font-size:2.2rem; margin-bottom:20px;">Book A Table</h2>
+            <form onsubmit="alert('Reservation Success! We are looking forward to hosting you.'); return false;">
+                <div class="input-row">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Ex: John Doe">
                 </div>
-                <div class="form-group">
-                    <label for="guests">Number of Guests</label>
-                    <select id="guests">
-                        <option>2 People</option>
-                        <option>4 People</option>
-                        <option>6+ People</option>
+                <div class="input-row">
+                    <label>Guests Size</label>
+                    <select>
+                        <option>2 Guests</option>
+                        <option>4 Guests</option>
+                        <option>6+ Guests</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="date">Date & Time</label>
-                    <input type="datetime-local" id="date" required>
+                <div class="input-row">
+                    <label>Time Schedule</label>
+                    <input type="datetime-local" required>
                 </div>
-                <button type="submit" class="submit-btn">Confirm Reservation</button>
+                <button type="submit" class="book-submit">Confirm Table</button>
             </form>
         </div>
     </section>
 
-
-    <!-- --- CONTACT SECTION --- -->
     <footer id="contact">
-        <div class="contact-grid">
-            <div class="contact-col">
+        <div class="footer-grid">
+            <div class="footer-col">
                 <h3>Abyssinia Burger</h3>
-                <p>Delivering premier flame-grilled burger experiences globally without compromising home-cooked heart.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
+                <p>Redefining fast casual gourmet burgers under precise global quality rules.</p>
             </div>
-            <div class="contact-col">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home" style="color: inherit; text-decoration: none;">Home</a></li>
-                    <li><a href="#menu" style="color: inherit; text-decoration: none;">Our Menu</a></li>
-                    <li><a href="#about" style="color: inherit; text-decoration: none;">About Us</a></li>
-                    <li><a href="#booking" style="color: inherit; text-decoration: none;">Book Table</a></li>
-                </ul>
+            <div class="footer-col">
+                <h3>Links</h3>
+                <li><a href="#home" style="color:inherit; text-decoration:none;">Home</a></li>
+                <li><a href="#menu" style="color:inherit; text-decoration:none;">Menu</a></li>
+                <li><a href="#booking" style="color:inherit; text-decoration:none;">Booking</a></li>
             </div>
-            <div class="contact-col">
-                <h3>Contact Info</h3>
-                <p><i class="fas fa-phone"></i> +1 (555) 234-5678</p>
-                <p><i class="fas fa-envelope"></i> hello@abyssiniaburger.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 100 Gourmet Way, Food District</p>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><i class="fas fa-phone"></i> +1 (555) 987-6543</p>
+                <p><i class="fas fa-envelope"></i> help@abyssiniaburger.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 12 Central Hub, City Mall</p>
             </div>
         </div>
-        
-        <div>
-            <p>&copy; 2026 Abyssinia Burger House. All Rights Reserved.</p>
+        <div class="footer-bottom">
+            &copy; 2026 Abyssinia Burger House. All Rights Reserved.
         </div>
     </footer>
 
-
-    <!-- --- JAVASCRIPT FOR INTERACTION --- -->
     <script>
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const navMenu = document.getElementById('navMenu');
+        const menuBtn = document.getElementById('menuBtn');
+        const drawer = document.getElementById('drawer');
         const closeBtn = document.getElementById('closeBtn');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const dLinks = document.querySelectorAll('.d-link');
 
-        // Open Sidebar
-        hamburgerBtn.addEventListener('click', () => {
-            navMenu.classList.add('active');
-        });
-
-        // Close Sidebar via Close Button
-        closeBtn.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-
-        // Close Sidebar automatically when clicking any Nav Link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
+        menuBtn.addEventListener('click', () => drawer.classList.add('active'));
+        closeBtn.addEventListener('click', () => drawer.classList.remove('active'));
+        dLinks.forEach(link => link.addEventListener('click', () => drawer.classList.remove('active')));
     </script>
 </body>
 </html>
