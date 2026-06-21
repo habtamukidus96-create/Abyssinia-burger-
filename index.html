@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abyssinia Burger | Gourmet Burgers & Fries</title>
+    <!-- Elegant Serif Font for Headings & Clean Sans-Serif for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reset & Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 11, 11, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0b0b0b 70%);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image-wrapper {
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Using a high-quality placeholder image matching the vibe of Gourmet Burgers & Fries – Bold Food Website Design Inspiration.jpeg */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.7));
+        }
+
+        /* --- Menu Section --- */
+        .section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .menu-header h3 {
+            font-size: 1.4rem;
+            text-transform: none;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .menu-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* --- Booking Section --- */
+        .booking-box {
+            background-color: #111111;
+            padding: 40px;
+            max-width: 650px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .booking-box h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input {
+            background-color: #222222;
+            border: none;
+            padding: 12px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dateTime-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-submit {
+            background-color: #d4cdc3;
+            color: #0b0b0b;
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #ffffff;
+        }
+
+        /* --- Location Section --- */
+        .location-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 350px;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            nav ul {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <div class="brand-logo">ψ</div>
+                <div class="brand-name">Abyssinia Burger</div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#location">Location</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Gourmet Burgers & Fries</h1>
+            <div class="hero-image-wrapper">
+                <!-- High quality isolated burger photo acting as a placeholder for the original image visual style -->
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Abyssinia Premium Burger" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <h3>The Awaze Fire</h3>
+                        <span class="price">$16.00</span>
+                    </div>
+                    <p class="menu-desc">Premium beef patty infused with spicy traditional awaze sauce, jalapeños, and melted cheddar.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <h3>Abyssinia Classic</h3>
+                        <span class="price">$15.00</span>
+                    </div>
+                    <p class="menu-desc">House-blend beef patty, crisp lettuce, ripe tomatoes, red onion, and our signature burger sauce.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <h3>Truffle & Garlic Fries</h3>
+                        <span class="price">$7.00</span>
+                    </div>
+                    <p class="menu-desc">Hand-cut golden fries tossed in white truffle oil, grated parmesan, and fresh herbs.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <h3>The Berbere Crisp Chicken</h3>
+                        <span class="price">$15.50</span>
+                    </div>
+                    <p class="menu-desc">Crispy buttermilk chicken breast dusted with berbere spice blend, creamy slaw, and pickles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <p>At Abyssinia Burger, we marry the bold, historic flavors of East Africa with the timeless tradition of the classic American gourmet burger.</p>
+                <p>Every single patty is crafted from premium, locally-sourced cuts of beef, seasoned to perfection, and paired with house-made sauces that you won't find anywhere else. We believe in rich flavors, fresh ingredients, and an unforgettable dining experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section" id="booking">
+        <div class="container">
+            <div class="booking-box">
+                <h2>Book a Table</h2>
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Booking request received!');">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your Email Address" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Date & Time</label>
+                            <div class="dateTime-row">
+                                <input type="date" required>
+                                <input type="time" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section" id="location">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="location-info">
+                <p style="font-size: 18px; margin-bottom: 10px;">123 Gourmet Boulevard, Culinary District</p>
+                <p style="color: rgba(255,255,255,0.6);">Open Daily: 11:00 AM – 11:00 PM</p>
+            </div>
+            <!-- Embedded Map Placeholder -->
+            <div class="map-placeholder">
+                <p>[ Google Maps Embed Area ]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Abyssinia Burger. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
