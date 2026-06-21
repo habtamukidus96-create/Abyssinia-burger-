@@ -7,7 +7,7 @@
     <!-- Google Fonts: Elegant Serif & Clean Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2 family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300&family=Oswald:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -69,7 +69,7 @@
 
         .hamburger {
             color: var(--text-light);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: color 0.2s;
         }
@@ -77,26 +77,21 @@
             color: var(--accent-gold);
         }
 
-        /* STUNNING BRAND BRANDING UPGRADE */
+        /* NEW BRAND LOGO: Elegant, non-bold, perfectly sized */
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 1.45rem;
+            font-weight: 300; /* Super lightweight and elegant */
+            letter-spacing: 4px; /* Cinematic tracking */
             color: var(--text-light);
             text-transform: uppercase;
             line-height: 1;
         }
         .logo span {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 400;
             color: var(--accent-gold);
-            font-size: 1.4rem;
-            margin-left: 6px;
+            font-weight: 300;
             letter-spacing: 4px;
-            border-left: 2px solid rgba(255,255,255,0.2);
-            padding-left: 10px;
-            vertical-align: middle;
+            margin-left: 5px;
         }
 
         .nav-center {
@@ -154,13 +149,13 @@
             cursor: pointer;
         }
 
-        /* --- 3. HERO SECTION (CLEAN CUTOUT - NO OVERLAPPING BURGER BOX) --- */
+        /* --- 3. HERO SECTION (MINIMIZED & TIDY) --- */
         .hero-section {
             background: linear-gradient(rgba(17, 11, 11, 0.85), rgba(17, 11, 11, 0.85)), 
                         url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&auto=format&fit=crop&q=80') no-repeat center center/cover;
-            padding: 160px 8% 100px 8%;
+            padding: 180px 8% 130px 8%;
             width: 100%;
-            text-align: center; /* Centered beautifully since layout-breaking element is removed */
+            text-align: center;
         }
 
         .hero-container {
@@ -184,19 +179,11 @@
         .hero-content h1 {
             font-size: 5.5rem;
             line-height: 1.05;
-            margin-bottom: 25px;
+            margin-bottom: 40px; /* Shifted breathing room directly to the button */
         }
         .hero-content h1 span {
             color: var(--accent-gold);
             font-style: italic;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            margin: 0 auto 40px auto;
-            max-width: 560px;
-            line-height: 1.7;
         }
 
         .hero-pill-btn {
@@ -218,7 +205,53 @@
             box-shadow: 0 0 20px rgba(242, 169, 34, 0.4);
         }
 
-        /* --- 4. LAYOUT FEATURES SECTION --- */
+        /* --- 4. BURGER PRODUCTS CATALOG MENU --- */
+        #menu {
+            padding: 100px 8%;
+            background: #ffffff;
+            text-align: center;
+        }
+        #menu h2 { 
+            font-size: 4rem; 
+            margin-bottom: 10px; 
+        }
+        .menu-subtitle {
+            font-size: 1.1rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            display: block;
+            font-weight: 600;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .menu-item {
+            background-color: var(--bg-cream);
+            padding: 40px 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        .menu-item img {
+            width: 190px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+        }
+        .menu-item h3 { font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 0.5px; }
+        .menu-item p { font-size: 0.9rem; color: #666; margin-bottom: 20px; min-height: 45px; line-height: 1.5; }
+        .price { font-size: 1.6rem; color: var(--primary-red); font-weight: 700; }
+
+        /* --- 5. LAYOUT FEATURES SECTION (MOVED BELOW MENU) --- */
         .features-section {
             padding: 100px 8%;
             max-width: 1200px;
@@ -275,52 +308,6 @@
             color: #555;
             line-height: 1.6;
         }
-
-        /* --- 5. BURGER PRODUCTS CATALOG MENU --- */
-        #menu {
-            padding: 100px 8%;
-            background: #ffffff;
-            text-align: center;
-        }
-        #menu h2 { 
-            font-size: 4rem; 
-            margin-bottom: 10px; 
-        }
-        .menu-subtitle {
-            font-size: 1.1rem;
-            color: var(--primary-red);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 50px;
-            display: block;
-            font-weight: 600;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .menu-item {
-            background-color: var(--bg-cream);
-            padding: 40px 25px;
-            border-radius: 16px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .menu-item:hover {
-            transform: translateY(-5px);
-        }
-        .menu-item img {
-            width: 190px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
-        }
-        .menu-item h3 { font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 0.5px; }
-        .menu-item p { font-size: 0.9rem; color: #666; margin-bottom: 20px; min-height: 45px; line-height: 1.5; }
-        .price { font-size: 1.6rem; color: var(--primary-red); font-weight: 700; }
 
         /* --- 6. BOOKING FORM SECTION --- */
         #booking {
@@ -393,8 +380,8 @@
             <div class="hamburger" id="menuBtn">
                 <i class="fas fa-bars"></i>
             </div>
-            <!-- Stunning Redesigned Luxury Logo -->
-            <div class="logo">Abyssinia<span>Burger</span></div>
+            <!-- Reconstructed Ultra-Elegant Minimalist Logo -->
+            <div class="logo">Abyssinia <span>Burger</span></div>
         </div>
         
         <div class="nav-center">
@@ -414,19 +401,44 @@
         <a href="#contact" class="d-link">Contact Us</a>
     </div>
 
-    <!-- --- 3. HERO SECTION (BURGER BOX REMOVED AS REQUESTED) --- -->
+    <!-- --- 3. HERO SECTION (PARAGRAPH OMITTED) --- -->
     <section class="hero-section" id="home">
         <div class="hero-container">
             <div class="hero-content">
                 <span class="subtitle-gold">A Masterpiece of Culinary Culture</span>
                 <h1>Where Taste<br><span>Meets Elegance.</span></h1>
-                <p>Experience the definitive taste of premium, flame-grilled perfection. Sourced with premium local ingredients, crafted with absolute passion.</p>
                 <a href="#menu" class="hero-pill-btn">Explore Our Menu</a>
             </div>
         </div>
     </section>
 
-    <!-- --- 4. LAYOUT FEATURES SECTION --- -->
+    <!-- --- 4. BURGER PRODUCTS CATALOG MENU --- -->
+    <section id="menu">
+        <h2>Our Premium Menu</h2>
+        <span class="menu-subtitle">The Finest Burgers in Town</span>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Classic Burger">
+                <h3>Abyssinia Classic</h3>
+                <p>Juicy fire-grilled premium beef, melted sharp cheddar, house craft spreads.</p>
+                <div class="price">$9.50</div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Spicy Burger">
+                <h3>Rift Valley Fire</h3>
+                <p>Stacked jalapeño crunch slices, hot pepper jack layers, cayenne dusting.</p>
+                <div class="price">$11.00</div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Double Burger">
+                <h3>Lasta Mountain Double</h3>
+                <p>Two grand seasoned beef patties, extra cheese blankets, crisp local onions.</p>
+                <div class="price">$13.50</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- 5. LAYOUT FEATURES SECTION (OUR STORY SECTION REORDERED HERE) --- -->
     <section class="features-section">
         <div class="features-visual">
             <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80" alt="Gourmet Ingredients">
@@ -451,32 +463,6 @@
                     <h4><i class="fas fa-shipping-fast" style="color:var(--accent-gold)"></i> Hot Fulfillment</h4>
                     <p>Express kitchen distribution cycles keeping your selection structurally hot.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- --- 5. BURGER PRODUCTS CATALOG MENU --- -->
-    <section id="menu">
-        <h2>Our Premium Menu</h2>
-        <span class="menu-subtitle">The Finest Burgers in Town</span>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Classic Burger">
-                <h3>Abyssinia Classic</h3>
-                <p>Juicy fire-grilled premium beef, melted sharp cheddar, house craft spreads.</p>
-                <div class="price">$9.50</div>
-            </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Spicy Burger">
-                <h3>Rift Valley Fire</h3>
-                <p>Stacked jalapeño crunch slices, hot pepper jack layers, cayenne dusting.</p>
-                <div class="price">$11.00</div>
-            </div>
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&auto=format&fit=crop&q=80" alt="Double Burger">
-                <h3>Lasta Mountain Double</h3>
-                <p>Two grand seasoned beef patties, extra cheese blankets, crisp local onions.</p>
-                <div class="price">$13.50</div>
             </div>
         </div>
     </section>
@@ -507,7 +493,7 @@
         </div>
     </section>
 
-    <!-- --- 7. FOOTER CONTACT END (UPDATED TO ADDIS ABEBA, BOLE) --- -->
+    <!-- --- 7. FOOTER CONTACT END --- -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
