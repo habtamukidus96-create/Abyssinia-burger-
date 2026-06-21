@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abyssinia Burger — Where Taste Meets Elegance</title>
-    <!-- Google Fonts: Elegant Serif from Screenshot_20260621-221142.jpg & Clean Sans for Body -->
+    <!-- Google Fonts: Elegant Serif & Clean Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Oswald:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for the Hamburger Panel Icon -->
+    <link href="https://fonts.googleapis.com/css2 family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Oswald:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -36,13 +36,12 @@
             width: 100%;
         }
 
-        /* Serif Font from Screenshot_20260621-221142.jpg */
         h1, h2, .elegant-serif {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
         }
 
-        h3, h4, .logo, .nav-center a, .book-submit {
+        h3, h4, .nav-center a, .book-submit {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
         }
@@ -53,24 +52,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 18px 5%;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(242, 169, 34, 0.2);
+            border-bottom: 1px solid rgba(242, 169, 34, 0.15);
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .hamburger {
             color: var(--text-light);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
             transition: color 0.2s;
         }
@@ -78,25 +77,37 @@
             color: var(--accent-gold);
         }
 
+        /* STUNNING BRAND BRANDING UPGRADE */
         .logo {
-            color: var(--text-light);
-            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            line-height: 1;
         }
         .logo span {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
             color: var(--accent-gold);
+            font-size: 1.4rem;
+            margin-left: 6px;
+            letter-spacing: 4px;
+            border-left: 2px solid rgba(255,255,255,0.2);
+            padding-left: 10px;
+            vertical-align: middle;
         }
 
         .nav-center {
             display: flex;
-            gap: 30px;
+            gap: 35px;
         }
         .nav-center a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             transition: color 0.2s;
         }
         .nav-center a:hover {
@@ -143,41 +154,37 @@
             cursor: pointer;
         }
 
-        /* --- 3. HERO SECTION (MINIMIZED HEIGHT) --- */
+        /* --- 3. HERO SECTION (CLEAN CUTOUT - NO OVERLAPPING BURGER BOX) --- */
         .hero-section {
-            background: linear-gradient(rgba(17, 11, 11, 0.82), rgba(17, 11, 11, 0.82)), 
+            background: linear-gradient(rgba(17, 11, 11, 0.85), rgba(17, 11, 11, 0.85)), 
                         url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&auto=format&fit=crop&q=80') no-repeat center center/cover;
-            padding: 120px 8% 60px 8%; /* Reduced padding to streamline space usage */
+            padding: 160px 8% 100px 8%;
             width: 100%;
+            text-align: center; /* Centered beautifully since layout-breaking element is removed */
         }
 
         .hero-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
         }
 
         .hero-content {
-            flex: 1.2;
             color: var(--text-light);
         }
 
         .subtitle-gold {
             color: var(--accent-gold);
             font-size: 1rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             display: block;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
+            font-size: 5.5rem;
             line-height: 1.05;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .hero-content h1 span {
             color: var(--accent-gold);
@@ -185,21 +192,21 @@
         }
 
         .hero-content p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.85;
-            margin-bottom: 30px;
-            max-width: 480px;
-            line-height: 1.5;
+            margin: 0 auto 40px auto;
+            max-width: 560px;
+            line-height: 1.7;
         }
 
         .hero-pill-btn {
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            padding: 10px 30px;
+            padding: 14px 40px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: inline-block;
             text-transform: uppercase;
             font-family: 'Oswald', sans-serif;
@@ -208,29 +215,12 @@
         .hero-pill-btn:hover {
             background-color: var(--accent-gold);
             color: var(--dark-charcoal);
+            box-shadow: 0 0 20px rgba(242, 169, 34, 0.4);
         }
 
-        .hero-display {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* Ambient blending burger configuration matching background */
-        .hero-display img {
-            max-width: 90%;
-            height: auto;
-            mix-blend-mode: luminosity;
-            opacity: 0.85;
-            mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7)) brightness(0.9) contrast(1.1);
-        }
-
-        /* --- 4. LAYOUT FEATURES SECTION (CONTINUES PROPERLY NOW) --- */
+        /* --- 4. LAYOUT FEATURES SECTION --- */
         .features-section {
-            padding: 90px 8%;
+            padding: 100px 8%;
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -288,7 +278,7 @@
 
         /* --- 5. BURGER PRODUCTS CATALOG MENU --- */
         #menu {
-            padding: 90px 8%;
+            padding: 100px 8%;
             background: #ffffff;
             text-align: center;
         }
@@ -334,7 +324,7 @@
 
         /* --- 6. BOOKING FORM SECTION --- */
         #booking {
-            padding: 90px 8%;
+            padding: 100px 8%;
             text-align: center;
         }
         #booking h2 {
@@ -381,13 +371,10 @@
         .footer-col li a:hover { color: var(--accent-gold); }
         .footer-bottom { text-align: center; padding-top: 30px; font-size: 0.85rem; opacity: 0.5; letter-spacing: 0.5px; }
 
-        /* RESPONSIVE RESPONSIVENESS FIXES */
+        /* RESPONSIVE FIXES */
         @media (max-width: 960px) {
             .nav-center { display: none; }
-            .hero-container { flex-direction: column; text-align: center; gap: 30px; }
-            .hero-content h1 { font-size: 3.2rem; }
-            .hero-content p { margin: 0 auto 25px auto; }
-            .hero-section { padding-top: 100px; }
+            .hero-content h1 { font-size: 3.6rem; }
             .features-section { flex-direction: column; gap: 40px; }
             .features-data h2, #menu h2, #booking h2 { font-size: 2.8rem; }
         }
@@ -406,7 +393,8 @@
             <div class="hamburger" id="menuBtn">
                 <i class="fas fa-bars"></i>
             </div>
-            <div class="logo">Abyssinia Burger<span>.</span></div>
+            <!-- Stunning Redesigned Luxury Logo -->
+            <div class="logo">Abyssinia<span>Burger</span></div>
         </div>
         
         <div class="nav-center">
@@ -426,7 +414,7 @@
         <a href="#contact" class="d-link">Contact Us</a>
     </div>
 
-    <!-- --- 3. HERO SECTION (MINIMIZED & BLENDED SIDE IMAGE) --- -->
+    <!-- --- 3. HERO SECTION (BURGER BOX REMOVED AS REQUESTED) --- -->
     <section class="hero-section" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -434,9 +422,6 @@
                 <h1>Where Taste<br><span>Meets Elegance.</span></h1>
                 <p>Experience the definitive taste of premium, flame-grilled perfection. Sourced with premium local ingredients, crafted with absolute passion.</p>
                 <a href="#menu" class="hero-pill-btn">Explore Our Menu</a>
-            </div>
-            <div class="hero-display">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80" alt="Abyssinia Signature Burger Blended">
             </div>
         </div>
     </section>
@@ -522,7 +507,7 @@
         </div>
     </section>
 
-    <!-- --- 7. FOOTER CONTACT END --- -->
+    <!-- --- 7. FOOTER CONTACT END (UPDATED TO ADDIS ABEBA, BOLE) --- -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-col">
@@ -537,9 +522,9 @@
             </div>
             <div class="footer-col">
                 <h3>Contact Us</h3>
-                <p><i class="fas fa-phone" style="color:var(--accent-gold)"></i> +1 (555) 987-6543</p>
-                <p><i class="fas fa-envelope" style="color:var(--accent-gold)"></i> info@abyssiniaburger.com</p>
-                <p><i class="fas fa-map-marker-alt" style="color:var(--accent-gold)"></i> 12 Luxury Drive, Food District</p>
+                <p><i class="fas fa-phone" style="color:var(--accent-gold)"></i> 0912643473</p>
+                <p><i class="fas fa-envelope" style="color:var(--accent-gold)"></i> habtamukidus96@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--accent-gold)"></i> Addis Abeba, Bole</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -547,7 +532,7 @@
         </div>
     </footer>
 
-    <!-- --- JAVASCRIPT EVENT CONTROLS --- -->
+    <!-- --- JAVASCRIPT CONTROLS --- -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const drawer = document.getElementById('drawer');
