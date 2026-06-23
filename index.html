@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WoW Burger - Fine Dining Experience</title>
-    <!-- Tailwind CSS for styling via CDN -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght=0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght=400;500;600&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-font { font-family: 'Playfair Display', serif; }
         .cinzel-font { font-family: 'Cinzel', serif; }
         
-        /* Force fast asynchronous rendering and prevent top-to-bottom layout slicing */
+        /* Advanced Image Loading Fixes */
         img { 
-            content-visibility: auto; 
+            content-visibility: auto;
+            contain-intrinsic-size: 1000px; /* Reserves layout space before image paints */
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
+            object-fit: cover;
+            object-position: center;
         }
     </style>
 </head>
@@ -30,20 +33,44 @@
     <div class="absolute top-0 left-1/4 w-[250px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
     <div class="absolute top-[800px] right-0 w-[200px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-    <!-- NAVBAR HEADER -->
-    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
-        <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
+    <!-- NAVBAR HEADER (Bumped to z-50 to stay on top of content during scroll) -->
+    <header class="sticky top-0 z-50 bg-[#0F0E0C]/95 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
+        <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none relative z-50" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
-        <!-- Brand Name Fixed Side-by-Side Configuration -->
+        <!-- Brand Name -->
         <div class="flex items-center justify-center py-1">
             <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
                 WoW <span class="text-amber-500 not-italic tracking-wide text-2xl md:text-3xl ml-1 font-bold">Burger</span>
             </h1>
         </div>
+        
+        <div class="w-10"></div>
+    </header>
+
+    <!-- HAMBURGER SLIDEOUT SIDEBAR (Bumped to z-[60] to overlay cleanly above the header) -->
+    <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
+        <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
+            <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+            
+            <div class="mt-8 space-y-1 mb-8">
+                <h3 class="text-red-500 font-bold tracking-widest text-sm uppercase cinzel-font">Navigation</h3>
+                <div class="h-[1px] bg-red-500/30 w-16"></div>
+            </div>
+
+            <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
+                <a href="#" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Home</a>
+                <a href="#menu-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Menu</a>
+                <a href="#about-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Story</a>
+                <a href="#reviews-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reviews</a>
+                <a href="#branches-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Branches</a>
+                <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
+            </nav>
+        </div>
+    </div>
         
         <!-- Empty layout balancer wrapper -->
         <div class="w-10"></div>
