@@ -4,500 +4,482 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WoW Burger - Fine Dining Experience</title>
+    <!-- Tailwind CSS for styling via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for premium serif and clean layout typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root {
-            --bg-dark: #0F0E0C;
-            --bg-card: #161412;
-            --gold-primary: #D4AF37;
-            --gold-light: #F3E5AB;
-            --text-light: #F5F5F0;
-            --text-muted: #BAAFA3;
-            --border-gold: rgba(212, 175, 55, 0.25);
-            --border-light: rgba(255, 255, 255, 0.05);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 30%, #1A1713 0%, var(--bg-dark) 70%);
-        }
-
-        /* Top Navigation Bar */
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .nav-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            letter-spacing: 2px;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-        }
-
-        .nav-logo span {
-            color: var(--text-light);
-        }
-
-        .reservation-btn {
-            font-family: 'Cinzel', serif;
-            background: transparent;
-            color: var(--gold-primary);
-            border: 1px solid var(--gold-primary);
-            padding: 10px 24px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .reservation-btn:hover {
-            background: var(--gold-primary);
-            color: var(--bg-dark);
-        }
-
-        /* SECTION 1: HERO CONTAINER LAYOUT */
-        .hero-section {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 50px 100px;
-        }
-
-        .hero-left-content {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .hero-welcome {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            letter-spacing: 1px;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            line-height: 1.1;
-            color: var(--gold-primary);
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .hero-subtitle {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            color: var(--text-light);
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-gold {
-            font-family: 'Cinzel', serif;
-            background: linear-gradient(135deg, #A88426, #D4AF37);
-            color: #000;
-            font-weight: 700;
-            border: none;
-            padding: 14px 35px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-
-        .btn-outline {
-            font-family: 'Cinzel', serif;
-            background: rgba(255, 255, 255, 0.03);
-            color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 14px 35px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-        }
-
-        .hero-right-media img {
-            width: 100%;
-            height: 440px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid var(--border-gold);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
-        }
-
-        /* SECTION 2: SPECIAL DISHES 3-COLUMN FIXED GRID */
-        .section-divider {
-            border-top: 1px solid var(--border-gold);
-            max-width: 300px;
-            margin: 40px auto;
-            position: relative;
-        }
-
-        .dishes-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 50px 100px;
-            text-align: center;
-        }
-
-        .section-header-tag {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--text-light);
-            margin-bottom: 5px;
-        }
-
-        .section-header-tag span {
-            color: var(--gold-primary);
-            font-style: italic;
-        }
-
-        .section-sub-tag {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 50px;
-        }
-
-        .dishes-three-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .dish-luxury-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-
-        .dish-luxury-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-light);
-        }
-
-        .dish-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--gold-light);
-            margin-bottom: 4px;
-        }
-
-        .dish-caption {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-
-        .dish-price {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: var(--gold-primary);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .card-order-btn {
-            font-family: 'Cinzel', serif;
-            background: transparent;
-            color: var(--text-light);
-            border: 1px solid var(--border-gold);
-            padding: 8px 25px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .card-order-btn:hover {
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--gold-primary);
-            color: var(--gold-primary);
-        }
-
-        /* SECTION 3: DISCOVER OUR STORY SPLIT ROW */
-        .story-section {
-            background-color: rgba(22, 20, 18, 0.5);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .story-layout-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 50px;
-        }
-
-        .story-left-pane {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .story-paragraph {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .story-right-pane img {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-            border: 1px solid var(--border-gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        /* SECTION 4: CUSTOMER REVIEWS & METADATA CHEVRONS */
-        .reviews-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 50px 120px;
-            text-align: center;
-        }
-
-        .review-center-box {
-            max-width: 800px;
-            margin: 40px auto 0;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            text-align: left;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
-        .reviewer-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--gold-primary);
-            flex-shrink: 0;
-        }
-
-        .review-right-details h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--gold-light);
-            margin-bottom: 8px;
-        }
-
-        .review-text {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .review-stars {
-            color: var(--gold-primary);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
-
-        /* Meta tags pill layout section arranged underneath review layout */
-        .meta-tags-row {
-            max-width: 800px;
-            margin: 40px auto 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .meta-node-chip {
-            background: transparent;
-            border: 1px solid var(--border-light);
-            padding: 8px 18px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-radius: 2px;
-        }
-
-        /* FOOTER STRUCTURE */
-        footer {
-            background-color: #090807;
-            border-top: 1px solid var(--border-light);
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.3);
-        }
-
-        @media (max-width: 950px) {
-            .hero-section, .dishes-three-grid, .story-layout-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero-actions, .review-center-box {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .hero-left-content { align-items: center; }
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif-font { font-family: 'Playfair Display', serif; }
+        .cinzel-font { font-family: 'Cinzel', serif; }
     </style>
 </head>
-<body>
+<body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-amber-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
-    <!-- LUXURY NAVIGATION HEADER -->
-    <div class="nav-container">
-        <div class="nav-logo">WoW <span>Burger</span></div>
-        <button class="reservation-btn">Reservation</button>
-    </div>
+    <!-- Ambient glowing backdrops matching the Golden Spice/WoW layout aesthetic -->
+    <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-[800px] right-0 w-[250px] md:w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <!-- ROW 1: HERO DISPLAY SECTION -->
-    <div class="hero-section">
-        <div class="hero-left-content">
-            <span class="hero-welcome">Welcome to</span>
-            <h1 class="hero-title">WoW Burger</h1>
-            <p class="hero-subtitle">Exquisite Dining Experience</p>
-            <div class="hero-actions">
-                <button class="btn-gold">View Menu</button>
-                <button class="btn-outline">Book a Table</button>
-            </div>
+    <!-- NAVBAR HEADER -->
+    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-4 flex items-center justify-between">
+        <!-- Hamburger Menu Button -->
+        <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-amber-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <div class="flex flex-col text-center">
+            <h1 class="text-xl md:text-2xl font-bold tracking-widest text-amber-500 uppercase cinzel-font">WoW Burger</h1>
+            <span class="text-[9px] text-zinc-400 tracking-[0.2em] -mt-1 uppercase">Exquisite Dining Experience</span>
         </div>
-        <div class="hero-right-media">
-            <img src="unnamed (5).jpg" alt="Wow Burger Gourmet Hero Platter">
-        </div>
-    </div>
-
-    <div class="section-divider"></div>
-
-    <!-- ROW 2: SPECIAL DISHES TRIPLE CARD COLUMN GRID -->
-    <div class="dishes-section">
-        <h2 class="section-header-tag">Our <span>Special Dishes</span></h2>
-        <p class="section-sub-tag">Taste the Best of Our Cuisine</p>
         
-        <div class="dishes-three-grid">
-            <!-- Card 1 -->
-            <div class="dish-luxury-card">
-                <img src="unnamed (2).jpg" alt="Wow Special Burger">
-                <h3 class="dish-title">Wow Special Burger</h3>
-                <p class="dish-caption">With Double Premium Mortadella &amp; Fried Egg</p>
-                <span class="dish-price">564.35 ETB</span>
-                <button class="card-order-btn">Order Now</button>
+        <div class="flex items-center space-x-3">
+            <!-- Shopping Cart Trigger Button -->
+            <button onclick="toggleCart(true)" class="relative p-2 text-zinc-300 hover:text-amber-500 transition-colors focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-amber-500 text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HAMBURGER SLIDEOUT SIDEBAR -->
+    <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
+        <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
+            <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+            
+            <div class="mt-8 space-y-1 mb-8">
+                <h3 class="text-amber-500 font-bold tracking-widest text-sm uppercase cinzel-font">Navigation</h3>
+                <div class="h-[1px] bg-amber-500/30 w-16"></div>
             </div>
-            <!-- Card 2 -->
-            <div class="dish-luxury-card">
-                <img src="unnamed (3).jpg" alt="Wow Double Burger">
-                <h3 class="dish-title">Wow Double Burger</h3>
-                <p class="dish-caption">Double Flame-Grilled Beef Patty &amp; Cheese</p>
-                <span class="dish-price">494.79 ETB</span>
-                <button class="card-order-btn">Order Now</button>
-            </div>
-            <!-- Card 3 -->
-            <div class="dish-luxury-card">
-                <img src="unnamed (1).jpg" alt="Cheese Burger">
-                <h3 class="dish-title">Cheese Burger</h3>
-                <p class="dish-caption">Classic Melted Cheddar &amp; House Sauce</p>
-                <span class="dish-price">399.14 ETB</span>
-                <button class="card-order-btn">Order Now</button>
-            </div>
+
+            <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
+                <a href="#" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-amber-500 transition-colors py-2 border-b border-zinc-900/40">Home</a>
+                <a href="#menu-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-amber-500 transition-colors py-2 border-b border-zinc-900/40">Our Menu</a>
+                <a href="#about-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-amber-500 transition-colors py-2 border-b border-zinc-900/40">Our Story</a>
+                <a href="#reviews-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-amber-500 transition-colors py-2 border-b border-zinc-900/40">Reviews</a>
+                <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-amber-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
+            </nav>
         </div>
     </div>
 
-    <!-- ROW 3: DISCOVER OUR STORY SECTION -->
-    <div class="story-section">
-        <div class="story-layout-grid">
-            <div class="story-left-pane">
-                <h2 class="section-header-tag">Discover <span>Our Story</span></h2>
-                <p class="section-sub-tag" style="margin-bottom: 10px;">Fine Dining &amp; Perfect Ambience</p>
-                <p class="story-paragraph">Experience the authentic flavors of our cuisine crafted with passion and served with elegance. Across our six flagships in Addis Ababa, we blend gourmet quality with welcoming luxury.</p>
-                <button class="btn-outline" style="align-self: flex-start; margin-top: 10px;">More About Us</button>
-            </div>
-            <div class="story-right-pane">
-                <img src="images (18).jpg" alt="WoW Burger Elegant Interior Ambience">
-            </div>
-        </div>
-    </div>
-
-    <!-- ROW 4: CUSTOMER REVIEWS & AMBIENCE CHIPS SECTION -->
-    <div class="reviews-section">
-        <h2 class="section-header-tag">Customer <span>Reviews</span></h2>
-        <p class="section-sub-tag">What Our Guests Say</p>
-
-        <div class="review-center-box">
-            <img src="images (17).jpg" class="reviewer-avatar" alt="Guest Profile Avatar">
-            <div class="review-right-details">
-                <h4>Emma R.</h4>
-                <p class="review-text">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
-                <div class="review-stars">★★★★★</div>
-            </div>
+    <!-- HERO SECTION -->
+    <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="unnamed (5).jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
         </div>
 
-        <!-- System Meta Category Profile Nodes grouped together below -->
-        <div class="meta-tags-row">
-            <span class="meta-node-chip">Casual Vibe</span>
-            <span class="meta-node-chip">Cosy Seating</span>
-            <span class="meta-node-chip">Trendy Crowd</span>
-            <span class="meta-node-chip">Group Dining</span>
-            <span class="meta-node-chip">Outdoor Seating</span>
-            <span class="meta-node-chip">Dine-In</span>
+        <div class="relative z-10 max-w-2xl mx-auto space-y-4">
+            <span class="text-amber-500 uppercase tracking-[0.3em] text-[11px] block font-medium">Welcome to</span>
+            <h2 class="text-5xl md:text-7xl serif-font font-normal text-[#F5F5F0] tracking-tight leading-tight">
+                WoW Burger <br><span class="italic text-amber-400">Exquisite Experience.</span>
+            </h2>
+            <div class="pt-2">
+                <a href="#menu-section" class="inline-block border border-amber-500/40 hover:border-amber-500 text-amber-500 px-6 py-3 text-xs uppercase tracking-widest transition-all cinzel-font">
+                    Explore Our Menu
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- CLEAN FOOTER PANEL -->
-    <footer>
-        <p>&copy; 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
+    <!-- ABOUT US SECTION -->
+    <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900">
+        <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
+            <div class="h-[1px] bg-amber-500/30 flex-1"></div>
+            <span class="text-amber-500 uppercase tracking-widest text-[11px]">Discover</span>
+            <div class="h-[1px] bg-amber-500/30 flex-1"></div>
+        </div>
+        <h3 class="serif-font text-3xl font-normal tracking-wide">Our Story</h3>
+        <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light max-w-2xl mx-auto">
+            Experience the authentic flavors of our cuisine crafted with passion and served with elegance. Across our six flagships in Addis Ababa, we blend gourmet quality with welcoming luxury, ensuring fine dining and the perfect ambience.
+        </p>
+    </section>
+
+    <!-- DYNAMIC INTERACTIVE MENU SECTION -->
+    <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8 space-y-2">
+                <h3 id="category-heading" class="serif-font text-3xl font-normal text-stone-100 tracking-wide">Our Special Dishes</h3>
+                <div class="flex flex-wrap justify-center gap-2 pt-2">
+                    <button id="tab-signature" onclick="switchCategory('signature')" class="px-3 py-1.5 text-xs tracking-wider border border-amber-500 text-amber-500 bg-amber-500/5 transition-all cinzel-font">Signature Burgers</button>
+                    <button id="tab-sides" onclick="switchCategory('sides')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Premium Sides</button>
+                    <button id="tab-beverages" onclick="switchCategory('beverages')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Beverage Bar</button>
+                </div>
+            </div>
+
+            <!-- Food Grid Layout -->
+            <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected automatically by JavaScript Menu Data Engine -->
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANT GALLERY SECTION -->
+    <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C]">
+        <div class="max-w-5xl mx-auto space-y-8">
+            <div class="text-center space-y-1">
+                <span class="text-amber-500 uppercase tracking-widest text-[10px]">The Vibe</span>
+                <h3 class="serif-font text-3xl font-normal tracking-wide">Fine Dining &amp; Perfect Ambience</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
+                    <img src="images (18).jpg" alt="WoW Burger Elegant Interior Ambience" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=600&q=80" alt="Cocktail Mixing Station" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Restaurant Main Lounge" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION -->
+    <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            <div class="space-y-1">
+                <span class="text-amber-500 uppercase tracking-widest text-[10px]">Customer Reviews</span>
+                <h3 class="serif-font text-3xl font-normal tracking-wide">What Our Guests Say</h3>
+            </div>
+            
+            <div class="bg-[#161412] border border-amber-500/20 p-6 md:p-8 rounded-sm max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-6 text-left shadow-xl">
+                <img src="images (17).jpg" class="w-20 h-20 rounded-full object-cover border-2 border-amber-500 flex-shrink-0" alt="Guest Emma R. Profile Picture">
+                <div class="space-y-2">
+                    <h4 class="serif-font text-lg text-amber-200 font-medium">Emma R.</h4>
+                    <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
+                    <div class="text-amber-500 text-xs tracking-wider">★★★★★</div>
+                </div>
+            </div>
+
+            <!-- Visual Meta Tags Layout -->
+            <div class="flex flex-wrap justify-center gap-2 pt-4">
+                <span class="border border-zinc-800 bg-[#161412] text-zinc-400 px-3 py-1 text-xs rounded-full">Casual Vibe</span>
+                <span class="border border-zinc-800 bg-[#161412] text-zinc-400 px-3 py-1 text-xs rounded-full">Cosy Seating</span>
+                <span class="border border-zinc-800 bg-[#161412] text-zinc-400 px-3 py-1 text-xs rounded-full">Trendy Crowd</span>
+                <span class="border border-zinc-800 bg-[#161412] text-zinc-400 px-3 py-1 text-xs rounded-full">Group Dining</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION & BOOKING FORM -->
+    <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20">
+        <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
+            <div class="text-center space-y-1">
+                <h3 class="serif-font text-2xl text-amber-500 font-normal tracking-wide">Secure Private Booking</h3>
+                <p class="text-[11px] text-zinc-400 uppercase tracking-widest">WoW Burger Lounge Experience</p>
+            </div>
+            <div id="footer-reservation-success" class="hidden text-center py-4 bg-emerald-950/20 border border-emerald-900/50 rounded-sm">
+                <span class="text-emerald-400 text-xs font-bold block">✓ Table Reservation Allocated Successfully!</span>
+            </div>
+            <form onsubmit="handleFooterReservation(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Full Name</label>
+                    <input type="text" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-amber-500 transition-colors">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Date</label>
+                        <input type="date" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-amber-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Time Slot</label>
+                        <input type="time" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-amber-500 transition-colors">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Party Seating</label>
+                    <select class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-amber-500 transition-colors">
+                        <option>2 Guests</option>
+                        <option>4 Guests</option>
+                        <option>6+ Guests (Premium Room)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-black font-bold uppercase tracking-widest py-3 text-center transition-colors cinzel-font">
+                    Confirm Seating Request
+                </button>
+            </form>
+            <div class="text-center pt-2 text-[10px] text-zinc-500 border-t border-zinc-900">
+                Direct Desk: <span class="text-zinc-300 font-mono">+251 922 785 816</span> | Location: Addis Ababa, Ethiopia
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH SOCIAL LINKS -->
+    <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6">
+        <div class="space-y-1">
+            <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
+            <p class="text-[11px] text-zinc-500 font-light">© 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
+        </div>
+
+        <div class="flex justify-center space-x-6 text-zinc-400">
+            <a href="https://facebook.com" target="_blank" class="hover:text-amber-500 transition-colors" title="Facebook">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" class="hover:text-amber-500 transition-colors" title="TikTok">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.14.94 1.05 2.27 1.72 3.69 1.89v3.74c-1.78-.17-3.46-.93-4.73-2.2-.07-.07-.12-.15-.22-.27V13.5c.03 2.15-.6 4.3-1.88 6.03-1.6 2.17-4.14 3.63-6.85 3.86-2.73.23-5.54-.53-7.65-2.29C-.45 19.1-.98 15.65-.4 12.63c.63-3.23 3.12-5.96 6.35-6.79 1.06-.27 2.17-.35 3.25-.23v3.76c-1.33-.21-2.73.11-3.79.97-1.15.93-1.75 2.45-1.56 3.94.19 1.49 1.15 2.82 2.53 3.4 1.39.58 3.03.4 4.27-.45.96-.66 1.55-1.76 1.58-2.93.03-2.88 0-5.76.01-8.64-.01-.22-.01-.43-.01-.65z"/></svg>
+            </a>
+            <a href="https://t.me" target="_blank" class="hover:text-amber-500 transition-colors" title="Telegram">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.62.15-.15 2.7-2.48 2.75-2.7.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.03-.1.02-1.69 1.07-4.77 3.15-.45.3-.86.46-1.22.45-.4-.01-1.17-.23-1.74-.41-.7-.23-1.26-.35-1.21-.74.03-.2.3-.41.82-.62 3.2-1.39 5.34-2.31 6.42-2.76 3.06-1.27 3.7-1.49 4.11-1.5.09 0 .29.02.42.13.11.09.14.21.15.3-.01.06-.01.14-.02.21z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="hover:text-amber-500 transition-colors" title="Instagram">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 .013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+        </div>
     </footer>
 
+    <!-- INTERACTIVE SIDEBAR CART MODAL -->
+    <div id="cart-modal" class="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm hidden">
+        <div class="w-full max-w-md bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-4 shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between border-b border-zinc-900 pb-3">
+                    <h3 class="text-sm uppercase font-bold tracking-wider text-amber-500 cinzel-font">Your Gourmet Basket</h3>
+                    <button onclick="toggleCart(false)" class="text-zinc-400 hover:text-white text-xl font-bold focus:outline-none">&times;</button>
+                </div>
+                <div id="cart-container" class="mt-4 space-y-3 overflow-y-auto max-h-[70vh]"></div>
+            </div>
+            <div id="cart-checkout-box" class="border-t border-zinc-900 pt-4 space-y-3 hidden">
+                <div class="flex justify-between items-center text-xs">
+                    <span class="text-zinc-400">Total Amount:</span>
+                    <span id="cart-total" class="text-lg text-amber-500 font-bold">0.00 ETB</span>
+                </div>
+                <button onclick="triggerOrderCheckout()" class="w-full bg-amber-600 hover:bg-amber-700 text-black font-bold py-2.5 text-center uppercase tracking-wider text-xs cinzel-font">
+                    Send Order to Kitchen
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI DINING CONCIERGE ASSISTANT AGENT MODULE -->
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
+        <div id="ai-chat-box" class="w-72 md:w-80 h-96 bg-[#0F0E0C] border border-amber-500/30 rounded-sm shadow-2xl flex flex-col justify-between mb-2 overflow-hidden hidden">
+            <div class="bg-zinc-900 border-b border-zinc-800 p-2.5 flex items-center justify-between">
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase text-zinc-200 tracking-wider cinzel-font">WoW Burger Concierge</h4>
+                    <span class="text-[8px] text-emerald-400 flex items-center gap-1">● AI Engine Online</span>
+                </div>
+                <button onclick="toggleAi(false)" class="text-zinc-400 hover:text-white font-bold">&times;</button>
+            </div>
+
+            <div id="ai-messages-stream" class="flex-1 p-3 overflow-y-auto space-y-2 text-[11px] leading-relaxed">
+                <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">
+                    Melkam Ken! I am your AI Host for WoW Burger. Ask me about our signature burger platters, gourmet sides, beverage bar items, or address details!
+                </div>
+            </div>
+
+            <form onsubmit="handleAiChat(event)" class="p-2 border-t border-zinc-900 bg-zinc-900/50 flex space-x-1.5">
+                <input id="ai-input-field" type="text" placeholder="Ask about burgers, sides, drinks..." class="flex-1 bg-[#0F0E0C] border border-zinc-800 rounded-sm px-2 py-1 text-[11px] text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-amber-500">
+                <button type="submit" class="bg-amber-600 text-black px-3 py-1 font-bold text-[11px] rounded-sm hover:bg-amber-700">Ask</button>
+            </form>
+        </div>
+
+        <button onclick="toggleAi(true)" class="bg-amber-600 hover:bg-amber-700 text-black p-3 rounded-full shadow-2xl focus:outline-none border-2 border-zinc-950 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- APP ENGINE WORKER JAVASCRIPT -->
+    <script>
+        const MENU_DATA = [
+            // Signature Burgers
+            { id: 'burg-1', name: 'Wow Special Burger', category: 'signature', price: 564.35, desc: 'With Double Premium Mortadella & Fried Egg arranged flawlessly on a toasted artisanal brioche bun.', img: 'unnamed (2).jpg' },
+            { id: 'burg-2', name: 'Wow Double Burger', category: 'signature', price: 494.79, desc: 'Double Flame-Grilled Beef Patty loaded with extra melted sharp cheddar cheese layers.', img: 'unnamed (3).jpg' },
+            { id: 'burg-3', name: 'Cheese Burger', category: 'signature', price: 399.14, desc: 'Classic Melted Cheddar layered over a prime juicy patty and slathered with our house burger sauce.', img: 'unnamed (1).jpg' },
+            
+            // Premium Sides
+            { id: 'side-1', name: 'Gourmet Crispy Fries', category: 'sides', price: 120.00, desc: 'Golden skin-on russet potato slices dusted with salt flakes and garden herbs.', img: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=600&q=80' },
+            { id: 'side-2', name: 'Truffle Mac & Cheese Baskets', category: 'sides', price: 240.50, desc: 'Rich macaroni pasta folded with a dynamic white winter truffle cheese profile.', img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=600&q=80' },
+            
+            // Beverages
+            { id: 'bev-1', name: 'Fine Red Wine Selection', category: 'beverages', price: 450.00, desc: 'A rich, full-bodied glass poured perfectly to pair beautifully alongside prime beef cuts.', img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80' },
+            { id: 'bev-2', name: 'Craft Soda Fusion', category: 'beverages', price: 85.00, desc: 'Effervescent soda profiles infused natively with crushed seasonal fruit purees.', img: 'https://images.unsplash.com/photo-1548967131-0e32f3174241?auto=format&fit=crop&w=600&q=80' }
+        ];
+
+        let cart = [];
+        let activeCategory = 'signature';
+
+        window.onload = () => { renderMenuGrid(); };
+
+        function renderMenuGrid() {
+            const container = document.getElementById('food-grid');
+            container.innerHTML = '';
+            const currentFilteredItems = MENU_DATA.filter(item => item.category === activeCategory);
+            
+            currentFilteredItems.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-[#161412] border border-zinc-900 rounded-sm overflow-hidden flex flex-col shadow-lg transition-transform duration-300 hover:scale-[1.01]">
+                        <div class="h-52 overflow-hidden relative border-b border-zinc-900">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover">
+                            <div class="absolute top-2 right-2 bg-black/90 backdrop-blur-sm px-2.5 py-0.5 border border-amber-500/30 text-amber-400 font-bold text-xs">${item.price.toFixed(2)} ETB</div>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-4 text-center">
+                            <div class="space-y-1">
+                                <h4 class="serif-font text-base text-zinc-100 font-medium tracking-wide">${item.name}</h4>
+                                <p class="text-[11px] text-zinc-400 leading-relaxed font-light">${item.desc}</p>
+                            </div>
+                            <button onclick="addItemToOrder('${item.id}')" class="w-full py-2.5 text-[11px] uppercase tracking-wider bg-zinc-900 hover:bg-amber-600 text-zinc-300 hover:text-black font-bold border border-zinc-800 transition-colors cinzel-font">
+                                Add To Order
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function switchCategory(cat) {
+            activeCategory = cat;
+            
+            const tabs = ['signature', 'sides', 'beverages'];
+            tabs.forEach(t => {
+                const element = document.getElementById(`tab-${t}`);
+                if (element) {
+                    element.className = "px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font";
+                }
+            });
+
+            const activeTabElement = document.getElementById(`tab-${cat}`);
+            if (activeTabElement) {
+                activeTabElement.className = "px-3 py-1.5 text-xs tracking-wider border border-amber-500 text-amber-500 bg-amber-500/5 transition-all cinzel-font";
+            }
+
+            const headingMap = {
+                'signature': 'Signature Burgers',
+                'sides': 'Premium Sides Selections',
+                'beverages': 'Artisanal Beverage Bar'
+            };
+            document.getElementById('category-heading').innerText = headingMap[cat];
+            renderMenuGrid();
+        }
+
+        function toggleHamburger(show) {
+            document.getElementById('hamburger-modal').classList.toggle('hidden', !show);
+        }
+
+        function toggleCart(show) {
+            document.getElementById('cart-modal').classList.toggle('hidden', !show);
+            renderCartUI();
+        }
+
+        function addItemToOrder(id) {
+            const item = MENU_DATA.find(i => i.id === id);
+            const exists = cart.find(i => i.id === id);
+            if (exists) { exists.qty += 1; } else { cart.push({ ...item, qty: 1 }); }
+            updateCartBadge();
+            toggleCart(true);
+        }
+
+        function changeQuantity(id, delta) {
+            const matched = cart.find(i => i.id === id);
+            if (matched) {
+                matched.qty += delta;
+                if (matched.qty <= 0) { cart = cart.filter(i => i.id !== id); }
+            }
+            updateCartBadge();
+            renderCartUI();
+        }
+
+        function updateCartBadge() {
+            const totalCount = cart.reduce((acc, current) => acc + current.qty, 0);
+            const badge = document.getElementById('cart-badge');
+            if (totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.classList.remove('hidden');
+            } else { badge.classList.add('hidden'); }
+        }
+
+        function renderCartUI() {
+            const stream = document.getElementById('cart-container');
+            const footerBox = document.getElementById('cart-checkout-box');
+            stream.innerHTML = '';
+
+            if (cart.length === 0) {
+                stream.innerHTML = `<div class="text-center py-10 text-xs text-zinc-500">Your order basket is empty.</div>`;
+                footerBox.classList.add('hidden');
+                return;
+            }
+
+            footerBox.classList.remove('hidden');
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                stream.innerHTML += `
+                    <div class="flex items-center justify-between p-2.5 border border-zinc-900 bg-zinc-900/10 text-xs">
+                        <div class="max-w-[65%] truncate">
+                            <h4 class="font-medium text-zinc-200 truncate">${item.name}</h4>
+                            <span class="text-amber-500">${(item.price * item.qty).toFixed(2)} ETB</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-black px-2 py-0.5 border border-zinc-800">
+                            <button onclick="changeQuantity('${item.id}', -1)" class="text-zinc-400 font-bold">-</button>
+                            <span class="text-zinc-200 font-bold px-1">${item.qty}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)" class="text-zinc-400 font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('cart-total').innerText = `${total.toFixed(2)} ETB`;
+        }
+
+        function triggerOrderCheckout() {
+            alert('Your order has been transmitted directly to the kitchen team. Thank you!');
+            cart = [];
+            updateCartBadge();
+            toggleCart(false);
+        }
+
+        function handleFooterReservation(e) {
+            e.preventDefault();
+            document.getElementById('footer-reservation-success').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('footer-reservation-success').classList.add('hidden');
+                e.target.reset();
+            }, 3000);
+        }
+
+        function toggleAi(show) {
+            document.getElementById('ai-chat-box').classList.toggle('hidden', !show);
+        }
+
+        function handleAiChat(e) {
+            e.preventDefault();
+            const inputField = document.getElementById('ai-input-field');
+            const stream = document.getElementById('ai-messages-stream');
+            const userText = inputField.value.trim();
+            if (!userText) return;
+
+            stream.innerHTML += `<div class="flex justify-end"><div class="bg-amber-600 text-black p-2 rounded-sm max-w-[85%] font-medium">${userText}</div></div>`;
+            inputField.value = '';
+            stream.scrollTop = stream.scrollHeight;
+
+            setTimeout(() => {
+                let botAnswer = "I'm happy to assist you! Please explore our interactive signature burger, sides, or drink tabs on our main landing matrix layout.";
+                const query = userText.toLowerCase();
+
+                if (query.includes('burger') || query.includes('special') || query.includes('double') || query.includes('cheese')) {
+                    botAnswer = "We serve high-end burgers: Wow Special Burger (564.35 ETB), Wow Double Burger (494.79 ETB), and our classic Cheese Burger (399.14 ETB).";
+                } else if (query.includes('side') || query.includes('fries') || query.includes('mac')) {
+                    botAnswer = "Our premium sides include Gourmet Crispy Fries (120.00 ETB) and premium Truffle Mac & Cheese Baskets (240.50 ETB).";
+                } else if (query.includes('drink') || query.includes('wine') || query.includes('soda') || query.includes('beverage')) {
+                    botAnswer = "At our beverage lounge, we pour Fine Red Wine (450.00 ETB per glass) and clean refreshing Craft Soda Fusions (85.00 ETB).";
+                } else if (query.includes('location') || query.includes('where') || query.includes('place') || query.includes('address')) {
+                    botAnswer = "WoW Burger has six luxury flagships open across Addis Ababa, Ethiopia.";
+                } else if (query.includes('number') || query.includes('phone') || query.includes('contact') || query.includes('call')) {
+                    botAnswer = "You can reach our main customer booking desk directly at +251 922 785 816.";
+                }
+
+                stream.innerHTML += `<div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">${botAnswer}</div>`;
+                stream.scrollTop = stream.scrollHeight;
+            }, 600);
+        }
+    </script>
 </body>
 </html>
