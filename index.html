@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WoW Burger - Fine Dining Experience</title>
-    <!-- Tailwind CSS for styling via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -19,11 +17,9 @@
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
-    <!-- Ambient glowing backdrops -->
     <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
     <div class="absolute top-[800px] right-0 w-[250px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <!-- NAVBAR HEADER -->
     <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-4 flex items-center justify-between">
         <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -31,22 +27,14 @@
             </svg>
         </button>
 
-        <div class="flex flex-col text-center">
-            <h1 class="text-xl md:text-2xl font-bold tracking-widest text-red-600 uppercase cinzel-font">WoW Burger</h1>
-            <span class="text-[9px] text-zinc-400 tracking-[0.2em] -mt-1 uppercase">Exquisite Dining Experience</span>
+        <div class="flex flex-col text-center pr-8">
+            <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic">WoW <span class="text-amber-500 not-italic tracking-widest text-xl md:text-2xl block md:inline font-bold">Burger</span></h1>
+            <span class="text-[9px] text-zinc-400 tracking-[0.2em] uppercase">Exquisite Dining Experience</span>
         </div>
         
-        <div class="flex items-center space-x-3">
-            <button onclick="toggleCart(true)" class="relative p-2 text-zinc-300 hover:text-red-500 transition-colors focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <span id="cart-badge" class="hidden absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-            </button>
-        </div>
+        <div class="w-10"></div>
     </header>
 
-    <!-- HAMBURGER SLIDEOUT SIDEBAR -->
     <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
@@ -67,17 +55,16 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
     <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="specialburger.jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+            <img src="hero.jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
         </div>
 
         <div class="relative z-10 max-w-2xl mx-auto space-y-4">
             <span class="text-red-500 uppercase tracking-[0.3em] text-[11px] block font-medium">Welcome to</span>
             <h2 class="text-5xl md:text-7xl serif-font font-normal text-[#F5F5F0] tracking-tight leading-tight">
-                WoW Burger <br><span class="italic text-red-500">Exquisite Experience.</span>
+                WoW Burger <br><span class="italic text-amber-500">Exquisite Experience.</span>
             </h2>
             <div class="pt-2">
                 <a href="#menu-section" class="inline-block border border-red-500/40 hover:border-red-500 text-red-500 px-6 py-3 text-xs uppercase tracking-widest transition-all cinzel-font">
@@ -87,7 +74,6 @@
         </div>
     </section>
 
-    <!-- ABOUT US SECTION -->
     <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900">
         <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
             <div class="h-[1px] bg-red-500/30 flex-1"></div>
@@ -100,7 +86,6 @@
         </p>
     </section>
 
-    <!-- DYNAMIC INTERACTIVE MENU SECTION -->
     <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-8 space-y-2">
@@ -112,14 +97,11 @@
                 </div>
             </div>
 
-            <!-- Food Grid Layout -->
             <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Injected automatically by JavaScript Menu Data Engine -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- RESTAURANT GALLERY SECTION -->
     <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -129,19 +111,18 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="specialburger.jpg" alt="WoW Burger Elegant Interior Ambience" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb1.jpg" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="chickenwrapbig.jpg" alt="Dining Room Details" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb2.jpg" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
-                    <img src="glasssoftdrink.jpg" alt="Restaurant Counter Setup" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="unnamed (1).jpg" alt="Cozy Interior Atmosphere of WoW Burger House" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CUSTOMER REVIEWS SECTION -->
     <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5">
         <div class="max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-1">
@@ -159,7 +140,6 @@
         </div>
     </section>
 
-    <!-- REGIONAL BRANCHES SECTION -->
     <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -195,7 +175,6 @@
         </div>
     </section>
 
-    <!-- RESERVATION & BOOKING FORM -->
     <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20">
         <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
             <div class="text-center space-y-1">
@@ -241,7 +220,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6">
         <div class="space-y-1">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
@@ -249,7 +227,6 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE SIDEBAR CART MODAL -->
     <div id="cart-modal" class="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-md bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-4 shadow-2xl">
             <div>
@@ -271,7 +248,6 @@
         </div>
     </div>
 
-    <!-- AI DINING CONCIERGE ASSISTANT -->
     <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
         <div id="ai-chat-box" class="w-72 md:w-80 h-96 bg-[#0F0E0C] border border-red-500/30 rounded-sm shadow-2xl flex flex-col justify-between mb-2 overflow-hidden hidden">
             <div class="bg-zinc-900 border-b border-zinc-800 p-2.5 flex items-center justify-between">
@@ -301,7 +277,6 @@
         </button>
     </div>
 
-    <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
         const MENU_DATA = [
             // Burgers
@@ -399,7 +374,6 @@
             const item = MENU_DATA.find(i => i.id === id);
             const exists = cart.find(i => i.id === id);
             if (exists) { exists.qty += 1; } else { cart.push({ ...item, qty: 1 }); }
-            updateCartBadge();
             toggleCart(true);
         }
 
@@ -409,17 +383,7 @@
                 matched.qty += delta;
                 if (matched.qty <= 0) { cart = cart.filter(i => i.id !== id); }
             }
-            updateCartBadge();
             renderCartUI();
-        }
-
-        function updateCartBadge() {
-            const totalCount = cart.reduce((acc, current) => acc + current.qty, 0);
-            const badge = document.getElementById('cart-badge');
-            if (totalCount > 0) {
-                badge.innerText = totalCount;
-                badge.classList.remove('hidden');
-            } else { badge.classList.add('hidden'); }
         }
 
         function renderCartUI() {
@@ -458,7 +422,6 @@
         function triggerOrderCheckout() {
             alert('Your order has been transmitted directly to the kitchen team. Thank you!');
             cart = [];
-            updateCartBadge();
             toggleCart(false);
         }
 
