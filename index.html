@@ -6,15 +6,16 @@
     <title>WoW Burger - Share the love</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-gold: #f3ad2b;
-            --brand-red: #d32f2f;
-            --dark-charcoal: #1a1a1a;
-            --soft-cream: #faf7f2;
-            --text-muted: #666666;
-            --font-serif: 'Playfair Display', serif;
+            --brand-yellow: #FFC72C;
+            --brand-red: #DA291C;
+            --bg-dark: #0A0A0A;
+            --card-bg: #161616;
+            --text-light: #F5F5F7;
+            --text-muted: #A1A1A6;
+            --border-color: #2C2C2E;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -26,14 +27,18 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: var(--soft-cream);
-            color: var(--dark-charcoal);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Clean Minimal Header */
         header {
-            background-color: #ffffff;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,193 +50,212 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 18px 24px;
         }
 
         .logo-text {
-            font-family: var(--font-serif);
-            font-weight: 400;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
-            color: var(--dark-charcoal);
+            color: var(--text-light);
             text-decoration: none;
+        }
+
+        .logo-text span {
+            color: var(--brand-yellow);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 24px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-charcoal);
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--brand-red);
+            color: var(--brand-yellow);
         }
 
+        /* Premium Hero Display Section */
         .hero {
             max-width: 1200px;
             margin: 40px auto;
-            padding: 0 20px;
+            padding: 0 24px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
             align-items: center;
         }
 
         .hero-content h1 {
-            font-family: var(--font-serif);
             font-size: 3.5rem;
-            font-weight: 400;
+            font-weight: 700;
             line-height: 1.1;
+            letter-spacing: -1.5px;
             margin-bottom: 20px;
         }
 
         .hero-content p {
             font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            margin-bottom: 32px;
+            font-weight: 300;
         }
 
         .cta-btn {
             display: inline-block;
-            background-color: var(--dark-charcoal);
-            color: #ffffff;
-            padding: 14px 28px;
+            background-color: var(--brand-yellow);
+            color: #000000;
+            padding: 14px 32px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.95rem;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
+            border-radius: 30px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         .cta-btn:hover {
-            background-color: var(--brand-red);
+            transform: scale(1.03);
+            background-color: #e2AF20;
         }
 
         .hero-image-wrapper img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border-radius: 16px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
         }
 
+        /* Horizontal Scrolling Tags */
         .info-tags-section {
             max-width: 1200px;
             margin: 60px auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .tag-group {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
         }
 
         .tag-group h3 {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding-bottom: 8px;
+            margin-bottom: 16px;
         }
 
         .tags-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .tag {
-            background-color: var(--soft-cream);
-            color: var(--dark-charcoal);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
             padding: 6px 14px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 500;
             border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .section-title {
-            text-align: center;
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin: 80px 0 40px;
+        /* Section Header Layout */
+        .section-header {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 24px;
         }
 
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* Menu Grid Engine */
         .menu-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
             margin-bottom: 60px;
         }
 
         .menu-card {
-            background: #ffffff;
-            border-radius: 8px;
+            background: var(--card-bg);
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-4px);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .menu-card img {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .menu-card-body {
-            padding: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .menu-item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 10px;
-            gap: 10px;
+            margin-bottom: 12px;
+            gap: 16px;
         }
 
         .menu-item-title {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
 
         .menu-item-price {
-            font-weight: 600;
-            color: var(--brand-red);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--brand-yellow);
             white-space: nowrap;
         }
 
         .menu-item-desc {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.5;
         }
 
+        /* Atmosphere Interlocking Showcase */
         .atmosphere-gallery {
             max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
+            margin: 40px auto;
+            padding: 0 24px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
@@ -239,16 +263,18 @@
 
         .atmosphere-gallery img {
             width: 100%;
-            height: 380px;
+            height: 420px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
         }
 
+        /* Locations Stack Setup */
         .branches-section {
-            background-color: #ffffff;
-            padding: 80px 20px;
-            margin-top: 80px;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            background-color: var(--card-bg);
+            padding: 80px 24px;
+            margin-top: 100px;
+            border-top: 1px solid var(--border-color);
         }
 
         .branches-max {
@@ -258,53 +284,55 @@
 
         .branches-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
             margin-top: 40px;
         }
 
         .branch-card {
-            padding: 20px;
-            border-left: 2px solid var(--brand-gold);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .branch-name {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            color: var(--brand-yellow);
         }
 
         .branch-details {
             font-size: 0.9rem;
             color: var(--text-muted);
             white-space: pre-line;
+            line-height: 1.6;
         }
 
         footer {
-            background-color: var(--dark-charcoal);
-            color: #ffffff;
-            padding: 40px 20px;
+            background-color: #000000;
+            padding: 40px 24px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
         }
 
-        footer p {
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
+                gap: 32px;
                 text-align: center;
             }
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             .atmosphere-gallery {
                 grid-template-columns: 1fr;
             }
             .atmosphere-gallery img {
-                height: 260px;
+                height: 300px;
             }
         }
     </style>
@@ -313,7 +341,7 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo-text">WoW Burger</a>
+            <a href="#" class="logo-text">WoW <span>Burger</span></a>
             <ul class="nav-links">
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#ambiance">Ambiance</a></li>
@@ -325,14 +353,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Wow Special Delicious Burger</h1>
-            <p>Savor our premium cuts, freshly grilled patties, and mouthwatering wraps meticulously prepared across our numerous locations in Addis Ababa. Share the love today.</p>
-            <a href="#menu" class="cta-btn">Explore Menu</a>
+            <p>Experience the ultimate flavor profiles crafted right here in Addis Ababa. From stacked gourmet double beef blends to hot pressed specialized wraps, we cook to satisfy.</p>
+            <a href="#menu" class="cta-btn">View Full Menu</a>
         </div>
         <div class="hero-image-wrapper">
-            <img src="unnamed (5).jpg" alt="Wow Special Delicious Burger Combo Package">
+            <img src="unnamed (5).jpg" alt="Wow Special Delicious Burger Feature Deck">
         </div>
     </section>
 
+    <!-- Info Attributes Interface Area -->
     <section class="info-tags-section">
         <div class="tag-group">
             <h3>Service Options</h3>
@@ -356,7 +385,7 @@
         </div>
 
         <div class="tag-group">
-            <h3>Offerings</h3>
+            <h3>Dining Offerings</h3>
             <div class="tags-container">
                 <span class="tag">Coffee</span>
                 <span class="tag">Late-night food</span>
@@ -368,7 +397,7 @@
         </div>
 
         <div class="tag-group">
-            <h3>Accessibility & Amenities</h3>
+            <h3>Accessibility, Parking & Setup</h3>
             <div class="tags-container">
                 <span class="tag">Wheelchair-accessible car park</span>
                 <span class="tag">Wheelchair-accessible entrance</span>
@@ -376,32 +405,23 @@
                 <span class="tag">Wheelchair-accessible toilet</span>
                 <span class="tag">Toilet</span>
                 <span class="tag">Free of charge street parking</span>
+                <span class="tag">Breakfast</span>
+                <span class="tag">Catering</span>
+                <span class="tag">Dessert</span>
+                <span class="tag">Table service</span>
+                <span class="tag">Accepts reservations</span>
             </div>
         </div>
 
         <div class="tag-group">
-            <h3>Dining Options & Atmosphere</h3>
+            <h3>Vibe & Guest Profiles</h3>
             <div class="tags-container">
-                <span class="tag">Breakfast</span>
-                <span class="tag">Lunch</span>
-                <span class="tag">Dinner</span>
-                <span class="tag">Catering</span>
-                <span class="tag">Dessert</span>
-                <span class="tag">Seating</span>
-                <span class="tag">Table service</span>
                 <span class="tag">Casual</span>
                 <span class="tag">Cosy</span>
                 <span class="tag">Trendy</span>
-            </div>
-        </div>
-
-        <div class="tag-group">
-            <h3>Crowd & Planning</h3>
-            <div class="tags-container">
                 <span class="tag">Groups</span>
                 <span class="tag">Tourists</span>
                 <span class="tag">University students</span>
-                <span class="tag">Accepts reservations</span>
                 <span class="tag">Good for kids</span>
                 <span class="tag">Good for kids birthday</span>
                 <span class="tag">High chairs</span>
@@ -409,13 +429,14 @@
         </div>
     </section>
 
-    <h2 class="section-title" id="menu">Our House Menu</h2>
+    <div class="section-header" id="menu">
+        <h2>Burgers & Sides</h2>
+    </div>
 
     <div class="menu-container">
         <div class="menu-grid">
-            <!-- Burgers Row -->
             <div class="menu-card">
-                <img src="unnamed (2).jpg" alt="Wow Premium Double Cheeseburger Stack">
+                <img src="unnamed (2).jpg" alt="Wow Special Stacked Burger Row View">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Wow Special Burger</span>
@@ -426,7 +447,7 @@
             </div>
 
             <div class="menu-card">
-                <img src="unnamed (3).jpg" alt="Wow Towering Double Beef Burger With Sauce Grid">
+                <img src="unnamed (3).jpg" alt="Wow Double Burger Heavy Build Up">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Wow Double Burger</span>
@@ -437,7 +458,7 @@
             </div>
 
             <div class="menu-card">
-                <img src="unnamed (1).jpg" alt="Wow Hand Pressed BBQ Cheese Burger Preparation">
+                <img src="unnamed (1).jpg" alt="Cheese Burger Stack close up view">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Cheese Burger</span>
@@ -447,14 +468,13 @@
                 </div>
             </div>
 
-            <!-- Additional Items -->
             <div class="menu-card">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Beef Burger</span>
                         <span class="menu-item-price">346.96 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Beef Patty, Mayonnaise, Tomato, Lettuce.</p>
+                    <p class="menu-item-desc">Beef Patty, Mayonnaise, Tomato, Lettuce crisp build.</p>
                 </div>
             </div>
 
@@ -477,14 +497,14 @@
                     <p class="menu-item-desc">Grilled Marinated Chicken Breast, Slice Cheese, Slice Beef, Fried egg, Mayonnaise, Tomato, Lettuce.</p>
                 </div>
             </div>
-
+            
             <div class="menu-card">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Delux Burger</span>
                         <span class="menu-item-price">506.96 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Double beef patties, creamy cheese wrapper, crisp iceberg lettuce, caramelized sweet onions, signature special sauce.</p>
+                    <p class="menu-item-desc">Double beef patty, cheese layer wrapper, iceberg lettuce, fresh sliced tomato, caramelized specialty onions.</p>
                 </div>
             </div>
 
@@ -494,30 +514,37 @@
                         <span class="menu-item-title">Cheesy Delight</span>
                         <span class="menu-item-price">449.57 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Beef patty, heavy cheese layer, crisp lettuce, tomato, special sauce blend.</p>
+                    <p class="menu-item-desc">Beef patty, premium melted cheese core injection, crisp lettuce garnish, sliced onions, house recipe spread.</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Wraps & Sandwiches -->
+    <div class="section-header">
+        <h2>Wraps & Sandwiches</h2>
+    </div>
+
+    <div class="menu-container">
+        <div class="menu-grid">
             <div class="menu-card">
-                <img src="unnamed.jpg" alt="Wow Chicken Wraps Cut Open with Thick Cut Fries">
+                <img src="unnamed.jpg" alt="Premium Chicken Wrap Wood Tray Presentation">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Chicken Wrap Big</span>
                         <span class="menu-item-price">694.79 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper served with side crispy fries.</p>
+                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper served alongside crispy potato wedges.</p>
                 </div>
             </div>
 
             <div class="menu-card">
-                <img src="images (14).jpg" alt="Toasted Sliced Tortilla Wraps served with Garlic Cream Paste">
+                <img src="images (14).jpg" alt="Panini Grilled Chicken Wrap Section Platter">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Chicken Wrap Medium</span>
                         <span class="menu-item-price">477.14 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper.</p>
+                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper mix.</p>
                 </div>
             </div>
 
@@ -527,51 +554,47 @@
                         <span class="menu-item-title">Tuna Wrap Big</span>
                         <span class="menu-item-price">599.14 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Premium Tuna Flakes, Onion, Fresh Tomato, sliced chili pepper wrapped securely.</p>
+                    <p class="menu-item-desc">Premium Tuna chunks, Onion, Fresh Diced Tomato, structural chili pepper cuts.</p>
                 </div>
             </div>
 
             <div class="menu-card">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Zinger</span>
+                        <span class="menu-item-title">Chicken Zinger Sandwich</span>
                         <span class="menu-item-price">498.27 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Crispy fried breast fillet dipped in house spices, shredded lettuce, special sandwich bread.</p>
+                    <p class="menu-item-desc">Fried hand-battered chicken breast, shredded lettuce mix, special house dressing layer.</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Pizzas & Shares -->
+    <div class="section-header">
+        <h2>Pizzas & Platters</h2>
+    </div>
+
+    <div class="menu-container">
+        <div class="menu-grid">
             <div class="menu-card">
-                <img src="images (19).jpg" alt="Wow Supreme Double Layer Pizza with Salami and Green Pepper">
+                <img src="images (19).jpg" alt="Wow House Supreme Family Pizza close layout">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
-                        <span class="menu-item-title">House Supreme Pizza (Big)</span>
+                        <span class="menu-item-title">House Supreme Pizza</span>
                         <span class="menu-item-price">540.00 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Loaded generously with mozzarella cheese, sliced mortadella, mixed bell peppers, fresh black olives, and hardboiled egg layers.</p>
+                    <p class="menu-item-desc">Melted rich mozzarella base layer, premium ham slices, black olives, bell pepper grids, sliced boiled eggs.</p>
                 </div>
             </div>
 
             <div class="menu-card">
-                <img src="images (16).jpg" alt="Flatbread Loaded Pizza with Mitmita Paste Ramekin">
+                <img src="images (16).jpg" alt="Flatbread Mixed Pizza Variant on Table Layout">
                 <div class="menu-card-body">
                     <div class="menu-item-header">
                         <span class="menu-item-title">Classic Mixed Pizza</span>
                         <span class="menu-item-price">480.00 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Shredded chicken matrix, salami patterns, baked eggs, green chilies, served with traditional green dipping paste.</p>
-                </div>
-            </div>
-
-            <!-- Specialty Crispy Sides -->
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Tenders (4 PCS)</span>
-                        <span class="menu-item-price">520.87 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Fried Chicken Breast, Served with Crispy french fries and special house sauce dip.</p>
+                    <p class="menu-item-desc">Shredded spiced chicken matrix, sliced salami, boiled egg layers, green pepper strings, paired with green Awaze/chili sauce paste.</p>
                 </div>
             </div>
 
@@ -581,63 +604,24 @@
                         <span class="menu-item-title">Chicken Loaded Fries (Big)</span>
                         <span class="menu-item-price">346.96 ETB</span>
                     </div>
-                    <p class="menu-item-desc">Golden crisp fries topped with marinated chicken nuggets, liquid cheese, and seasoning blends.</p>
-                </div>
-            </div>
-
-            <!-- Drinks Catalog -->
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Macchiato / Coffee</span>
-                        <span class="menu-item-price">60.00 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Traditional rich espresso base with perfectly steamed local micro-foam milk.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Fasting Macchiato</span>
-                        <span class="menu-item-price">77.40 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Perfect coffee blend prepared using plant-based non-dairy components.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Soft Drinks (300ml)</span>
-                        <span class="menu-item-price">33.92 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Bottled selections or refreshing sparkling carbonated Ambo Water.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Special Tea</span>
-                        <span class="menu-item-price">86.09 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Premium steeped aromatic house spice blend tea.</p>
+                    <p class="menu-item-desc">Thick golden cuts piled with marinated grilled chicken bits, cheddar drizzle, and house dry spices.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title" id="ambiance">Experience the Atmosphere</h2>
+    <div class="section-header" id="ambiance">
+        <h2>Restaurant Look & Feel</h2>
+    </div>
     <div class="atmosphere-gallery">
-        <img src="images (18).jpg" alt="WoW Burger Night Facade Exterior with Neon Signage and Step Lighting Layout">
-        <img src="images (17).jpg" alt="WoW Burger Elegant Daytime Patio Dynamic Seating with Green Planters">
+        <img src="images (18).jpg" alt="WoW Burger Illumined Neon Night Store Exterior Facade Layout">
+        <img src="images (17).jpg" alt="WoW Burger Modern Dining Area Terrace with Greenery Decor Layout">
     </div>
 
     <section class="branches-section" id="branches">
         <div class="branches-max">
-            <h2 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 400; text-align: center;">Our Store Branches</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Find a WoW Burger kitchen close to your neighborhood</p>
+            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 8px;">Our Active Branches</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1rem;">Stop by any of our modern store setups throughout the city</p>
             
             <div class="branches-grid">
                 <div class="branch-card">
@@ -683,7 +667,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 WoW Burger. All rights reserved. All listed menu prices are excluding 15% VAT.</p>
+        <p>&copy; 2026 WoW Burger. All listed menu prices are strictly excluding 15% VAT calculation margins.</p>
     </footer>
 
 </body>
