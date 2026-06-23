@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WoW Burger - Fine Dining Experience</title>
+    <!-- Tailwind CSS for styling via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,9 +19,11 @@
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
+    <!-- Ambient glowing backdrops -->
     <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
     <div class="absolute top-[800px] right-0 w-[250px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
+    <!-- NAVBAR HEADER -->
     <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-4 flex items-center justify-between">
         <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -42,6 +46,7 @@
         </div>
     </header>
 
+    <!-- HAMBURGER SLIDEOUT SIDEBAR -->
     <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
@@ -62,9 +67,10 @@
         </div>
     </div>
 
+    <!-- HERO SECTION -->
     <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="unnamed (5).jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+            <img src="special burger.jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
         </div>
 
@@ -81,6 +87,7 @@
         </div>
     </section>
 
+    <!-- ABOUT US SECTION -->
     <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900">
         <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
             <div class="h-[1px] bg-red-500/30 flex-1"></div>
@@ -93,6 +100,7 @@
         </p>
     </section>
 
+    <!-- DYNAMIC INTERACTIVE MENU SECTION -->
     <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-8 space-y-2">
@@ -100,15 +108,18 @@
                 <div class="flex flex-wrap justify-center gap-2 pt-2">
                     <button id="tab-burgers" onclick="switchCategory('burgers')" class="px-3 py-1.5 text-xs tracking-wider border border-red-500 text-red-500 bg-red-500/5 transition-all cinzel-font">Burgers</button>
                     <button id="tab-wraps" onclick="switchCategory('wraps')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Wraps &amp; Sandwiches</button>
-                    <button id="tab-pizza" onclick="switchCategory('pizza')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Pizza Bar</button>
+                    <button id="tab-drinks" onclick="switchCategory('drinks')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Cold &amp; Hot Drinks</button>
                 </div>
             </div>
 
+            <!-- Food Grid Layout -->
             <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
+                <!-- Injected automatically by JavaScript Menu Data Engine -->
+            </div>
         </div>
     </section>
 
+    <!-- RESTAURANT GALLERY SECTION -->
     <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -118,18 +129,19 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="images (18).jpg" alt="WoW Burger Elegant Interior Ambience" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="special burger.jpg" alt="WoW Burger Elegant Interior Ambience" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="images (19).jpg" alt="Dining Room Details" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="chickenwrapbig.jpg" alt="Dining Room Details" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
-                    <img src="images (16).jpg" alt="Restaurant Counter Setup" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="glasssoftdrink.jpg" alt="Restaurant Counter Setup" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CUSTOMER REVIEWS SECTION -->
     <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5">
         <div class="max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-1">
@@ -138,8 +150,7 @@
             </div>
             
             <div class="bg-[#161412] border border-red-500/20 p-6 md:p-8 rounded-sm max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-6 text-left shadow-xl">
-                <img src="images (17).jpg" class="w-20 h-20 rounded-full object-cover border-2 border-red-500 flex-shrink-0" alt="Guest Emma R. Profile Picture">
-                <div class="space-y-2">
+                <div class="space-y-2 w-full">
                     <h4 class="serif-font text-lg text-red-200 font-medium">Emma R.</h4>
                     <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
                     <div class="text-red-500 text-xs tracking-wider">★★★★★</div>
@@ -148,6 +159,7 @@
         </div>
     </section>
 
+    <!-- REGIONAL BRANCHES SECTION -->
     <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -183,6 +195,7 @@
         </div>
     </section>
 
+    <!-- RESERVATION & BOOKING FORM -->
     <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20">
         <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
             <div class="text-center space-y-1">
@@ -228,25 +241,15 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6">
         <div class="space-y-1">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
             <p class="text-[11px] text-zinc-500 font-light">© 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
         </div>
-
-        <div class="flex justify-center space-x-6 text-zinc-400">
-            <a href="https://facebook.com" target="_blank" class="hover:text-red-500 transition-colors" title="Facebook">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-            </a>
-            <a href="https://tiktok.com" target="_blank" class="hover:text-red-500 transition-colors" title="TikTok">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.01 1.62 4.14.94 1.05 2.27 1.72 3.69 1.89v3.74c-1.78-.17-3.46-.93-4.73-2.2-.07-.07-.12-.15-.22-.27V13.5c.03 2.15-.6 4.3-1.88 6.03-1.6 2.17-4.14 3.63-6.85 3.86-2.73.23-5.54-.53-7.65-2.29C-.45 19.1-.98 15.65-.4 12.63c.63-3.23 3.12-5.96 6.35-6.79 1.06-.27 2.17-.35 3.25-.23v3.76c-1.33-.21-2.73.11-3.79.97-1.15.93-1.75 2.45-1.56 3.94.19 1.49 1.15 2.82 2.53 3.4 1.39.58 3.03.4 4.27-.45.96-.66 1.55-1.76 1.58-2.93.03-2.88 0-5.76.01-8.64-.01-.22-.01-.43-.01-.65z"/></svg>
-            </a>
-            <a href="https://t.me" target="_blank" class="hover:text-red-500 transition-colors" title="Telegram">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.62.15-.15 2.7-2.48 2.75-2.7.01-.03.01-.14-.05-.2-.06-.06-.16-.04-.23-.03-.1.02-1.69 1.07-4.77 3.15-.45.3-.86.46-1.22.45-.4-.01-1.17-.23-1.74-.41-.7-.23-1.26-.35-1.21-.74.03-.2.3-.41.82-.62 3.2-1.39 5.34-2.31 6.42-2.76 3.06-1.27 3.7-1.49 4.11-1.5.09 0 .29.02.42.13.11.09.14.21.15.3-.01.06-.01.14-.02.21z"/></svg>
-            </a>
-        </div>
     </footer>
 
+    <!-- INTERACTIVE SIDEBAR CART MODAL -->
     <div id="cart-modal" class="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-md bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-4 shadow-2xl">
             <div>
@@ -268,6 +271,7 @@
         </div>
     </div>
 
+    <!-- AI DINING CONCIERGE ASSISTANT -->
     <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
         <div id="ai-chat-box" class="w-72 md:w-80 h-96 bg-[#0F0E0C] border border-red-500/30 rounded-sm shadow-2xl flex flex-col justify-between mb-2 overflow-hidden hidden">
             <div class="bg-zinc-900 border-b border-zinc-800 p-2.5 flex items-center justify-between">
@@ -280,12 +284,12 @@
 
             <div id="ai-messages-stream" class="flex-1 p-3 overflow-y-auto space-y-2 text-[11px] leading-relaxed">
                 <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">
-                    Melkam Ken! I am your AI Host for WoW Burger. Ask me about our classic burger platters, fresh specialty wraps, gourmet house pizzas, or branch details!
+                    Melkam Ken! I am your AI Host for WoW Burger. Ask me about our classic burger options, fresh specialty wraps, cold or hot drinks, or branch details!
                 </div>
             </div>
 
             <form onsubmit="handleAiChat(event)" class="p-2 border-t border-zinc-900 bg-zinc-900/50 flex space-x-1.5">
-                <input id="ai-input-field" type="text" placeholder="Ask about burgers, wraps, pizza..." class="flex-1 bg-[#0F0E0C] border border-zinc-800 rounded-sm px-2 py-1 text-[11px] text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-red-500">
+                <input id="ai-input-field" type="text" placeholder="Ask about burgers, wraps, drinks..." class="flex-1 bg-[#0F0E0C] border border-zinc-800 rounded-sm px-2 py-1 text-[11px] text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-red-500">
                 <button type="submit" class="bg-red-600 text-white px-3 py-1 font-bold text-[11px] rounded-sm hover:bg-red-700">Ask</button>
             </form>
         </div>
@@ -297,20 +301,33 @@
         </button>
     </div>
 
+    <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
         const MENU_DATA = [
             // Burgers
-            { id: 'burg-1', name: 'Wow Special Burger', category: 'burgers', price: 564.35, desc: 'Double Premium Mortadella & Fried Egg arranged flawlessly on a toasted brioche bun.', img: 'unnamed (2).jpg' },
-            { id: 'burg-2', name: 'Wow Double Burger', category: 'burgers', price: 494.79, desc: 'Double Flame-Grilled Beef Patty loaded with extra melted sharp cheddar cheese layers.', img: 'unnamed (3).jpg' },
-            { id: 'burg-3', name: 'Cheese Burger', category: 'burgers', price: 399.14, desc: 'Classic Melted Cheddar layered over a prime juicy patty and house burger sauce.', img: 'unnamed (1).jpg' },
-            { id: 'burg-4', name: 'Classic Burger', category: 'burgers', price: 340.00, desc: 'Traditional flame-broiled beef patty with crisp lettuce, tomato slices, and secret seasoning.', img: 'unnamed.jpg' },
+            { id: 'burg-1', name: 'Wow Special Burger', category: 'burgers', price: 564.00, desc: 'Our signature gourmet build premium special blend.', img: 'special burger.jpg' },
+            { id: 'burg-2', name: 'Wow Double Burger', category: 'burgers', price: 494.00, desc: 'Double flame-grilled beef patty with extra melted cheese layers.', img: 'double burger.jpg' },
+            { id: 'burg-3', name: 'Cheese Burger', category: 'burgers', price: 399.00, desc: 'Classic melted cheddar layered over a juicy prime patty.', img: 'cheeseburger.jpg' },
+            { id: 'burg-4', name: 'Beef Burger', category: 'burgers', price: 346.00, desc: 'Traditional savory flame-broiled beef burger patty.', img: 'beefburger.jpg' },
+            { id: 'burg-5', name: 'Mini Special Burger', category: 'burgers', price: 433.00, desc: 'A compact version packed with all our specialty burger seasonings.', img: 'mini burger.jpg' },
+            { id: 'burg-6', name: 'Chicken Burger', category: 'burgers', price: 538.00, desc: 'Crispy seasoned premium chicken breast fillet on a toasted bun.', img: 'chicken burger.jpg' },
+            { id: 'burg-7', name: 'Chicken Special Burger', category: 'burgers', price: 599.00, desc: 'Luxury loaded chicken build layered with our unique house sauces.', img: 'chicken special burger.jpg' },
             
             // Wraps and Sandwiches
-            { id: 'wrap-1', name: 'Gourmet Chicken Wrap', category: 'wraps', price: 380.00, desc: 'Tender grilled chicken breast pieces wrapped tightly with mixed field greens and herb spread.', img: 'unnamed (6).jpg' },
-            { id: 'wrap-2', name: 'Toasted Club Sandwich', category: 'wraps', price: 410.00, desc: 'Classic multi-decker sandwich built layered with sliced egg, seasoned meat slices, and crisp greens.', img: 'unnamed (7).jpg' },
+            { id: 'wrap-1', name: 'Chicken Wrap Big', category: 'wraps', price: 694.00, desc: 'Large premium grilled chicken pieces bundled in a fresh warm tortilla.', img: 'chickenwrapbig.jpg' },
+            { id: 'wrap-2', name: 'Chicken Wrap Medium', category: 'wraps', price: 477.00, desc: 'Perfectly portioned wrapped tender chicken strips with fresh greens.', img: 'chickenwrapmedium.jpg' },
+            { id: 'wrap-3', name: 'Fish Wrap', category: 'wraps', price: 390.00, desc: 'Crisp golden seasoned fish fillet wrapped with house tartar blend.', img: 'Fish wrap.jpg' },
+            { id: 'wrap-4', name: 'Tuna Wrap', category: 'wraps', price: 477.00, desc: 'Premium flaked tuna combined beautifully with fresh garden herbs.', img: 'tuna wrap.jpg' },
+            { id: 'wrap-5', name: 'Vegetable Wrap', category: 'wraps', price: 299.00, desc: 'A refreshing medley of crisp locally sourced garden vegetables.', img: 'vegetable wrap.jpg' },
             
-            // Pizza Bar
-            { id: 'piz-1', name: 'WoW Signature House Pizza', category: 'pizza', price: 620.00, desc: 'Hand-stretched dough baked golden with a vibrant tomato herb sauce layer and thick premium melted cheeses.', img: 'unnamed (8).jpg' }
+            // Cold and Hot Drinks
+            { id: 'drk-1', name: 'Softdrink', category: 'drinks', price: 60.00, desc: 'Chilled refreshing classic fountain drink selection.', img: 'glasssoftdrink.jpg' },
+            { id: 'drk-2', name: 'Plastic Bottled Soft Drinks', category: 'drinks', price: 80.00, desc: 'Convenient sealed individual bottled carbonated choices.', img: 'plasticsoftdrink.jpg' },
+            { id: 'drk-3', name: 'Spring Water', category: 'drinks', price: 50.00, desc: 'Pure premium refreshing natural mountain spring water.', img: 'water.jpg' },
+            { id: 'drk-4', name: 'Tea', category: 'drinks', price: 40.00, desc: 'Warm aromatic brewed traditional black tea leaves.', img: 'tea.jpg' },
+            { id: 'drk-5', name: 'Macchiato', category: 'drinks', price: 60.00, desc: 'Rich espresso stained with a perfect dollop of velvety milk foam.', img: 'macchiato.jpg' },
+            { id: 'drk-6', name: 'Cappuccino', category: 'drinks', price: 80.00, desc: 'Equal balanced layers of bold espresso, steamed milk, and froth.', img: 'cappuccino.jpg' },
+            { id: 'drk-7', name: 'Special Tea', category: 'drinks', price: 90.00, desc: 'House spiced infusion brewed carefully using premium select herbs.', img: 'specialtea.jpg' }
         ];
 
         let cart = [];
@@ -347,7 +364,7 @@
         function switchCategory(cat) {
             activeCategory = cat;
             
-            const tabs = ['burgers', 'wraps', 'pizza'];
+            const tabs = ['burgers', 'wraps', 'drinks'];
             tabs.forEach(t => {
                 const element = document.getElementById(`tab-${t}`);
                 if (element) {
@@ -363,7 +380,7 @@
             const headingMap = {
                 'burgers': 'Our Burgers Menu',
                 'wraps': 'Wraps & Sandwiches Selections',
-                'pizza': 'Artisanal Pizza Kitchen'
+                'drinks': 'Cold & Hot Drinks Menu'
             };
             document.getElementById('category-heading').innerText = headingMap[cat];
             renderMenuGrid();
@@ -470,15 +487,15 @@
             stream.scrollTop = stream.scrollHeight;
 
             setTimeout(() => {
-                let botAnswer = "I'm happy to assist you! Please explore our interactive burgers, wraps & sandwiches, or pizza tabs on our main layout.";
+                let botAnswer = "I'm happy to assist you! Please explore our interactive burgers, wraps & sandwiches, or hot & cold drinks tabs on our main layout.";
                 const query = userText.toLowerCase();
 
-                if (query.includes('burger') || query.includes('special') || query.includes('double') || query.includes('cheese') || query.includes('classic')) {
-                    botAnswer = "We serve gourmet burgers: Wow Special Burger (564.35 ETB), Wow Double Burger (494.79 ETB), Cheese Burger (399.14 ETB), and Classic Burger (340.00 ETB).";
-                } else if (query.includes('wrap') || query.includes('sandwich') || query.includes('chicken') || query.includes('club')) {
-                    botAnswer = "Our fresh options include the Gourmet Chicken Wrap (380.00 ETB) and our Toasted Club Sandwich (410.00 ETB).";
-                } else if (query.includes('pizza') || query.includes('house')) {
-                    botAnswer = "Our Pizza Bar offers the hand-stretched WoW Signature House Pizza for 620.00 ETB.";
+                if (query.includes('burger') || query.includes('special') || query.includes('double') || query.includes('cheese') || query.includes('beef') || query.includes('mini') || query.includes('chicken')) {
+                    botAnswer = "We serve premium burgers: Wow Special (564 ETB), Wow Double (494 ETB), Cheese Burger (399 ETB), Beef Burger (346 ETB), Mini Special (433 ETB), and Chicken choices up to 599 ETB.";
+                } else if (query.includes('wrap') || query.includes('sandwich') || query.includes('fish') || query.includes('tuna') || query.includes('vegetable')) {
+                    botAnswer = "Our tasty wrap selection includes Chicken Wrap Big (694 ETB), Chicken Wrap Medium (477 ETB), Fish Wrap (390 ETB), Tuna Wrap (477 ETB), and Vegetable Wrap (299 ETB).";
+                } else if (query.includes('drink') || query.includes('soda') || query.includes('water') || query.includes('tea') || query.includes('macchiato') || query.includes('cappuccino')) {
+                    botAnswer = "Our Cold & Hot Drinks menu includes Softdrinks (60/80 ETB), Spring Water (50 ETB), Tea (40 ETB), Macchiato (60 ETB), Cappuccino (80 ETB), and Special Tea (90 ETB).";
                 } else if (query.includes('location') || query.includes('where') || query.includes('place') || query.includes('address') || query.includes('branch')) {
                     botAnswer = "We have six premium locations across Addis Ababa: Bole Medhanialem, Sarbet Ground, CMC Square, Lebu Hub, Megenagna Outpost, and Piassa Heritage.";
                 } else if (query.includes('number') || query.includes('phone') || query.includes('contact') || query.includes('call')) {
