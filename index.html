@@ -6,17 +6,20 @@
     <title>WoW Burger - Share the love</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-yellow: #FFC72C;
             --brand-red: #DA291C;
-            --bg-dark: #0A0A0A;
-            --card-bg: #161616;
+            --bg-dark: #0d0d0c;
+            --card-bg: #1a1a18;
             --text-light: #F5F5F7;
             --text-muted: #A1A1A6;
             --border-color: #2C2C2E;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --bun-color: #e2933f;
+            --lettuce-color: #52b740;
+            --tomato-color: #e63946;
+            --cheese-color: #ffb703;
         }
 
         * {
@@ -26,649 +29,620 @@
         }
 
         body {
-            font-family: var(--font-sans);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            padding: 20px 10px;
         }
 
-        /* Clean Minimal Header */
-        header {
-            background-color: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
+        /* The Grand Hamburger Container Structure */
+        .hamburger-container {
+            max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Top Bun - Hero & Branding */
+        .top-bun {
+            background: linear-gradient(145deg, #f7a951, #c97926);
+            border-radius: 120px 120px 25px 25px;
+            padding: 60px 40px 40px 40px;
+            color: #000;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Sesame Seeds */
+        .top-bun::before {
+            content: "⁚ . • ⁚ ⁚ . • . ⁚ • . ⁚ . • ⁚ .";
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            font-size: 24px;
+            opacity: 0.4;
+            letter-spacing: 18px;
+            color: #fff;
+        }
+
+        .top-bun h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: #000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+        }
+
+        .top-bun p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        /* Hamburger Topping Layers (Interactive Accordion Wrappers) */
+        .layer-tomato { border-left: 12px solid var(--tomato-color); }
+        .layer-cheese { border-left: 12px solid var(--cheese-color); }
+        .layer-lettuce { border-left: 12px solid var(--lettuce-color); }
+
+        .accordion-wrapper {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Pressable trigger buttons */
+        .accordion-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 28px;
+            color: var(--text-light);
+            text-align: left;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 24px;
+            transition: background 0.2s;
         }
 
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-light);
-            text-decoration: none;
+        .accordion-trigger:hover {
+            background: rgba(255, 255, 255, 0.03);
         }
 
-        .logo-text span {
+        .accordion-trigger::after {
+            content: '+';
+            font-size: 1.6rem;
             color: var(--brand-yellow);
+            transition: transform 0.3s;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
+        /* Target state logic for vanilla CSS expansion without needing heavy JS components */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+            padding: 0 28px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
+        .accordion-wrapper:target .accordion-content {
+            max-height: 4000px; /* Large enough container space to unfold content comfortably */
+            padding-bottom: 28px;
         }
 
-        .nav-links a:hover {
-            color: var(--brand-yellow);
+        .accordion-wrapper:target .accordion-trigger::after {
+            content: '−';
+            transform: rotate(180deg);
         }
 
-        /* Premium Hero Display Section */
-        .hero {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            font-weight: 300;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--brand-yellow);
-            color: #000000;
-            padding: 14px 32px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 30px;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .cta-btn:hover {
-            transform: scale(1.03);
-            background-color: #e2AF20;
-        }
-
-        .hero-image-wrapper img {
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 24px 48px rgba(0,0,0,0.4);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Horizontal Scrolling Tags */
-        .info-tags-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 24px;
-        }
-
-        .tag-group {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-        }
-
-        .tag-group h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-light);
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Section Header Layout */
-        .section-header {
-            max-width: 1200px;
-            margin: 80px auto 40px;
-            padding: 0 24px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* Menu Grid Engine */
-        .menu-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
+        /* Grid inside content states */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding-top: 15px;
         }
 
         .menu-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            overflow: hidden;
+            background: rgba(255,255,255,0.02);
             border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
         .menu-card img {
             width: 100%;
-            height: 240px;
+            height: 150px;
             object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .menu-card-body {
-            padding: 24px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
+            gap: 8px;
             flex-grow: 1;
         }
 
-        .menu-item-header {
+        .menu-title { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+        .menu-price { color: var(--brand-yellow); font-weight: 700; font-size: 0.95rem; }
+        .menu-desc { color: var(--text-muted); font-size: 0.8rem; line-height: 1.4; }
+
+        /* Child Accordion Blocks for Nested Branch lists */
+        .sub-branch-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        .sub-wrapper {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sub-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 14px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            gap: 16px;
         }
 
-        .menu-item-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-        }
-
-        .menu-item-price {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--brand-yellow);
-            white-space: nowrap;
-        }
-
-        .menu-item-desc {
-            font-size: 0.9rem;
+        .sub-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
             color: var(--text-muted);
-            font-weight: 400;
-            line-height: 1.5;
-        }
-
-        /* Atmosphere Interlocking Showcase */
-        .atmosphere-gallery {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .atmosphere-gallery img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 14px;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Locations Stack Setup */
-        .branches-section {
-            background-color: var(--card-bg);
-            padding: 80px 24px;
-            margin-top: 100px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .branches-max {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .branches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .branch-card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .branch-name {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: var(--brand-yellow);
-        }
-
-        .branch-details {
             font-size: 0.9rem;
-            color: var(--text-muted);
-            white-space: pre-line;
             line-height: 1.6;
         }
 
-        footer {
-            background-color: #000000;
-            padding: 40px 24px;
-            text-align: center;
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
+        .sub-wrapper:target .sub-content {
+            max-height: 200px;
+            padding-bottom: 14px;
         }
 
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 32px;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .atmosphere-gallery {
-                grid-template-columns: 1fr;
-            }
-            .atmosphere-gallery img {
-                height: 300px;
-            }
+        /* Tags Group layout inside bottom drawers */
+        .tag-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 10px;
+        }
+
+        .tag-pill {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Atmospheric Showcase Component Layout */
+        .ambiance-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding-top: 15px;
+        }
+
+        .ambiance-display img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Bottom Bun - Footer Base */
+        .bottom-bun {
+            background: linear-gradient(145deg, #c97926, #a45e14);
+            border-radius: 25px 25px 90px 90px;
+            padding: 35px;
+            text-align: center;
+            color: #fff;
+            margin-top: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .bottom-bun p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .top-bun h1 { font-size: 2.2rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .ambiance-display { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo-text">WoW <span>Burger</span></a>
-            <ul class="nav-links">
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#ambiance">Ambiance</a></li>
-                <li><a href="#branches">Branches</a></li>
-            </ul>
-        </div>
-    </header>
+    <div class="hamburger-container">
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Wow Special Delicious Burger</h1>
-            <p>Experience the ultimate flavor profiles crafted right here in Addis Ababa. From stacked gourmet double beef blends to hot pressed specialized wraps, we cook to satisfy.</p>
-            <a href="#menu" class="cta-btn">View Full Menu</a>
+        <!-- HAMBURGER TOP BUN: Welcome Panel -->
+        <div class="top-bun">
+            <h1>WoW Burger</h1>
+            <p>"Share the love" — Experience the juiciest menu builds across Addis Ababa.</p>
+            <img src="unnamed (5).jpg" class="hero-banner-img" alt="Wow Special Delicious Burger Combo Banner">
         </div>
-        <div class="hero-image-wrapper">
-            <img src="unnamed (5).jpg" alt="Wow Special Delicious Burger Feature Deck">
-        </div>
-    </section>
 
-    <!-- Info Attributes Interface Area -->
-    <section class="info-tags-section">
-        <div class="tag-group">
-            <h3>Service Options</h3>
-            <div class="tags-container">
-                <span class="tag">Outdoor seating</span>
-                <span class="tag">No-contact delivery</span>
-                <span class="tag">Delivery</span>
-                <span class="tag">Drive-through</span>
-                <span class="tag">Takeaway</span>
-                <span class="tag">Dine-in</span>
+        <!-- MENU SECTION INGREDIENTS -->
+        
+        <!-- 1. Burgers Section -->
+        <div class="accordion-wrapper layer-tomato" id="burgers-menu">
+            <a href="#burgers-menu" style="text-decoration:none;"><button class="accordion-trigger">🍔 Burgers Basket</button></a>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <img src="unnamed (2).jpg" alt="Wow Special Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Wow Special Burger</span>
+                            <span class="menu-price">564.35 ETB</span>
+                            <span class="menu-desc">Double Beef Patty, Double Cheese, Double Beef Mortadella, Fried egg, Mayo, Salad toppings.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="unnamed (3).jpg" alt="Wow Double Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Wow Double Burger</span>
+                            <span class="menu-price">494.79 ETB</span>
+                            <span class="menu-desc">Double Beef Patty, Double Cheese, Layered Mayonnaise, Fresh Tomato, Crisp Lettuce.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="unnamed (1).jpg" alt="Cheese Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Cheese Burger</span>
+                            <span class="menu-price">399.14 ETB</span>
+                            <span class="menu-desc">Beef Patty, Melted Cheese Slice, Mayonnaise, Tomato, Fresh Cut Lettuce.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" alt="Beef Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Beef Burger</span>
+                            <span class="menu-price">346.96 ETB</span>
+                            <span class="menu-desc">Classic Beef Patty, House Mayonnaise, Fresh Target Tomato, Shredded Lettuce.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=500&auto=format&fit=crop&q=60" alt="Mini Special Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Mini Special Burger</span>
+                            <span class="menu-price">433.92 ETB</span>
+                            <span class="menu-desc">Beef Patty, Cheese, Beef Mortadella slice, Fried Egg, Mayonnaise, Salad garnish.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=500&auto=format&fit=crop&q=60" alt="Chicken Special Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Special Burger</span>
+                            <span class="menu-price">599.14 ETB</span>
+                            <span class="menu-desc">Grilled Chicken Breast, Cheese, Sliced Beef, Fried egg, Mayonnaise, Salad.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&auto=format&fit=crop&q=60" alt="Delux Burger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Delux Burger</span>
+                            <span class="menu-price">506.96 ETB</span>
+                            <span class="menu-desc">Double beef patties, custom cheese wrap matrix, sweet caramelized onions, special sauce.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=60" alt="Cheesy Delight">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Cheesy Delight</span>
+                            <span class="menu-price">449.57 ETB</span>
+                            <span class="menu-desc">Prime beef patty drowned in an extra abundant heavy layer of melted hot cheese spread.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="tag-group">
-            <h3>Popular For</h3>
-            <div class="tags-container">
-                <span class="tag">Lunch</span>
-                <span class="tag">Dinner</span>
-                <span class="tag">Solo dining</span>
+        <!-- 2. Wraps and Sandwiches Section -->
+        <div class="accordion-wrapper layer-cheese" id="wraps-menu">
+            <a href="#wraps-menu" style="text-decoration:none;"><button class="accordion-trigger">🌯 Wraps & Sandwiches</button></a>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <img src="unnamed.jpg" alt="Chicken Wrap Big">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Wrap Big</span>
+                            <span class="menu-price">694.79 ETB</span>
+                            <span class="menu-desc">Grilled Chicken chunks, Mozzarella, Beef Mortadella, Onion, Tomatoes, served with Fries.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="images (14).jpg" alt="Chicken Wrap Medium">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Wrap Medium</span>
+                            <span class="menu-price">477.14 ETB</span>
+                            <span class="menu-desc">Toasted tortilla loaded with grilled chicken, cheese melt layer, mortadella and peppers.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500&auto=format&fit=crop&q=60" alt="Tuna Wrap Big">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Tuna Wrap Big</span>
+                            <span class="menu-price">599.14 ETB</span>
+                            <span class="menu-desc">Premium Tuna recipe flakes mixed with sliced onions, red tomatoes, and chili accent strips.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=500&auto=format&fit=crop&q=60" alt="Chicken Zinger">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Zinger</span>
+                            <span class="menu-price">498.27 ETB</span>
+                            <span class="menu-desc">Crispy golden battered fried chicken breast tucked inside a soft sub roll with crisp lettuce.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="tag-group">
-            <h3>Dining Offerings</h3>
-            <div class="tags-container">
-                <span class="tag">Coffee</span>
-                <span class="tag">Late-night food</span>
-                <span class="tag">Quick bite</span>
-                <span class="tag">Small plates</span>
-                <span class="tag">Vegan options</span>
-                <span class="tag">Vegetarian options</span>
+        <!-- 3. Pizza and Platters Section -->
+        <div class="accordion-wrapper layer-lettuce" id="pizza-menu">
+            <a href="#pizza-menu" style="text-decoration:none;"><button class="accordion-trigger">🍕 Pizza & Platters</button></a>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <img src="images (19).jpg" alt="House Supreme Pizza">
+                        <div class="menu-card-body">
+                            <span class="menu-title">House Supreme Pizza (Big)</span>
+                            <span class="menu-price">540.00 ETB</span>
+                            <span class="menu-desc">Mozzarella cheese, mortadella links, black olives, bell peppers, topped with hardboiled egg slices.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="images (16).jpg" alt="Classic Mixed Pizza">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Classic Mixed Pizza</span>
+                            <span class="menu-price">480.00 ETB</span>
+                            <span class="menu-desc">Shredded chicken matrix, sliced salami, cheese, green peppers, served with green Awaze paste.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=500&auto=format&fit=crop&q=60" alt="Chicken Tenders">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Tenders (4 PCS)</span>
+                            <span class="menu-price">520.87 ETB</span>
+                            <span class="menu-desc">Crispy fried breast fillets served on an abundant bed of fries with signature dip pots.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?w=500&auto=format&fit=crop&q=60" alt="Chicken Loaded Fries">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Chicken Loaded Fries (Big)</span>
+                            <span class="menu-price">346.96 ETB</span>
+                            <span class="menu-desc">Crinkle golden french fries piled with fried diced chicken bits and hot cheddar drizzle.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="tag-group">
-            <h3>Accessibility, Parking & Setup</h3>
-            <div class="tags-container">
-                <span class="tag">Wheelchair-accessible car park</span>
-                <span class="tag">Wheelchair-accessible entrance</span>
-                <span class="tag">Wheelchair-accessible seating</span>
-                <span class="tag">Wheelchair-accessible toilet</span>
-                <span class="tag">Toilet</span>
-                <span class="tag">Free of charge street parking</span>
-                <span class="tag">Breakfast</span>
-                <span class="tag">Catering</span>
-                <span class="tag">Dessert</span>
-                <span class="tag">Table service</span>
-                <span class="tag">Accepts reservations</span>
+        <!-- 4. Drinks Panel (Extra Category) -->
+        <div class="accordion-wrapper layer-cheese" id="drinks-menu">
+            <a href="#drinks-menu" style="text-decoration:none;"><button class="accordion-trigger">☕ House Drinks & Coffee</button></a>
+            <div class="accordion-content">
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&auto=format&fit=crop&q=60" alt="Macchiato">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Macchiato / Coffee</span>
+                            <span class="menu-price">60.00 ETB</span>
+                            <span class="menu-desc">Traditional aromatic espresso pulled over perfectly texturized local micro-foam milk.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&auto=format&fit=crop&q=60" alt="Fasting Macchiato">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Fasting Macchiato</span>
+                            <span class="menu-price">77.40 ETB</span>
+                            <span class="menu-desc">Rich espresso profile topped with smooth plant-based non-dairy milk alternative liquids.</span>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <!-- Auto Matched Image from Unsplash -->
+                        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=60" alt="Soft Drinks">
+                        <div class="menu-card-body">
+                            <span class="menu-title">Soft Drinks (300ml)</span>
+                            <span class="menu-price">33.92 ETB</span>
+                            <span class="menu-desc">Your choice of selection or refreshing sparkling natural carbonated Ambo mineral water.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="tag-group">
-            <h3>Vibe & Guest Profiles</h3>
-            <div class="tags-container">
-                <span class="tag">Casual</span>
-                <span class="tag">Cosy</span>
-                <span class="tag">Trendy</span>
-                <span class="tag">Groups</span>
-                <span class="tag">Tourists</span>
-                <span class="tag">University students</span>
-                <span class="tag">Good for kids</span>
-                <span class="tag">Good for kids birthday</span>
-                <span class="tag">High chairs</span>
+        <!-- 5. Experience Ambiance Visual Section -->
+        <div class="accordion-wrapper layer-lettuce" id="visuals-panel">
+            <a href="#visuals-panel" style="text-decoration:none;"><button class="accordion-trigger">📸 Restaurant Atmosphere</button></a>
+            <div class="accordion-content">
+                <div class="ambiance-display">
+                    <img src="images (18).jpg" alt="WoW Burger Neon Night Exterior Shop View">
+                    <img src="images (17).jpg" alt="WoW Burger Sleek Wooden Dining Patio Deck">
+                </div>
             </div>
         </div>
-    </section>
 
-    <div class="section-header" id="menu">
-        <h2>Burgers & Sides</h2>
+
+        <!-- SERVICE ATTRIBUTES SECTION (BOTTOM DRAWDOWNS) -->
+
+        <div class="accordion-wrapper layer-tomato" id="services-panel">
+            <a href="#services-panel" style="text-decoration:none;"><button class="accordion-trigger">⚙️ Service Options</button></a>
+            <div class="accordion-content">
+                <div class="tag-pill-container">
+                    <span class="tag-pill">Outdoor seating</span>
+                    <span class="tag-pill">No-contact delivery</span>
+                    <span class="tag-pill">Delivery</span>
+                    <span class="tag-pill">Drive-through</span>
+                    <span class="tag-pill">Takeaway</span>
+                    <span class="tag-pill">Dine-in</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-wrapper layer-cheese" id="popular-panel">
+            <a href="#popular-panel" style="text-decoration:none;"><button class="accordion-trigger">🔥 Popular For</button></a>
+            <div class="accordion-content">
+                <div class="tag-pill-container">
+                    <span class="tag-pill">Lunch</span>
+                    <span class="tag-pill">Dinner</span>
+                    <span class="tag-pill">Solo dining</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-wrapper layer-lettuce" id="offerings-panel">
+            <a href="#offerings-panel" style="text-decoration:none;"><button class="accordion-trigger">🍲 Dining Offerings</button></a>
+            <div class="accordion-content">
+                <div class="tag-pill-container">
+                    <span class="tag-pill">Coffee</span>
+                    <span class="tag-pill">Late-night food</span>
+                    <span class="tag-pill">Quick bite</span>
+                    <span class="tag-pill">Small plates</span>
+                    <span class="tag-pill">Vegan options</span>
+                    <span class="tag-pill">Vegetarian options</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-wrapper layer-tomato" id="access-panel">
+            <a href="#access-panel" style="text-decoration:none;"><button class="accordion-trigger">♿ Accessibility, Parking & Seats</button></a>
+            <div class="accordion-content">
+                <div class="tag-pill-container">
+                    <span class="tag-pill">Wheelchair-accessible car park</span>
+                    <span class="tag-pill">Wheelchair-accessible entrance</span>
+                    <span class="tag-pill">Wheelchair-accessible seating</span>
+                    <span class="tag-pill">Wheelchair-accessible toilet</span>
+                    <span class="tag-pill">Toilet</span>
+                    <span class="tag-pill">Free of charge street parking</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-wrapper layer-cheese" id="vibe-panel">
+            <a href="#vibe-panel" style="text-decoration:none;"><button class="accordion-trigger">✨ Vibe & Guest Profiles</button></a>
+            <div class="accordion-content">
+                <div class="tag-pill-container">
+                    <span class="tag-pill">Casual Vibe</span>
+                    <span class="tag-pill">Cosy Seating</span>
+                    <span class="tag-pill">Trendy Crowd</span>
+                    <span class="tag-pill">Group Dining</span>
+                    <span class="tag-pill">Tourists Spot</span>
+                    <span class="tag-pill">University students favorite</span>
+                    <span class="tag-pill">Good for kids</span>
+                    <span class="tag-pill">Good for kids birthday</span>
+                    <span class="tag-pill">High chairs available</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BRANCHES LOCATIONS NESTED DRAWDOWN SECTION -->
+        
+        <div class="accordion-wrapper layer-lettuce" id="branches-panel">
+            <a href="#branches-panel" style="text-decoration:none;"><button class="accordion-trigger">📍 Our Store Branches</button></a>
+            <div class="accordion-content">
+                <div class="sub-branch-list">
+                    
+                    <div class="sub-wrapper" id="b-piassa">
+                        <a href="#b-piassa" style="text-decoration:none;"><button class="sub-trigger">📍 Piassa <span>▼</span></button></a>
+                        <div class="sub-content">Arada Bldg front side<br>Arada Bldg back side<br>Taitu (Near Taitu Hotel)</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-4kilo">
+                        <a href="#b-4kilo" style="text-decoration:none;"><button class="sub-trigger">📍 4 Kilo <span>▼</span></button></a>
+                        <div class="sub-content">Near Berhanena Selam printing<br>Infront of Tourist Hotel<br>Infront of Menilik School</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-park">
+                        <a href="#b-park" style="text-decoration:none;"><button class="sub-trigger">📍 Park <span>▼</span></button></a>
+                        <div class="sub-content">Africa Park (Infront of Hilton Hotel)</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-parking">
+                        <a href="#b-parking" style="text-decoration:none;"><button class="sub-trigger">📍 Palace Parking <span>▼</span></button></a>
+                        <div class="sub-content">Palace Parking (Near main palace hub grounds)</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-22">
+                        <a href="#b-22" style="text-decoration:none;"><button class="sub-trigger">📍 22 Area <span>▼</span></button></a>
+                        <div class="sub-content">Lex plaza building complex floor zones.</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-bole">
+                        <a href="#b-bole" style="text-decoration:none;"><button class="sub-trigger">📍 Bole <span>▼</span></button></a>
+                        <div class="sub-content">Infront of millennium hall<br>Edna mall bldg counters</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-meganagna">
+                        <a href="#b-meganagna" style="text-decoration:none;"><button class="sub-trigger">📍 Megenagna <span>▼</span></button></a>
+                        <div class="sub-content">City mall zone plaza (Near Sileshi Sihen bldg)</div>
+                    </div>
+
+                    <div class="sub-wrapper" id="b-olompia">
+                        <a href="#b-olompia" style="text-decoration:none;"><button class="sub-trigger">📍 Olompia <span>▼</span></button></a>
+                        <div class="sub-content">Assay School perimeter line<br>(Infront of Getu Commercial compound)</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- HAMBURGER BOTTOM BUN: Footer Wrap -->
+        <div class="bottom-bun">
+            <p>&copy; 2026 WoW Burger Fast-Casual Brands. All listed item prices strictly exclude standard local 15% VAT calculation rates.</p>
+        </div>
+
     </div>
-
-    <div class="menu-container">
-        <div class="menu-grid">
-            <div class="menu-card">
-                <img src="unnamed (2).jpg" alt="Wow Special Stacked Burger Row View">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Wow Special Burger</span>
-                        <span class="menu-item-price">564.35 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Double Beef Patty, Double Slice Cheese, Double Slice Beef Mortadella, Fried egg, Mayonnaise, Tomato, Lettuce.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="unnamed (3).jpg" alt="Wow Double Burger Heavy Build Up">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Wow Double Burger</span>
-                        <span class="menu-item-price">494.79 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Double Beef Patty, Double Cheese, Mayonnaise, Tomato, Lettuce.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="unnamed (1).jpg" alt="Cheese Burger Stack close up view">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Cheese Burger</span>
-                        <span class="menu-item-price">399.14 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Beef Patty, Slice Cheese, Mayonnaise, Tomato, Lettuce.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Beef Burger</span>
-                        <span class="menu-item-price">346.96 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Beef Patty, Mayonnaise, Tomato, Lettuce crisp build.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Mini Special Burger</span>
-                        <span class="menu-item-price">433.92 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Beef Patty, Slice Cheese, Slice Beef Mortadella, Fried Egg, Mayonnaise, Tomato, Lettuce.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Special Burger</span>
-                        <span class="menu-item-price">599.14 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Grilled Marinated Chicken Breast, Slice Cheese, Slice Beef, Fried egg, Mayonnaise, Tomato, Lettuce.</p>
-                </div>
-            </div>
-            
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Delux Burger</span>
-                        <span class="menu-item-price">506.96 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Double beef patty, cheese layer wrapper, iceberg lettuce, fresh sliced tomato, caramelized specialty onions.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Cheesy Delight</span>
-                        <span class="menu-item-price">449.57 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Beef patty, premium melted cheese core injection, crisp lettuce garnish, sliced onions, house recipe spread.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-header">
-        <h2>Wraps & Sandwiches</h2>
-    </div>
-
-    <div class="menu-container">
-        <div class="menu-grid">
-            <div class="menu-card">
-                <img src="unnamed.jpg" alt="Premium Chicken Wrap Wood Tray Presentation">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Wrap Big</span>
-                        <span class="menu-item-price">694.79 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper served alongside crispy potato wedges.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="images (14).jpg" alt="Panini Grilled Chicken Wrap Section Platter">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Wrap Medium</span>
-                        <span class="menu-item-price">477.14 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Grilled Chicken, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper mix.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Tuna Wrap Big</span>
-                        <span class="menu-item-price">599.14 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Premium Tuna chunks, Onion, Fresh Diced Tomato, structural chili pepper cuts.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Zinger Sandwich</span>
-                        <span class="menu-item-price">498.27 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Fried hand-battered chicken breast, shredded lettuce mix, special house dressing layer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-header">
-        <h2>Pizzas & Platters</h2>
-    </div>
-
-    <div class="menu-container">
-        <div class="menu-grid">
-            <div class="menu-card">
-                <img src="images (19).jpg" alt="Wow House Supreme Family Pizza close layout">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">House Supreme Pizza</span>
-                        <span class="menu-item-price">540.00 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Melted rich mozzarella base layer, premium ham slices, black olives, bell pepper grids, sliced boiled eggs.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <img src="images (16).jpg" alt="Flatbread Mixed Pizza Variant on Table Layout">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Classic Mixed Pizza</span>
-                        <span class="menu-item-price">480.00 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Shredded spiced chicken matrix, sliced salami, boiled egg layers, green pepper strings, paired with green Awaze/chili sauce paste.</p>
-                </div>
-            </div>
-
-            <div class="menu-card">
-                <div class="menu-card-body">
-                    <div class="menu-item-header">
-                        <span class="menu-item-title">Chicken Loaded Fries (Big)</span>
-                        <span class="menu-item-price">346.96 ETB</span>
-                    </div>
-                    <p class="menu-item-desc">Thick golden cuts piled with marinated grilled chicken bits, cheddar drizzle, and house dry spices.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-header" id="ambiance">
-        <h2>Restaurant Look & Feel</h2>
-    </div>
-    <div class="atmosphere-gallery">
-        <img src="images (18).jpg" alt="WoW Burger Illumined Neon Night Store Exterior Facade Layout">
-        <img src="images (17).jpg" alt="WoW Burger Modern Dining Area Terrace with Greenery Decor Layout">
-    </div>
-
-    <section class="branches-section" id="branches">
-        <div class="branches-max">
-            <h2 style="font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 8px;">Our Active Branches</h2>
-            <p style="text-align: center; color: var(--text-muted); font-size: 1rem;">Stop by any of our modern store setups throughout the city</p>
-            
-            <div class="branches-grid">
-                <div class="branch-card">
-                    <div class="branch-name">Piassa</div>
-                    <div class="branch-details">Arada Bldg front side
-                    Arada Bldg back side
-                    Taitu (Near Taitu Hotel)</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">4 Kilo</div>
-                    <div class="branch-details">Near Berhanena Selam printing
-                    Infront of Tourist Hotel
-                    Infront of Menilik School</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">Park</div>
-                    <div class="branch-details">Africa Park (Infront of Hilton Hotel)</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">Parking</div>
-                    <div class="branch-details">Palace Parking (Near main palace)</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">22</div>
-                    <div class="branch-details">Lex plaza bldg.</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">Bole</div>
-                    <div class="branch-details">Infront of millennium hall
-                    Edna mall bldg</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">Megenagna</div>
-                    <div class="branch-details">City mall (Near Sileshi Sihen bldg)</div>
-                </div>
-                <div class="branch-card">
-                    <div class="branch-name">Olompia</div>
-                    <div class="branch-details">Assay School
-                    (Infront of Getu Commercial)</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 WoW Burger. All listed menu prices are strictly excluding 15% VAT calculation margins.</p>
-    </footer>
 
 </body>
 </html>
