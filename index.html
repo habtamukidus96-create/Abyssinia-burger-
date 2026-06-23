@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WoW Burger - Fine Dining Experience</title>
+    <!-- Tailwind CSS for styling via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,28 +15,34 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-font { font-family: 'Playfair Display', serif; }
         .cinzel-font { font-family: 'Cinzel', serif; }
+        /* Speed up image paint and prevent layout shifting */
+        img { content-visibility: auto; }
     </style>
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
+    <!-- Ambient glowing backdrops -->
     <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
     <div class="absolute top-[800px] right-0 w-[250px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-4 flex items-center justify-between">
+    <!-- NAVBAR HEADER -->
+    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between">
         <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
-        <div class="flex flex-col text-center pr-8">
+        <!-- Brand Name Only (Removed Subtext for Slimmer Layout) -->
+        <div class="flex flex-col text-center pr-8 py-1">
             <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic">WoW <span class="text-amber-500 not-italic tracking-widest text-xl md:text-2xl block md:inline font-bold">Burger</span></h1>
-            <span class="text-[9px] text-zinc-400 tracking-[0.2em] uppercase">Exquisite Dining Experience</span>
         </div>
         
+        <!-- Empty utility placeholder to preserve flex layout balance after removal -->
         <div class="w-10"></div>
     </header>
 
+    <!-- HAMBURGER SLIDEOUT SIDEBAR -->
     <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
@@ -55,9 +63,10 @@
         </div>
     </div>
 
+    <!-- HERO SECTION -->
     <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="hero.jpg" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+            <img src="hero.jpg" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
         </div>
 
@@ -74,6 +83,7 @@
         </div>
     </section>
 
+    <!-- ABOUT US SECTION -->
     <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900">
         <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
             <div class="h-[1px] bg-red-500/30 flex-1"></div>
@@ -86,6 +96,7 @@
         </p>
     </section>
 
+    <!-- DYNAMIC INTERACTIVE MENU SECTION -->
     <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-8 space-y-2">
@@ -97,11 +108,14 @@
                 </div>
             </div>
 
+            <!-- Food Grid Layout -->
             <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
+                <!-- Injected automatically by JavaScript Menu Data Engine -->
+            </div>
         </div>
     </section>
 
+    <!-- RESTAURANT GALLERY SECTION (AMBIENT OUTLETS) -->
     <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -111,18 +125,19 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb1.jpg" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb1.jpg" width="400" height="300" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb2.jpg" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb2.jpg" width="400" height="300" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
-                    <img src="unnamed (1).jpg" alt="Cozy Interior Atmosphere of WoW Burger House" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="cozyinterior.jpg" width="400" height="300" alt="Warm cozy interior layout lighting setup of the burger dining room" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CUSTOMER REVIEWS SECTION -->
     <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5">
         <div class="max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-1">
@@ -140,6 +155,7 @@
         </div>
     </section>
 
+    <!-- REGIONAL BRANCHES SECTION -->
     <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C]">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -175,6 +191,7 @@
         </div>
     </section>
 
+    <!-- RESERVATION & BOOKING FORM -->
     <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20">
         <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
             <div class="text-center space-y-1">
@@ -220,13 +237,29 @@
         </div>
     </section>
 
+    <!-- FOOTER WITH SOCIAL MEDIA ICONS -->
     <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6">
-        <div class="space-y-1">
+        <div class="space-y-4">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
+            
+            <!-- Future Social Media links container -->
+            <div class="flex justify-center items-center space-x-6 text-zinc-500">
+                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Facebook Link Placeholder">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
+                </a>
+                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Instagram Link Placeholder">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Telegram Link Placeholder">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.57 8.361l-1.898 8.942c-.143.633-.519.789-1.051.491l-2.893-2.132-1.396 1.343c-.155.155-.285.285-.584.285l.207-2.943 5.358-4.841c.233-.207-.051-.321-.362-.114l-6.622 4.168-2.854-.892c-.621-.194-.633-.621.129-.919l11.141-4.298c.516-.187.967.121.729.969z"/></svg>
+                </a>
+            </div>
+
             <p class="text-[11px] text-zinc-500 font-light">© 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
         </div>
     </footer>
 
+    <!-- INTERACTIVE SIDEBAR CART MODAL -->
     <div id="cart-modal" class="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-md bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-4 shadow-2xl">
             <div>
@@ -248,6 +281,7 @@
         </div>
     </div>
 
+    <!-- AI DINING CONCIERGE ASSISTANT -->
     <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
         <div id="ai-chat-box" class="w-72 md:w-80 h-96 bg-[#0F0E0C] border border-red-500/30 rounded-sm shadow-2xl flex flex-col justify-between mb-2 overflow-hidden hidden">
             <div class="bg-zinc-900 border-b border-zinc-800 p-2.5 flex items-center justify-between">
@@ -277,6 +311,7 @@
         </button>
     </div>
 
+    <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
         const MENU_DATA = [
             // Burgers
@@ -319,7 +354,7 @@
                 container.innerHTML += `
                     <div class="bg-[#161412] border border-zinc-900 rounded-sm overflow-hidden flex flex-col shadow-lg transition-transform duration-300 hover:scale-[1.01]">
                         <div class="h-52 overflow-hidden relative border-b border-zinc-900">
-                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover">
+                            <img src="${item.img}" width="360" height="208" alt="${item.name}" class="w-full h-full object-cover">
                             <div class="absolute top-2 right-2 bg-black/90 backdrop-blur-sm px-2.5 py-0.5 border border-red-500/30 text-red-500 font-bold text-xs">${item.price.toFixed(2)} ETB</div>
                         </div>
                         <div class="p-5 flex-1 flex flex-col justify-between space-y-4 text-center">
