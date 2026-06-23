@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WoW Burger - Fine Dining Experience</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght=0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght=400;500;600&display=swap" rel="stylesheet">
@@ -16,53 +14,39 @@
         .serif-font { font-family: 'Playfair Display', serif; }
         .cinzel-font { font-family: 'Cinzel', serif; }
         
-        /* Advanced Image Loading Fixes */
         img { 
-            content-visibility: auto;
-            contain-intrinsic-size: 1000px; /* Reserves layout space before image paints */
+            content-visibility: auto; 
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            object-fit: cover;
-            object-position: center;
         }
     </style>
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen w-full">
 
-    <!-- Ambient glowing backdrops -->
     <div class="absolute top-0 left-1/4 w-[250px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
     <div class="absolute top-[800px] right-0 w-[200px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
-    <!-- NAVBAR HEADER (Bumped to z-50 to stay on top of content during scroll) -->
-    <header class="sticky top-0 z-50 bg-[#0F0E0C]/95 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0F0E0C]/95 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
         <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none relative z-50" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
-        <!-- Brand Name -->
         <div class="flex items-center justify-center py-1">
             <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
                 WoW <span class="text-amber-500 not-italic tracking-wide text-2xl md:text-3xl ml-1 font-bold">Burger</span>
             </h1>
         </div>
         
-        <div class="w-10"></div>
+        <button onclick="toggleCart(true)" class="p-2 text-zinc-400 hover:text-amber-500 transition-colors focus:outline-none relative" aria-label="Open Shopping Basket Summary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+        </button>
     </header>
 
-    <!-- HAMBURGER SLIDEOUT SIDEBAR (Bumped to z-[60] to overlay cleanly above the header) -->
     <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
-        <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
-            <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
-            
-            <div class="mt-8 space-y-1 mb-8">
-                <h3 class="text-red-500 font-bold tracking-widest text-sm uppercase cinzel-font">Navigation</h3>
-                <div class="h-[1px] bg-red-500/30 w-16"></div>
-            </div>
-
-            <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
-            <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
             
@@ -79,6 +63,29 @@
                 <a href="#branches-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Branches</a>
                 <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
             </nav>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="fixed inset-0 z-[60] flex justify-end bg-black/70 backdrop-blur-sm hidden">
+        <div class="w-full max-w-sm bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-6 shadow-2xl relative">
+            <div>
+                <button onclick="toggleCart(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+                <div class="mt-8 space-y-1 mb-6">
+                    <h3 class="text-amber-500 font-bold tracking-widest text-sm uppercase cinzel-font">Your Order Basket</h3>
+                    <div class="h-[1px] bg-amber-500/30 w-16"></div>
+                </div>
+                <div id="cart-container" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1"></div>
+            </div>
+
+            <div id="cart-checkout-box" class="border-t border-zinc-900 pt-4 mt-4 space-y-4 hidden">
+                <div class="flex items-center justify-between text-sm tracking-wider uppercase font-medium">
+                    <span class="text-zinc-400">Total Bill Amount:</span>
+                    <span id="cart-total" class="text-amber-500 font-bold font-mono">0.00 ETB</span>
+                </div>
+                <button onclick="triggerOrderCheckout()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-black uppercase tracking-widest py-3 text-xs text-center transition-colors cinzel-font">
+                    Send Order Details (WhatsApp)
+                </button>
+            </div>
         </div>
     </div>
 
@@ -99,9 +106,8 @@
                 </a>
             </div>
         </div>
-                    </section>    
+    </section>
 
-    <!-- ABOUT US SECTION -->
     <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900 w-full">
         <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
             <div class="h-[1px] bg-red-500/30 flex-1"></div>
@@ -114,7 +120,6 @@
         </p>
     </section>
 
-    <!-- DYNAMIC INTERACTIVE MENU SECTION -->
     <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900 w-full">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-8 space-y-2">
@@ -126,14 +131,11 @@
                 </div>
             </div>
 
-            <!-- Food Grid Layout -->
             <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Injected automatically by JavaScript Menu Data Engine -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- RESTAURANT GALLERY SECTION -->
     <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C] w-full">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -155,7 +157,6 @@
         </div>
     </section>
 
-    <!-- CUSTOMER REVIEWS SECTION -->
     <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5 w-full">
         <div class="max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-1">
@@ -173,7 +174,6 @@
         </div>
     </section>
 
-    <!-- REGIONAL BRANCHES SECTION -->
     <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C] w-full">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -209,7 +209,6 @@
         </div>
     </section>
 
-    <!-- RESERVATION & BOOKING FORM -->
     <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20 w-full">
         <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
             <div class="text-center space-y-1">
@@ -252,7 +251,6 @@
         </div>
     </section>
 
-    <!-- FOOTER WITH SOCIAL MEDIA ICONS -->
     <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6 w-full">
         <div class="space-y-4">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
@@ -262,95 +260,57 @@
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
                 </a>
                 <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Instagram Link Placeholder">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-                </a>
-                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Telegram Link Placeholder">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.57 8.361l-1.898 8.942c-.143.633-.519.789-1.051.491l-2.893-2.132-1.396 1.343c-.155.155-.285.285-.584.285l.207-2.943 5.358-4.841c.233-.207-.051-.321-.362-.114l-6.622 4.168-2.854-.892c-.621-.194-.633-.621.129-.919l11.141-4.298c.516-.187.967.121.729.969z"/></svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
                 </a>
             </div>
-
-            <p class="text-[11px] text-zinc-500 font-light">© 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
+            <p class="text-[10px] text-zinc-600 tracking-wide">&copy; 2026 WoW Burger Luxury. Crafted for fine hospitality.</p>
         </div>
     </footer>
 
-    <!-- INTERACTIVE SIDEBAR CART MODAL -->
-    <div id="cart-modal" class="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm hidden">
-        <div class="w-full max-w-md bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-4 shadow-2xl">
-            <div>
-                <div class="flex items-center justify-between border-b border-zinc-900 pb-3">
-                    <h3 class="text-sm uppercase font-bold tracking-wider text-red-500 cinzel-font">Your Gourmet Basket</h3>
-                    <button onclick="toggleCart(false)" class="text-zinc-400 hover:text-white text-xl font-bold focus:outline-none">&times;</button>
-                </div>
-                <div id="cart-container" class="mt-4 space-y-3 overflow-y-auto max-h-[70vh]"></div>
+    <div class="fixed bottom-4 left-4 z-40">
+        <button onclick="toggleAi(true)" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-2xl focus:outline-none flex items-center justify-center transition-transform active:scale-95" aria-label="Open AI Assistant Chatbot Box">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </button>
+        
+        <div id="ai-chat-box" class="fixed bottom-16 left-4 w-72 bg-[#161412] border border-zinc-800 rounded-sm shadow-2xl flex flex-col hidden overflow-hidden">
+            <div class="bg-zinc-900 border-b border-zinc-800 px-4 py-2.5 flex items-center justify-between">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-widest cinzel-font">AI Guest Desk</span>
+                <button onclick="toggleAi(false)" class="text-zinc-500 hover:text-white text-sm focus:outline-none">&times;</button>
             </div>
-            <div id="cart-checkout-box" class="border-t border-zinc-900 pt-4 space-y-3 hidden">
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-zinc-400">Total Amount:</span>
-                    <span id="cart-total" class="text-lg text-red-500 font-bold">0.00 ETB</span>
-                </div>
-                <button onclick="triggerOrderCheckout()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 text-center uppercase tracking-wider text-xs cinzel-font">
-                    Send Order to Kitchen (WhatsApp)
-                </button>
+            <div id="ai-messages-stream" class="p-3 h-48 overflow-y-auto space-y-2.5 text-[11px] leading-relaxed flex flex-col">
+                <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm">Greetings! Ask me anything about our menu specialties, pricing metrics, or flagship locations in Addis Ababa!</div>
             </div>
-        </div>
-    </div>
-
-    <!-- AI DINING CONCIERGE ASSISTANT -->
-    <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
-        <div id="ai-chat-box" class="w-72 md:w-80 h-96 bg-[#0F0E0C] border border-red-500/30 rounded-sm shadow-2xl flex flex-col justify-between mb-2 overflow-hidden hidden">
-            <div class="bg-zinc-900 border-b border-zinc-800 p-2.5 flex items-center justify-between">
-                <div>
-                    <h4 class="text-[11px] font-bold uppercase text-zinc-200 tracking-wider cinzel-font">WoW Burger Concierge</h4>
-                    <span class="text-[8px] text-emerald-400 flex items-center gap-1">● AI Engine Online</span>
-                </div>
-                <button onclick="toggleAi(false)" class="text-zinc-400 hover:text-white font-bold">&times;</button>
-            </div>
-
-            <div id="ai-messages-stream" class="flex-1 p-3 overflow-y-auto space-y-2 text-[11px] leading-relaxed">
-                <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">
-                    Melkam Ken! I am your AI Host for WoW Burger. Ask me about our classic burger options, fresh specialty wraps, cold or hot drinks, or branch details!
-                </div>
-            </div>
-
-            <form onsubmit="handleAiChat(event)" class="p-2 border-t border-zinc-900 bg-zinc-900/50 flex space-x-1.5">
-                <input id="ai-input-field" type="text" placeholder="Ask about burgers, wraps, drinks..." class="flex-1 bg-[#0F0E0C] border border-zinc-800 rounded-sm px-2 py-1 text-[11px] text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-red-500">
-                <button type="submit" class="bg-red-600 text-white px-3 py-1 font-bold text-[11px] rounded-sm hover:bg-red-700">Ask</button>
+            <form onsubmit="handleAiChat(event)" class="border-t border-zinc-800 flex">
+                <input id="ai-input-field" type="text" placeholder="Type message..." autocomplete="off" class="w-full bg-[#0F0E0C] text-xs px-3 py-2 text-[#F5F5F0] focus:outline-none">
+                <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 text-xs font-bold uppercase tracking-wider text-white transition-colors">Send</button>
             </form>
         </div>
-
-        <button onclick="toggleAi(true)" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-2xl focus:outline-none border-2 border-zinc-950 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-        </button>
     </div>
 
-    <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
-        const OWNER_PHONE = "251912643473"; 
+        const OWNER_PHONE = "251912643473";
 
         const MENU_DATA = [
-            { id: 'burg-1', name: 'Wow Special Burger', category: 'burgers', price: 564.00, desc: 'Our signature gourmet build premium special blend.', img: 'specialburger.jpg' },
-            { id: 'burg-2', name: 'Wow Double Burger', category: 'burgers', price: 494.00, desc: 'Double flame-grilled beef patty with extra melted cheese layers.', img: 'doubleburger.jpg' },
-            { id: 'burg-3', name: 'Cheese Burger', category: 'burgers', price: 399.00, desc: 'Classic melted cheddar layered over a juicy prime patty.', img: 'cheeseburger.jpg' },
-            { id: 'burg-4', name: 'Beef Burger', category: 'burgers', price: 346.00, desc: 'Traditional savory flame-broiled beef burger patty.', img: 'beefburger.jpg' },
-            { id: 'burg-5', name: 'Mini Special Burger', category: 'burgers', price: 433.00, desc: 'A compact version packed with all our specialty burger seasonings.', img: 'miniburger.jpg' },
-            { id: 'burg-6', name: 'Chicken Burger', category: 'burgers', price: 538.00, desc: 'Crispy seasoned premium chicken breast fillet on a toasted bun.', img: 'chickenburger.jpg' },
-            { id: 'burg-7', name: 'Chicken Special Burger', category: 'burgers', price: 599.00, desc: 'Luxury loaded chicken build layered with our unique house sauces.', img: 'chickenspecialburger.jpg' },
+            { id: "b1", name: "Wow Special Burger", category: "burgers", price: 564.00, img: "chickenspecialburger.jpg", desc: "Our signature stack with toasted buns, melted cheese, premium double patties, crisp lettuce, tomatoes, and house gourmet layout glaze sauce." },
+            { id: "b2", name: "Wow Double Burger", category: "burgers", price: 494.00, img: "doubleburger.jpg", desc: "Two grilled juicy patties stacked cleanly with double layers of melted cheese, crisp tangy pickles, and our signature gourmet mustard spread." },
+            { id: "b3", name: "Cheese Burger", category: "burgers", price: 399.00, img: "cheeseburger.jpg", desc: "A classic single premium beef patty topped elegantly with melted cheddar cheese, sliced fresh onions, crisp lettuce, and fresh tomatoes." },
+            { id: "b4", name: "Beef Burger", category: "burgers", price: 346.00, img: "beefburger.jpg", desc: "Flame-grilled lean pure beef patty served elegantly with crisp farm fresh greens, sliced organic onions, and home-style visual dressing." },
+            { id: "b5", name: "Mini Special Burger", category: "burgers", price: 433.00, img: "miniburger.jpg", desc: "Compact premium build delivering rich gourmet flavors. Perfect slider snack scale matching authentic recipe standards flawlessly." },
+            { id: "b6", name: "Chicken Burger", category: "burgers", price: 599.00, img: "chickenburger.jpg", desc: "Crispy golden fried tender chicken breast fillet layered beautifully with cool herb mayonnaise mix and crunchy farm-fresh shredded lettuce matrix." },
             
-            { id: 'wrap-1', name: 'Chicken Wrap Big', category: 'wraps', price: 694.00, desc: 'Large premium grilled chicken pieces bundled in a fresh warm tortilla.', img: 'chickenwrapbig.jpg' },
-            { id: 'wrap-2', name: 'Chicken Wrap Medium', category: 'wraps', price: 477.00, desc: 'Perfectly portioned wrapped tender chicken strips with fresh greens.', img: 'chickenwrapmedium.jpg' },
-            { id: 'wrap-3', name: 'Fish Wrap', category: 'wraps', price: 390.00, desc: 'Crisp golden seasoned fish fillet wrapped with house tartar blend.', img: 'Fishwrap.jpg' },
-            { id: 'wrap-4', name: 'Tuna Wrap', category: 'wraps', price: 477.00, desc: 'Premium flaked tuna combined beautifully with fresh garden herbs.', img: 'tunawrap.jpg' },
-            { id: 'wrap-5', name: 'Vegetable Wrap', category: 'wraps', price: 299.00, desc: 'A refreshing medley of crisp locally sourced garden vegetables.', img: 'vegetablewrap.jpg' },
+            { id: "w1", name: "Chicken Wrap Big", category: "wraps", price: 694.00, img: "chickenwrapbig.jpg", desc: "Giant toasted soft tortilla wrapped snugly around seasoned grilled chicken strips, roasted sweet bell peppers, and creamy garlic sauce layer." },
+            { id: "w2", name: "Chicken Wrap Medium", category: "wraps", price: 477.00, img: "chickenwrapmedium.jpg", desc: "Perfect balanced lunch scale toasted wrap loaded with spiced tender chicken bites, organic diced tomatoes, and crisp green lettuce mix." },
+            { id: "w3", name: "Fish Wrap", category: "wraps", price: 390.00, img: "Fishwrap.jpg", desc: "Crispy flaky golden fish fillet strips paired expertly with tangy house tartar sauce, diced onions, and crunchy garden greens." },
+            { id: "w4", name: "Tuna Wrap", category: "wraps", price: 477.00, img: "tunawrap.jpg", desc: "Premium flaky tuna salad mix rolled cleanly with crunchy cucumbers, sweet corn kernels, and light refreshing signature dressing." },
+            { id: "w5", name: "Vegetable Wrap", category: "wraps", price: 299.00, img: "vegetablewrap.jpg", desc: "Healthy assortment of grilled zucchini, fire-roasted sweet peppers, fresh organic avocado chunks, and herb hummus spread." },
             
-            { id: 'drk-1', name: 'Softdrink', category: 'drinks', price: 60.00, desc: 'Chilled refreshing classic fountain drink selection.', img: 'glasssoftdrink.jpg' },
-            { id: 'drk-2', name: 'Plastic Bottled Soft Drinks', category: 'drinks', price: 80.00, desc: 'Convenient sealed individual bottled carbonated choices.', img: 'plasticsoftdrink.jpg' },
-            { id: 'drk-3', name: 'Spring Water', category: 'drinks', price: 50.00, desc: 'Pure premium refreshing natural mountain spring water.', img: 'water.jpg' },
-            { id: 'drk-4', name: 'Tea', category: 'drinks', price: 40.00, desc: 'Warm aromatic brewed traditional black tea leaves.', img: 'tea.jpg' },
-            { id: 'drk-5', name: 'Macchiato', category: 'drinks', price: 60.00, desc: 'Rich espresso stained with a perfect dollop of velvety milk foam.', img: 'macchiato.jpg' },
-            { id: 'drk-6', name: 'Cappuccino', category: 'drinks', price: 80.00, desc: 'Equal balanced layers of bold espresso, steamed milk, and froth.', img: 'cappuccino.jpg' },
-            { id: 'drk-7', name: 'Special Tea', category: 'drinks', price: 90.00, desc: 'House spiced infusion brewed carefully using premium select herbs.', img: 'specialtea.jpg' }
+            { id: "d1", name: "Softdrink (Glass Bottle)", category: "drinks", price: 60.00, img: "glasssoftdrink.jpg", desc: "Chilled effervescent soda options served traditionally in crisp classic glass bottles for perfect nostalgic dining refreshment." },
+            { id: "d2", name: "Softdrink (Plastic Bottle)", category: "drinks", price: 80.00, img: "plasticsoftdrink.jpg", desc: "Convenient refreshing chilled sweet soda options packed ready for extended transit enjoyment on the go." },
+            { id: "d3", name: "Spring Water", category: "drinks", price: 50.00, img: "water.jpg", desc: "Pure, crystal-clear local mineral water bottled fresh from highland springs to cleanse and refresh the palate flawlessly." },
+            { id: "d4", name: "Regular Hot Tea", category: "drinks", price: 40.00, img: "tea.jpg", desc: "Brewed selection of rich organic local tea leaves infused cleanly with hot aromatic steam notes for soothing relief." },
+            { id: "d5", name: "Macchiato", category: "drinks", price: 60.00, img: "macchiato.jpg", desc: "Authentic bold espresso shot stained delicately with a velvety dollop of rich micro-foamed local milk texture cream." },
+            { id: "d6", name: "Cappuccino", category: "drinks", price: 80.00, img: "cappuccino.jpg", desc: "Perfectly balanced rich espresso base layered beautifully under deep frothy steamed milk blanket, dusted with cocoa powder hints." },
+            { id: "d7", name: "Special Spiced Tea", category: "drinks", price: 90.00, img: "specialtea.jpg", desc: "Exquisite warming traditional blend infused with cardamoms, aromatic cloves, and cinnamon bark layers for authentic flavor depth." }
         ];
 
         let cart = [];
