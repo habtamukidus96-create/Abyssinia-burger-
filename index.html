@@ -62,22 +62,7 @@
             </div>
 
             <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
-                <a href="#" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Home</a>
-                <a href="#menu-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Menu</a>
-                <a href="#about-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Story</a>
-                <a href="#reviews-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reviews</a>
-                <a href="#branches-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Branches</a>
-                <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
-            </nav>
-        </div>
-    </div>
-        
-        <!-- Empty layout balancer wrapper -->
-        <div class="w-10"></div>
-    </header>
-
-    <!-- HAMBURGER SLIDEOUT SIDEBAR (Fixed to z-50 so it stays on top when scrolling) -->
-    <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
+            <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
             
@@ -97,8 +82,7 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
+    <section class="pt-20 relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
         <div class="absolute inset-0 z-0">
             <img src="hero.jpg" decoding="async" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
@@ -115,7 +99,7 @@
                 </a>
             </div>
         </div>
-    </section>
+                    </section>    
 
     <!-- ABOUT US SECTION -->
     <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900 w-full">
