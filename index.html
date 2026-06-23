@@ -15,8 +15,13 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .serif-font { font-family: 'Playfair Display', serif; }
         .cinzel-font { font-family: 'Cinzel', serif; }
-        /* Speed up image paint and prevent layout shifting */
-        img { content-visibility: auto; }
+        
+        /* Force fast asynchronous rendering and prevent top-to-bottom layout slicing */
+        img { 
+            content-visibility: auto; 
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
     </style>
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen w-full">
@@ -44,7 +49,7 @@
         <div class="w-10"></div>
     </header>
 
-    <!-- HAMBURGER SLIDEOUT SIDEBAR -->
+    <!-- HAMBURGER SLIDEOUT SIDEBAR (Fixed to z-50 so it stays on top when scrolling) -->
     <div id="hamburger-modal" class="fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm hidden">
         <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
             <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
@@ -68,7 +73,7 @@
     <!-- HERO SECTION -->
     <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
         <div class="absolute inset-0 z-0">
-            <img src="hero.jpg" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+            <img src="hero.jpg" decoding="async" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
         </div>
 
@@ -117,7 +122,7 @@
         </div>
     </section>
 
-    <!-- RESTAURANT GALLERY SECTION (AMBIENT OUTLETS) -->
+    <!-- RESTAURANT GALLERY SECTION -->
     <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C] w-full">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
@@ -127,13 +132,13 @@
             
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb1.jpg" width="400" height="300" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb1.jpg" decoding="async" width="400" height="300" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb2.jpg" width="400" height="300" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="amb2.jpg" decoding="async" width="400" height="300" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
-                    <img src="cozyinterior.jpg" width="400" height="300" alt="Warm cozy interior layout lighting setup of the burger dining room" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    <img src="cozyinterior.jpg" decoding="async" width="400" height="300" alt="Warm cozy interior layout lighting setup of the burger dining room" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
                 </div>
             </div>
         </div>
@@ -241,7 +246,6 @@
         <div class="space-y-4">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
             
-            <!-- Future Social Media links container -->
             <div class="flex justify-center items-center space-x-6 text-zinc-500">
                 <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Facebook Link Placeholder">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
@@ -312,7 +316,7 @@
 
     <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
-        const OWNER_PHONE = "251912643473"; // Internationally styled format for WhatsApp routing links
+        const OWNER_PHONE = "251912643473"; 
 
         const MENU_DATA = [
             { id: 'burg-1', name: 'Wow Special Burger', category: 'burgers', price: 564.00, desc: 'Our signature gourmet build premium special blend.', img: 'specialburger.jpg' },
@@ -353,7 +357,7 @@
                 container.innerHTML += `
                     <div class="bg-[#161412] border border-zinc-900 rounded-sm overflow-hidden flex flex-col shadow-lg transition-transform duration-300 hover:scale-[1.01]">
                         <div class="h-52 overflow-hidden relative border-b border-zinc-900">
-                            <img src="${item.img}" width="360" height="208" alt="${item.name}" class="w-full h-full object-cover">
+                            <img src="${item.img}" decoding="async" width="360" height="208" alt="${item.name}" class="w-full h-full object-cover">
                             <div class="absolute top-2 right-2 bg-black/90 backdrop-blur-sm px-2.5 py-0.5 border border-red-500/30 text-red-500 font-bold text-xs">${item.price.toFixed(2)} ETB</div>
                         </div>
                         <div class="p-5 flex-1 flex flex-col justify-between space-y-4 text-center">
@@ -453,10 +457,8 @@
             document.getElementById('cart-total').innerText = `${total.toFixed(2)} ETB`;
         }
 
-        // OPTION B: DISPATCH FOOD ORDERS LIVE OVER WHATSAPP
         function triggerOrderCheckout() {
             if (cart.length === 0) return;
-            
             let message = `🍔 *NEW ORDER FROM WOW BURGER WEB* 🍔\n\n`;
             let total = 0;
             
@@ -471,12 +473,10 @@
             
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${OWNER_PHONE}&text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-            
             cart = [];
             toggleCart(false);
         }
 
-        // OPTION B: DISPATCH RESERVATIONS LIVE OVER WHATSAPP
         function handleFooterReservation(e) {
             e.preventDefault();
             const name = document.getElementById('res-name').value;
@@ -493,7 +493,6 @@
             
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${OWNER_PHONE}&text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
-            
             e.target.reset();
         }
 
