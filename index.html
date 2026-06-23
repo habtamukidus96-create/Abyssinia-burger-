@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WoW Burger - Fine Dining Experience</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#DC2626">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -501,6 +507,15 @@
                 stream.innerHTML += `<div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">${botAnswer}</div>`;
                 stream.scrollTop = stream.scrollHeight;
             }, 600);
+        }
+
+        // PWA SERVICE WORKER AUTOMATED REGISTER ENGINE
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker Live and Registered Successfully!', reg))
+                    .catch(err => console.error('Service Worker Activation Failed:', err));
+            });
         }
     </script>
 </body>
