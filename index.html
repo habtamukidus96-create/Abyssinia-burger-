@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoW Burger - Hot & Delicious</title>
+    <title>WoW Burger - Fine Dining Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-darkest: #0A0A0C;
-            --bg-panel: #141418;
-            --bg-card: #1C1C22;
-            --neon-orange: #FF5E00;
-            --neon-red: #E61E2A;
-            --accent-yellow: #FFC72C;
-            --text-light: #FFFFFF;
-            --text-gray: #A0A0AA;
-            --border-glow: #2A2A35;
+            --bg-dark: #0F0E0C;
+            --bg-card: #161412;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-light: #F5F5F0;
+            --text-muted: #BAAFA3;
+            --border-gold: rgba(212, 175, 55, 0.25);
+            --border-light: rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -28,747 +27,476 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-darkest);
+            background-color: var(--bg-dark);
             color: var(--text-light);
-            line-height: 1.5;
-            background-image: radial-gradient(circle at 50% 0%, #25120b 0%, var(--bg-darkest) 70%);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 30%, #1A1713 0%, var(--bg-dark) 70%);
         }
 
-        /* Top Bar Navigation Area */
-        .nav-header {
+        /* Top Navigation Bar */
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 40px;
+            padding: 30px 50px;
             max-width: 1200px;
             margin: 0 auto;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .brand-logo {
-            font-family: 'Lilita One', sans-serif;
-            font-size: 2.2rem;
+        .nav-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: var(--gold-primary);
             text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--text-light);
+        }
+
+        .reservation-btn {
+            font-family: 'Cinzel', serif;
+            background: transparent;
+            color: var(--gold-primary);
+            border: 1px solid var(--gold-primary);
+            padding: 10px 24px;
+            font-size: 0.85rem;
             letter-spacing: 1px;
-            color: var(--text-light);
-            text-shadow: 0 0 10px rgba(255, 94, 0, 0.5);
-        }
-
-        .brand-logo span {
-            color: var(--neon-orange);
-        }
-
-        .order-neon-btn {
-            background: linear-gradient(135deg, var(--neon-red), var(--neon-orange));
-            color: var(--text-light);
-            border: none;
-            padding: 12px 28px;
-            font-weight: 700;
-            border-radius: 50px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.9rem;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(230, 30, 42, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s;
         }
 
-        .order-neon-btn:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 25px rgba(255, 94, 0, 0.7);
+        .reservation-btn:hover {
+            background: var(--gold-primary);
+            color: var(--bg-dark);
         }
 
-        /* Cinematic Hero Deck Showcase */
-        .hero-banner-container {
-            max-width: 1250px;
+        /* SECTION 1: HERO CONTAINER LAYOUT */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px 80px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
+            padding: 80px 50px 100px;
         }
 
-        .hero-left-text {
-            position: relative;
+        .hero-left-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .script-badge {
-            font-family: 'Permanent Marker', cursive;
-            color: var(--accent-yellow);
-            font-size: 1.8rem;
-            transform: rotate(-3deg);
-            display: inline-block;
-            margin-bottom: 10px;
+        .hero-welcome {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 1.4rem;
             letter-spacing: 1px;
         }
 
-        .giant-headline {
-            font-family: 'Lilita One', sans-serif;
-            font-size: 5.5rem;
-            line-height: 0.95;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 0px #000;
-        }
-
-        .giant-headline span {
-            color: var(--neon-red);
-            display: block;
-            font-size: 6rem;
-            background: linear-gradient(to right, var(--neon-red), var(--neon-orange));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-sub-p {
-            color: var(--text-gray);
-            font-size: 1.15rem;
-            max-width: 500px;
-            margin-bottom: 35px;
-        }
-
-        .brush-order-trigger {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background-color: var(--neon-red);
-            padding: 16px 40px;
-            font-family: 'Lilita One', sans-serif;
-            font-size: 1.4rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            border-radius: 6px;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(230, 30, 42, 0.4);
-            border-left: 4px solid var(--accent-yellow);
-        }
-
-        .hero-right-media {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-frame-img {
-            width: 100%;
-            max-width: 460px;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 24px;
-            border: 2px solid var(--border-glow);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-        }
-
-        /* Glowing Neon Ring Layout Effect from image */
-        .neon-gaze-ring {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            border: 3px dashed var(--neon-orange);
-            padding: 15px;
-            border-radius: 50%;
-            font-family: 'Permanent Marker', cursive;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            transform: rotate(15deg);
-            background-color: rgba(10,10,12,0.8);
-            box-shadow: 0 0 20px rgba(255, 94, 0, 0.3);
-        }
-
-        /* App Drawer Container Layout */
-        .menu-app-deck {
-            max-width: 1000px;
-            margin: 0 auto 120px;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* High-Gloss Smokehouse Accordion Item Blocks */
-        .accordion-smoke-node {
-            background-color: var(--bg-panel);
-            border: 1px solid var(--border-glow);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .accordion-smoke-header {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: 26px 35px;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-smoke-header h2 {
-            font-family: 'Lilita One', sans-serif;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .accordion-smoke-header .glow-arrow {
-            width: 40px;
-            height: 40px;
-            background-color: #22222A;
-            border-radius: 50%;
-            color: var(--neon-orange);
-            font-size: 1.4rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 1px solid #333344;
-        }
-
-        .accordion-smoke-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 0 35px;
-        }
-
-        /* Accordion CSS Target Expanding Mechanism */
-        .accordion-smoke-node:target {
-            border-color: var(--neon-orange);
-            box-shadow: 0 0 30px rgba(255, 94, 0, 0.15);
-        }
-
-        .accordion-smoke-node:target .accordion-smoke-content {
-            max-height: 4500px;
-            padding-bottom: 40px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .accordion-smoke-node:target .glow-arrow {
-            transform: rotate(45deg);
-            background-color: var(--neon-orange);
-            color: var(--text-light);
-            box-shadow: 0 0 15px var(--neon-orange);
-        }
-
-        /* Grid Display Configurations */
-        .grill-card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 25px;
-            padding-top: 30px;
-        }
-
-        .grill-food-card {
-            background-color: var(--bg-card);
-            border-radius: 14px;
-            border: 1px solid var(--border-glow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .grill-food-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--border-glow);
-        }
-
-        .grill-card-details {
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            flex-grow: 1;
-        }
-
-        .grill-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .grill-title {
-            font-family: 'Lilita One', sans-serif;
-            font-size: 1.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
             line-height: 1.1;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        .grill-price {
-            color: var(--accent-yellow);
-            font-family: 'Lilita One', sans-serif;
-            font-size: 1.15rem;
-            white-space: nowrap;
-        }
-
-        .grill-desc {
-            color: var(--text-gray);
-            font-size: 0.88rem;
-            line-height: 1.4;
-        }
-
-        /* Embedded Promos Card style block */
-        .embedded-brush-promo {
-            background: linear-gradient(135deg, #1f110c 0%, #2b1105 100%);
-            border: 2px dashed var(--neon-orange);
-            border-radius: 14px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 140px;
-            gap: 20px;
-            align-items: center;
-            margin-top: 25px;
-        }
-
-        .embedded-brush-promo h3 {
-            font-family: 'Lilita One', sans-serif;
-            font-size: 1.8rem;
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
             color: var(--text-light);
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 25px;
         }
 
-        .embedded-brush-promo p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        .embedded-brush-promo img {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid var(--accent-yellow);
-        }
-
-        /* Tag-Pool Arrangement Elements */
-        .grill-pill-container {
+        .hero-actions {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding-top: 25px;
+            gap: 20px;
         }
 
-        .grill-pill {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-size: 0.9rem;
+        .btn-gold {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, #A88426, #D4AF37);
+            color: #000;
             font-weight: 700;
-            color: var(--text-light);
+            border: none;
+            padding: 14px 35px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        /* Sub Branch Node Selectors */
-        .sub-branch-wrapper {
+        .btn-outline {
+            font-family: 'Cinzel', serif;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 35px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .hero-right-media img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+        }
+
+        /* SECTION 2: SPECIAL DISHES 3-COLUMN FIXED GRID */
+        .section-divider {
+            border-top: 1px solid var(--border-gold);
+            max-width: 300px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .dishes-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 50px 100px;
+            text-align: center;
+        }
+
+        .section-header-tag {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .section-header-tag span {
+            color: var(--gold-primary);
+            font-style: italic;
+        }
+
+        .section-sub-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .dishes-three-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .dish-luxury-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            padding-top: 25px;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
-        .branch-grid-card {
-            background-color: var(--bg-card);
-            border-radius: 10px;
-            border: 1px solid var(--border-glow);
-        }
-
-        .branch-grid-header {
+        .dish-luxury-card img {
             width: 100%;
-            background: none;
-            border: none;
-            padding: 18px 24px;
-            text-align: left;
-            font-family: 'Lilita One', sans-serif;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        .dish-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            margin-bottom: 4px;
+        }
+
+        .dish-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .dish-price {
+            font-family: 'Cinzel', serif;
             font-size: 1.2rem;
-            text-transform: uppercase;
+            color: var(--gold-primary);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-order-btn {
+            font-family: 'Cinzel', serif;
+            background: transparent;
             color: var(--text-light);
+            border: 1px solid var(--border-gold);
+            padding: 8px 25px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
+            transition: all 0.3s;
         }
 
-        .branch-grid-header span { color: var(--neon-orange); }
-
-        .branch-grid-drawer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 24px;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .card-order-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
         }
 
-        .branch-grid-card:target .branch-grid-drawer {
-            max-height: 250px;
-            padding-bottom: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+        /* SECTION 3: DISCOVER OUR STORY SPLIT ROW */
+        .story-section {
+            background-color: rgba(22, 20, 18, 0.5);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
-        /* Atmosphere Mosaic Panels */
-        .atmosphere-mosaic {
+        .story-layout-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 50px;
+        }
+
+        .story-left-pane {
+            display: flex;
+            flex-direction: column;
             gap: 20px;
-            padding-top: 25px;
         }
 
-        .atmosphere-mosaic img {
+        .story-paragraph {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .story-right-pane img {
             width: 100%;
-            height: 300px;
+            height: 360px;
             object-fit: cover;
-            border-radius: 14px;
-            border: 1px solid var(--border-glow);
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* Footer Element */
-        footer {
-            background-color: #060608;
-            color: #555566;
+        /* SECTION 4: CUSTOMER REVIEWS & METADATA CHEVRONS */
+        .reviews-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 50px 120px;
             text-align: center;
-            padding: 50px 20px;
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-glow);
         }
 
-        @media (max-width: 900px) {
-            .hero-banner-container { grid-template-columns: 1fr; text-align: center; padding-bottom: 40px; }
-            .giant-headline { font-size: 3.8rem; }
-            .giant-headline span { font-size: 4.2rem; }
-            .hero-sub-p { margin: 0 auto 30px; }
-            .atmosphere-mosaic { grid-template-columns: 1fr; }
+        .review-center-box {
+            max-width: 800px;
+            margin: 40px auto 0;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-align: left;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .reviewer-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold-primary);
+            flex-shrink: 0;
+        }
+
+        .review-right-details h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .review-stars {
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* Meta tags pill layout section arranged underneath review layout */
+        .meta-tags-row {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .meta-node-chip {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-radius: 2px;
+        }
+
+        /* FOOTER STRUCTURE */
+        footer {
+            background-color: #090807;
+            border-top: 1px solid var(--border-light);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 950px) {
+            .hero-section, .dishes-three-grid, .story-layout-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-actions, .review-center-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-left-content { align-items: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SITE NAVIGATION LAYOUT -->
-    <div class="nav-header">
-        <div class="brand-logo">WoW <span>Burger</span></div>
-        <button class="order-neon-btn">Order Now</button>
+    <!-- LUXURY NAVIGATION HEADER -->
+    <div class="nav-container">
+        <div class="nav-logo">WoW <span>Burger</span></div>
+        <button class="reservation-btn">Reservation</button>
     </div>
 
-    <!-- CINEMATIC HERO DISPLAY -->
-    <div class="hero-banner-container">
-        <div class="hero-left-text">
-            <span class="script-badge">Hot & Delicious</span>
-            <h1 class="giant-headline">Burger<br><span>Combo</span></h1>
-            <p class="hero-sub-p">Savor the ultimate burger experience with our juicy, flame-grilled perfection crafted across Addis Ababa.</p>
-            <a href="#burgers-box" class="brush-order-trigger">Explore Menu</a>
+    <!-- ROW 1: HERO DISPLAY SECTION -->
+    <div class="hero-section">
+        <div class="hero-left-content">
+            <span class="hero-welcome">Welcome to</span>
+            <h1 class="hero-title">WoW Burger</h1>
+            <p class="hero-subtitle">Exquisite Dining Experience</p>
+            <div class="hero-actions">
+                <button class="btn-gold">View Menu</button>
+                <button class="btn-outline">Book a Table</button>
+            </div>
         </div>
         <div class="hero-right-media">
-            <img src="unnamed (5).jpg" class="hero-frame-img" alt="Wow Burger Combo Showcase Stack">
-            <div class="neon-gaze-ring">Hot &amp; Tasty</div>
+            <img src="unnamed (5).jpg" alt="Wow Burger Gourmet Hero Platter">
         </div>
     </div>
 
-    <!-- INTERACTIVE ACCORDION STREAM -->
-    <div class="menu-app-deck">
+    <div class="section-divider"></div>
 
-        <!-- CATEGORY: BURGERS BASKET -->
-        <div class="accordion-smoke-node" id="burgers-box">
-            <a href="#burgers-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>🍔 Flame-Grilled Burgers</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-card-grid">
-                    <div class="grill-food-card">
-                        <img src="unnamed (2).jpg" alt="Wow Special Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Wow Special Burger</span>
-                                <span class="grill-price">564.35 ETB</span>
-                            </div>
-                            <p class="grill-desc">Double Beef Patty, Double Cheese, Double Beef Mortadella, Fried egg, Mayonnaise, Tomato, Lettuce.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="unnamed (3).jpg" alt="Wow Double Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Wow Double Burger</span>
-                                <span class="grill-price">494.79 ETB</span>
-                            </div>
-                            <p class="grill-desc">Double Beef Patty, Double Cheese, Mayonnaise, Fresh Tomato, Crisp Salad Lettuce.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="unnamed (1).jpg" alt="Cheese Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Cheese Burger</span>
-                                <span class="grill-price">399.14 ETB</span>
-                            </div>
-                            <p class="grill-desc">Premium Beef Patty, Melted Cheese Slice, Creamy Mayonnaise, Tomato, Fresh Lettuce.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" alt="Beef Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Beef Burger</span>
-                                <span class="grill-price">346.96 ETB</span>
-                            </div>
-                            <p class="grill-desc">Classic grilled beef patty, signature house mayonnaise, sliced tomato, crisp leaf lettuce.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Featured Hot Banner embedded directly inside content block -->
-                <div class="embedded-brush-promo">
-                    <div>
-                        <h3>Fired Up: Mini Special Burger</h3>
-                        <p>Juicy beef layer, cheese slice, premium mortadella, egg layer, custom dressing spread for 433.92 ETB.</p>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=500&auto=format&fit=crop&q=60" alt="Mini Special Burger Profile">
-                </div>
-
-                <div class="grill-card-grid">
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=500&auto=format&fit=crop&q=60" alt="Chicken Special Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Special Burger</span>
-                                <span class="grill-price">599.14 ETB</span>
-                            </div>
-                            <p class="grill-desc">Marinated grilled chicken breast, premium cheese, sliced beef, fried egg, mayonnaise mix.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=60" alt="Delux Burger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Delux Burger</span>
-                                <span class="grill-price">506.96 ETB</span>
-                            </div>
-                            <p class="grill-desc">Double beef stack, custom melted cheese casing, caramelized onions, crisp iceberg base.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=60" alt="Cheesy Delight">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Cheesy Delight</span>
-                                <span class="grill-price">449.57 ETB</span>
-                            </div>
-                            <p class="grill-desc">Signature beef patty with an intensified, extra thick flowing layer of warm cheese.</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- ROW 2: SPECIAL DISHES TRIPLE CARD COLUMN GRID -->
+    <div class="dishes-section">
+        <h2 class="section-header-tag">Our <span>Special Dishes</span></h2>
+        <p class="section-sub-tag">Taste the Best of Our Cuisine</p>
+        
+        <div class="dishes-three-grid">
+            <!-- Card 1 -->
+            <div class="dish-luxury-card">
+                <img src="unnamed (2).jpg" alt="Wow Special Burger">
+                <h3 class="dish-title">Wow Special Burger</h3>
+                <p class="dish-caption">With Double Premium Mortadella &amp; Fried Egg</p>
+                <span class="dish-price">564.35 ETB</span>
+                <button class="card-order-btn">Order Now</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="dish-luxury-card">
+                <img src="unnamed (3).jpg" alt="Wow Double Burger">
+                <h3 class="dish-title">Wow Double Burger</h3>
+                <p class="dish-caption">Double Flame-Grilled Beef Patty &amp; Cheese</p>
+                <span class="dish-price">494.79 ETB</span>
+                <button class="card-order-btn">Order Now</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="dish-luxury-card">
+                <img src="unnamed (1).jpg" alt="Cheese Burger">
+                <h3 class="dish-title">Cheese Burger</h3>
+                <p class="dish-caption">Classic Melted Cheddar &amp; House Sauce</p>
+                <span class="dish-price">399.14 ETB</span>
+                <button class="card-order-btn">Order Now</button>
             </div>
         </div>
-
-        <!-- CATEGORY: WRAPS & SANDWICHES -->
-        <div class="accordion-smoke-node" id="wraps-box">
-            <a href="#wraps-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>🌯 Toasted Wraps & Subs</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-card-grid">
-                    <div class="grill-food-card">
-                        <img src="unnamed.jpg" alt="Chicken Wrap Big">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Wrap Big</span>
-                                <span class="grill-price">694.79 ETB</span>
-                            </div>
-                            <p class="grill-desc">Grilled Chicken pieces, Mozzarella Cheese, Beef Mortadella, Onion, Tomato, chili pepper served with crispy fries.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="images (14).jpg" alt="Chicken Wrap Medium">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Wrap Medium</span>
-                                <span class="grill-price">477.14 ETB</span>
-                            </div>
-                            <p class="grill-desc">Toasted tortilla roll stuffed with savory grilled chicken, cheese melt, onion, tomato, and peppers.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1626700051175-6518c4793f4f?w=500&auto=format&fit=crop&q=60" alt="Tuna Wrap Big">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Tuna Wrap Big</span>
-                                <span class="grill-price">599.14 ETB</span>
-                            </div>
-                            <p class="grill-desc">Gourmet flaked tuna recipe mixed with diced onions, tomatoes, and sliced chili hints.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=500&auto=format&fit=crop&q=60" alt="Chicken Zinger">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Zinger</span>
-                                <span class="grill-price">498.27 ETB</span>
-                            </div>
-                            <p class="grill-desc">Crispy golden seasoned fried chicken breast fillet layout topped with shredded lettuce.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CATEGORY: PIZZA & PLATTERS -->
-        <div class="accordion-smoke-node" id="pizzas-box">
-            <a href="#pizzas-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>🍕 Oven Pizzas & Platters</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-card-grid">
-                    <div class="grill-food-card">
-                        <img src="images (19).jpg" alt="House Supreme Pizza">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">House Supreme Pizza (Big)</span>
-                                <span class="grill-price">540.00 ETB</span>
-                            </div>
-                            <p class="grill-desc">Thick cheese matrix, sliced mortadella cuts, black olives, green bell peppers, finished with egg slices.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="images (16).jpg" alt="Classic Mixed Pizza">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Classic Mixed Pizza</span>
-                                <span class="grill-price">480.00 ETB</span>
-                            </div>
-                            <p class="grill-desc">Shredded seasoned chicken, salami layer, egg slices, green pepper strings, paired with green chili paste.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=500&auto=format&fit=crop&q=60" alt="Chicken Tenders">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Tenders (4 PCS)</span>
-                                <span class="grill-price">520.87 ETB</span>
-                            </div>
-                            <p class="grill-desc">Golden crisp breaded chicken strips served over hot fries with side dipping sauce cups.</p>
-                        </div>
-                    </div>
-                    <div class="grill-food-card">
-                        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?w=500&auto=format&fit=crop&q=60" alt="Loaded Fries">
-                        <div class="grill-card-details">
-                            <div class="grill-card-top">
-                                <span class="grill-title">Chicken Loaded Fries (Big)</span>
-                                <span class="grill-price">346.96 ETB</span>
-                            </div>
-                            <p class="grill-desc">Thick cut house fries topped with chopped crispy chicken bites and smooth cheddar cheese sauce.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- AMBIANCE SHOWCASE DRAWER -->
-        <div class="accordion-smoke-node" id="ambiance-box">
-            <a href="#ambiance-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>📸 Inside the Smokehouse</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="atmosphere-mosaic">
-                    <img src="images (18).jpg" alt="Wow Burger exterior at night">
-                    <img src="images (17).jpg" alt="Wow Burger outdoor patio">
-                </div>
-            </div>
-        </div>
-
-        <!-- LOWER METADATA DRAWER STACKS -->
-        <div class="accordion-smoke-node" id="service-box">
-            <a href="#service-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>⚙️ Service Options</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-pill-container">
-                    <span class="grill-pill">Outdoor seating</span>
-                    <span class="grill-pill">No-contact delivery</span>
-                    <span class="grill-pill">Delivery</span>
-                    <span class="grill-pill">Drive-through</span>
-                    <span class="grill-pill">Takeaway</span>
-                    <span class="grill-pill">Dine-in</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-smoke-node" id="popular-box">
-            <a href="#popular-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>🔥 Popular For</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-pill-container">
-                    <span class="grill-pill">Lunch Orders</span>
-                    <span class="grill-pill">Late Night Dinner</span>
-                    <span class="grill-pill">Solo Dining Hub</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-smoke-node" id="vibe-box">
-            <a href="#vibe-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>✨ Vibe & Guest Profiles</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="grill-pill-container">
-                    <span class="grill-pill">Casual Vibe</span>
-                    <span class="grill-pill">Cosy Corners</span>
-                    <span class="grill-pill">Trendy Music</span>
-                    <span class="grill-pill">Large Groups</span>
-                    <span class="grill-pill">Tourists Spot</span>
-                    <span class="grill-pill">University Students</span>
-                    <span class="grill-pill">Good for Kids Birthday</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- SUB BRANCH SELECTOR DECK -->
-        <div class="accordion-smoke-node" id="branches-box">
-            <a href="#branches-box" style="text-decoration:none;"><button class="accordion-smoke-header">
-                <h2>📍 Active Store Branches</h2>
-                <div class="glow-arrow">+</div>
-            </button></a>
-            <div class="accordion-smoke-content">
-                <div class="sub-branch-wrapper">
-                    <div class="branch-grid-card" id="br-piassa-hub">
-                        <a href="#br-piassa-hub" style="text-decoration:none;"><button class="branch-grid-header">Piassa Locations <span>▼</span></button></a>
-                        <div class="branch-grid-drawer">Arada Bldg front side &bull; Arada Bldg back side &bull; Near Taitu Hotel</div>
-                    </div>
-                    <div class="branch-grid-card" id="br-4kilo-hub">
-                        <a href="#br-4kilo-hub" style="text-decoration:none;"><button class="branch-grid-header">4 Kilo Hubs <span>▼</span></button></a>
-                        <div class="branch-grid-drawer">Near Berhanena Selam &bull; Infront of Tourist Hotel &bull; Infront of Menilik School</div>
-                    </div>
-                    <div class="branch-grid-card" id="br-bole-hub">
-                        <a href="#br-bole-hub" style="text-decoration:none;"><button class="branch-grid-header">Bole Flagships <span>▼</span></button></a>
-                        <div class="branch-grid-drawer">Infront of Millennium Hall &bull; Edna Mall Bldg counters</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <!-- SITE FOOTER -->
+    <!-- ROW 3: DISCOVER OUR STORY SECTION -->
+    <div class="story-section">
+        <div class="story-layout-grid">
+            <div class="story-left-pane">
+                <h2 class="section-header-tag">Discover <span>Our Story</span></h2>
+                <p class="section-sub-tag" style="margin-bottom: 10px;">Fine Dining &amp; Perfect Ambience</p>
+                <p class="story-paragraph">Experience the authentic flavors of our cuisine crafted with passion and served with elegance. Across our six flagships in Addis Ababa, we blend gourmet quality with welcoming luxury.</p>
+                <button class="btn-outline" style="align-self: flex-start; margin-top: 10px;">More About Us</button>
+            </div>
+            <div class="story-right-pane">
+                <img src="images (18).jpg" alt="WoW Burger Elegant Interior Ambience">
+            </div>
+        </div>
+    </div>
+
+    <!-- ROW 4: CUSTOMER REVIEWS & AMBIENCE CHIPS SECTION -->
+    <div class="reviews-section">
+        <h2 class="section-header-tag">Customer <span>Reviews</span></h2>
+        <p class="section-sub-tag">What Our Guests Say</p>
+
+        <div class="review-center-box">
+            <img src="images (17).jpg" class="reviewer-avatar" alt="Guest Profile Avatar">
+            <div class="review-right-details">
+                <h4>Emma R.</h4>
+                <p class="review-text">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
+                <div class="review-stars">★★★★★</div>
+            </div>
+        </div>
+
+        <!-- System Meta Category Profile Nodes grouped together below -->
+        <div class="meta-tags-row">
+            <span class="meta-node-chip">Casual Vibe</span>
+            <span class="meta-node-chip">Cosy Seating</span>
+            <span class="meta-node-chip">Trendy Crowd</span>
+            <span class="meta-node-chip">Group Dining</span>
+            <span class="meta-node-chip">Outdoor Seating</span>
+            <span class="meta-node-chip">Dine-In</span>
+        </div>
+    </div>
+
+    <!-- CLEAN FOOTER PANEL -->
     <footer>
-        <p>&copy; 2026 WoW Burger. All item menu prices strictly exclude standard local 15% VAT calculation metrics.</p>
+        <p>&copy; 2026 WoW Burger Brands. All listed menu item prices strictly exclude standard local 15% VAT calculation metrics.</p>
     </footer>
 
 </body>
