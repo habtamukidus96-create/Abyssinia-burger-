@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WoW Burger - Fine Dining Experience</title>
     
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#DC2626">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#DC2626">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght=0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght=400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=700;900&family=Playfair+Display:ital,wght=0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght=400;500;600&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -25,272 +24,307 @@
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
         }
+
+        /* Full Screen Native-feeling Splash Screen */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background: #0F0E0C;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 1;
+            transition: opacity 1.2s ease-out;
+        }
+        
+        @keyframes logoFadeIn { 
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        #splash-logo {
+            animation: logoFadeIn 1s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen w-full">
 
-    <div class="absolute top-0 left-1/4 w-[250px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
-    <div class="absolute top-[800px] right-0 w-[200px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
-
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0F0E0C]/95 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
-        <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none relative z-50" aria-label="Open Navigation Menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-
-        <div class="flex items-center justify-center py-1">
-            <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
-                WoW <span class="text-amber-500 not-italic tracking-wide text-2xl md:text-3xl ml-1 font-bold">Burger</span>
+    <div id="splash-screen">
+        <div id="splash-logo" class="flex flex-col text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
+                WoW <span class="text-amber-500 not-italic tracking-wide text-5xl md:text-7xl ml-2 font-bold block md:inline">Burger</span>
             </h1>
-        </div>
-        
-        <button onclick="toggleCart(true)" class="p-2 text-zinc-400 hover:text-amber-500 transition-colors focus:outline-none relative" aria-label="Open Shopping Basket Summary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-        </button>
-    </header>
-
-    <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
-        <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
-            <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
-            
-            <div class="mt-8 space-y-1 mb-8">
-                <h3 class="text-red-500 font-bold tracking-widest text-sm uppercase cinzel-font">Navigation</h3>
-                <div class="h-[1px] bg-red-500/30 w-16"></div>
-            </div>
-
-            <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
-                <a href="#" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Home</a>
-                <a href="#menu-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Menu</a>
-                <a href="#about-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Story</a>
-                <a href="#reviews-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reviews</a>
-                <a href="#branches-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Branches</a>
-                <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
-            </nav>
+            <span class="text-zinc-500 uppercase tracking-[0.4em] text-xs mt-2">Exquisite Experience.</span>
         </div>
     </div>
 
-    <div id="cart-modal" class="fixed inset-0 z-[60] flex justify-end bg-black/70 backdrop-blur-sm hidden">
-        <div class="w-full max-w-sm bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-6 shadow-2xl relative">
-            <div>
-                <button onclick="toggleCart(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
-                <div class="mt-8 space-y-1 mb-6">
-                    <h3 class="text-amber-500 font-bold tracking-widest text-sm uppercase cinzel-font">Your Order Basket</h3>
-                    <div class="h-[1px] bg-amber-500/30 w-16"></div>
-                </div>
-                <div id="cart-container" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1"></div>
-            </div>
-
-            <div id="cart-checkout-box" class="border-t border-zinc-900 pt-4 mt-4 space-y-4 hidden">
-                <div class="flex items-center justify-between text-sm tracking-wider uppercase font-medium">
-                    <span class="text-zinc-400">Total Bill Amount:</span>
-                    <span id="cart-total" class="text-amber-500 font-bold font-mono">0.00 ETB</span>
-                </div>
-                <button onclick="triggerOrderCheckout()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-black uppercase tracking-widest py-3 text-xs text-center transition-colors cinzel-font">
-                    Send Order Details (WhatsApp)
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <section class="pt-20 relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
-        <div class="absolute inset-0 z-0">
-            <img src="hero.jpg" decoding="async" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
-        </div>
-
-        <div class="relative z-10 max-w-2xl mx-auto space-y-4">
-            <span class="text-red-500 uppercase tracking-[0.3em] text-[11px] block font-medium">Welcome to</span>
-            <h2 class="text-5xl md:text-7xl serif-font font-normal text-[#F5F5F0] tracking-tight leading-tight">
-                WoW Burger <br><span class="italic text-amber-500">Exquisite Experience.</span>
-            </h2>
-            <div class="pt-2">
-                <a href="#menu-section" class="inline-block border border-red-500/40 hover:border-red-500 text-red-500 px-6 py-3 text-xs uppercase tracking-widest transition-all cinzel-font">
-                    Explore Our Menu
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900 w-full">
-        <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
-            <div class="h-[1px] bg-red-500/30 flex-1"></div>
-            <span class="text-red-500 uppercase tracking-widest text-[11px]">Discover</span>
-            <div class="h-[1px] bg-red-500/30 flex-1"></div>
-        </div>
-        <h3 class="serif-font text-3xl font-normal tracking-wide">Our Story</h3>
-        <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light max-w-2xl mx-auto">
-            Experience the authentic flavors of our cuisine crafted with passion and served with elegance. Across our six flagships in Addis Ababa, we blend gourmet quality with welcoming luxury, ensuring fine dining and the perfect ambience.
-        </p>
-    </section>
-
-    <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900 w-full">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-8 space-y-2">
-                <h3 id="category-heading" class="serif-font text-3xl font-normal text-stone-100 tracking-wide">Our Burgers Menu</h3>
-                <div class="flex flex-wrap justify-center gap-2 pt-2">
-                    <button id="tab-burgers" onclick="switchCategory('burgers')" class="px-3 py-1.5 text-xs tracking-wider border border-red-500 text-red-500 bg-red-500/5 transition-all cinzel-font">Burgers</button>
-                    <button id="tab-wraps" onclick="switchCategory('wraps')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Wraps &amp; Sandwiches</button>
-                    <button id="tab-drinks" onclick="switchCategory('drinks')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Cold &amp; Hot Drinks</button>
-                </div>
-            </div>
-
-            <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
-        </div>
-    </section>
-
-    <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C] w-full">
-        <div class="max-w-5xl mx-auto space-y-8">
-            <div class="text-center space-y-1">
-                <span class="text-red-500 uppercase tracking-widest text-[10px]">The Vibe</span>
-                <h3 class="serif-font text-3xl font-normal tracking-wide">Fine Dining &amp; Perfect Ambience</h3>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb1.jpg" decoding="async" width="400" height="300" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
-                    <img src="amb2.jpg" decoding="async" width="400" height="300" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
-                    <img src="cozyinterior.jpg" decoding="async" width="400" height="300" alt="Warm cozy interior layout lighting setup of the burger dining room" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5 w-full">
-        <div class="max-w-4xl mx-auto text-center space-y-8">
-            <div class="space-y-1">
-                <span class="text-red-500 uppercase tracking-widest text-[10px]">Customer Reviews</span>
-                <h3 class="serif-font text-3xl font-normal tracking-wide">What Our Guests Say</h3>
-            </div>
-            
-            <div class="bg-[#161412] border border-red-500/20 p-6 md:p-8 rounded-sm max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-6 text-left shadow-xl">
-                <div class="space-y-2 w-full">
-                    <h4 class="serif-font text-lg text-red-200 font-medium">Emma R.</h4>
-                    <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
-                    <div class="text-red-500 text-xs tracking-wider">★★★★★</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C] w-full">
-        <div class="max-w-5xl mx-auto space-y-8">
-            <div class="text-center space-y-1">
-                <span class="text-red-500 uppercase tracking-widest text-[10px]">Our Footprint</span>
-                <h3 class="serif-font text-3xl font-normal tracking-wide">Addis Ababa Luxury Outlets</h3>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Bole Medhanialem</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Premium Lounge &amp; Dine-in</p>
-                </div>
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Sarbet Ground</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Cozy Indoor Layout &amp; Garden Patio</p>
-                </div>
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">CMC Square</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Spacious Family Seating Matrix</p>
-                </div>
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Lebu Hub</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Dynamic Modern Express Desk</p>
-                </div>
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Megenagna Outpost</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Central Transit Gourmet Spot</p>
-                </div>
-                <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
-                    <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Piassa Heritage</h4>
-                    <p class="text-[11px] text-zinc-500 mt-1">Classic Architecture Bistro Room</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20 w-full">
-        <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
-            <div class="text-center space-y-1">
-                <h3 class="serif-font text-2xl text-red-500 font-normal tracking-wide">Secure Private Booking</h3>
-                <p class="text-[11px] text-zinc-400 uppercase tracking-widest">WoW Burger Lounge Experience</p>
-            </div>
-            <form onsubmit="handleFooterReservation(event)" class="space-y-4 text-xs">
-                <div>
-                    <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Full Name</label>
-                    <input id="res-name" type="text" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Date</label>
-                        <input id="res-date" type="date" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
-                    </div>
-                    <div>
-                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Time Slot</label>
-                        <input id="res-time" type="time" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
-                    </div>
-                </div>
-                <div>
-                    <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Select Branch Location</label>
-                    <select id="res-branch" class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
-                        <option>Bole Medhanialem Outlet</option>
-                        <option>Sarbet Ground Outlet</option>
-                        <option>CMC Square Outlet</option>
-                        <option>Lebu Hub Outlet</option>
-                        <option>Megenagna Outpost</option>
-                        <option>Piassa Heritage Room</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest py-3 text-center transition-colors cinzel-font">
-                    Confirm Seating Request (WhatsApp)
-                </button>
-            </form>
-            <div class="text-center pt-2 text-[10px] text-zinc-500 border-t border-zinc-900">
-                Direct Desk: <span class="text-zinc-300 font-mono">0912643473</span> | Location: Addis Ababa, Ethiopia
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6 w-full">
-        <div class="space-y-4">
-            <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
-            
-            <div class="flex justify-center items-center space-x-6 text-zinc-500">
-                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Facebook Link Placeholder">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
-                </a>
-                <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Instagram Link Placeholder">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
-                </a>
-            </div>
-            <p class="text-[10px] text-zinc-600 tracking-wide">&copy; 2026 WoW Burger Luxury. Crafted for fine hospitality.</p>
-        </div>
-    </footer>
-
-    <div class="fixed bottom-4 left-4 z-40">
-        <button onclick="toggleAi(true)" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-2xl focus:outline-none flex items-center justify-center transition-transform active:scale-95" aria-label="Open AI Assistant Chatbot Box">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        </button>
+    <div id="app-content" class="hidden pt-20">
         
-        <div id="ai-chat-box" class="fixed bottom-16 left-4 w-72 bg-[#161412] border border-zinc-800 rounded-sm shadow-2xl flex flex-col hidden overflow-hidden">
-            <div class="bg-zinc-900 border-b border-zinc-800 px-4 py-2.5 flex items-center justify-between">
-                <span class="text-xs font-bold text-red-500 uppercase tracking-widest cinzel-font">AI Guest Desk</span>
-                <button onclick="toggleAi(false)" class="text-zinc-500 hover:text-white text-sm focus:outline-none">&times;</button>
+        <div class="absolute top-0 left-1/4 w-[250px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute top-[800px] right-0 w-[200px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+        <header class="fixed top-0 left-0 right-0 z-50 bg-[#0F0E0C]/95 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
+            <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none relative z-50" aria-label="Open Navigation Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <div class="flex items-center justify-center py-1">
+                <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
+                    WoW <span class="text-amber-500 not-italic tracking-wide text-2xl md:text-3xl ml-1 font-bold">Burger</span>
+                </h1>
             </div>
-            <div id="ai-messages-stream" class="p-3 h-48 overflow-y-auto space-y-2.5 text-[11px] leading-relaxed flex flex-col">
-                <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm">Greetings! Ask me anything about our menu specialties, pricing metrics, or flagship locations in Addis Ababa!</div>
+            
+            <button onclick="toggleCart(true)" class="p-2 text-zinc-400 hover:text-amber-500 transition-colors focus:outline-none relative" aria-label="Open Shopping Basket Summary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+            </button>
+        </header>
+
+        <div id="hamburger-modal" class="fixed inset-0 z-[60] flex bg-black/70 backdrop-blur-sm hidden">
+            <div class="w-full max-w-xs bg-[#0F0E0C] border-r border-zinc-900 h-full flex flex-col p-6 shadow-2xl relative">
+                <button onclick="toggleHamburger(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+                
+                <div class="mt-8 space-y-1 mb-8">
+                    <h3 class="text-red-500 font-bold tracking-widest text-sm uppercase cinzel-font">Navigation</h3>
+                    <div class="h-[1px] bg-red-500/30 w-16"></div>
+                </div>
+
+                <nav class="flex flex-col space-y-4 text-sm font-medium tracking-wider uppercase">
+                    <a href="#" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Home</a>
+                    <a href="#menu-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Menu</a>
+                    <a href="#about-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Story</a>
+                    <a href="#reviews-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reviews</a>
+                    <a href="#branches-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Our Branches</a>
+                    <a href="#booking-section" onclick="toggleHamburger(false)" class="text-zinc-300 hover:text-red-500 transition-colors py-2 border-b border-zinc-900/40">Reservations</a>
+                </nav>
             </div>
-            <form onsubmit="handleAiChat(event)" class="border-t border-zinc-800 flex">
-                <input id="ai-input-field" type="text" placeholder="Type message..." autocomplete="off" class="w-full bg-[#0F0E0C] text-xs px-3 py-2 text-[#F5F5F0] focus:outline-none">
-                <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 text-xs font-bold uppercase tracking-wider text-white transition-colors">Send</button>
-            </form>
         </div>
+
+        <div id="cart-modal" class="fixed inset-0 z-[60] flex justify-end bg-black/70 backdrop-blur-sm hidden">
+            <div class="w-full max-w-sm bg-[#0F0E0C] border-l border-zinc-900 h-full flex flex-col justify-between p-6 shadow-2xl relative">
+                <div>
+                    <button onclick="toggleCart(false)" class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+                    <div class="mt-8 space-y-1 mb-6">
+                        <h3 class="text-amber-500 font-bold tracking-widest text-sm uppercase cinzel-font">Your Order Basket</h3>
+                        <div class="h-[1px] bg-amber-500/30 w-16"></div>
+                    </div>
+                    <div id="cart-container" class="space-y-3 max-h-[60vh] overflow-y-auto pr-1"></div>
+                </div>
+
+                <div id="cart-checkout-box" class="border-t border-zinc-900 pt-4 mt-4 space-y-4 hidden">
+                    <div class="flex items-center justify-between text-sm tracking-wider uppercase font-medium">
+                        <span class="text-zinc-400">Total Bill Amount:</span>
+                        <span id="cart-total" class="text-amber-500 font-bold font-mono">0.00 ETB</span>
+                    </div>
+                    <button onclick="triggerOrderCheckout()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-black uppercase tracking-widest py-3 text-xs text-center transition-colors cinzel-font">
+                        Send Order Details (WhatsApp)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
+            <div class="absolute inset-0 z-0">
+                <img src="hero.jpg" decoding="async" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
+            </div>
+
+            <div class="relative z-10 max-w-2xl mx-auto space-y-4">
+                <span class="text-red-500 uppercase tracking-[0.3em] text-[11px] block font-medium">Welcome to</span>
+                <h2 class="text-5xl md:text-7xl serif-font font-normal text-[#F5F5F0] tracking-tight leading-tight">
+                    WoW Burger <br><span class="italic text-amber-500">Exquisite Experience.</span>
+                </h2>
+                <div class="pt-2">
+                    <a href="#menu-section" class="inline-block border border-red-500/40 hover:border-red-500 text-red-500 px-6 py-3 text-xs uppercase tracking-widest transition-all cinzel-font">
+                        Explore Our Menu
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900 w-full">
+            <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
+                <div class="h-[1px] bg-red-500/30 flex-1"></div>
+                <span class="text-red-500 uppercase tracking-widest text-[11px]">Discover</span>
+                <div class="h-[1px] bg-red-500/30 flex-1"></div>
+            </div>
+            <h3 class="serif-font text-3xl font-normal tracking-wide">Our Story</h3>
+            <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light max-w-2xl mx-auto">
+                Experience the authentic flavors of our cuisine crafted with passion and served with elegance. Across our six flagships in Addis Ababa, we blend gourmet quality with welcoming luxury, ensuring fine dining and the perfect ambience.
+            </p>
+        </section>
+
+        <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900 w-full">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-8 space-y-2">
+                    <h3 id="category-heading" class="serif-font text-3xl font-normal text-stone-100 tracking-wide">Our Burgers Menu</h3>
+                    <div class="flex flex-wrap justify-center gap-2 pt-2">
+                        <button id="tab-burgers" onclick="switchCategory('burgers')" class="px-3 py-1.5 text-xs tracking-wider border border-red-500 text-red-500 bg-red-500/5 transition-all cinzel-font">Burgers</button>
+                        <button id="tab-wraps" onclick="switchCategory('wraps')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Wraps &amp; Sandwiches</button>
+                        <button id="tab-drinks" onclick="switchCategory('drinks')" class="px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font">Cold &amp; Hot Drinks</button>
+                    </div>
+                </div>
+
+                <div id="food-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C] w-full">
+            <div class="max-w-5xl mx-auto space-y-8">
+                <div class="text-center space-y-1">
+                    <span class="text-red-500 uppercase tracking-widest text-[10px]">The Vibe</span>
+                    <h3 class="serif-font text-3xl font-normal tracking-wide">Fine Dining &amp; Perfect Ambience</h3>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
+                        <img src="amb1.jpg" decoding="async" width="400" height="300" alt="WoW Burger Elegant Exterior Ambient Presentation" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl">
+                        <img src="amb2.jpg" decoding="async" width="400" height="300" alt="Dining Room Atmosphere Detail Showcase" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="h-48 md:h-64 overflow-hidden rounded-sm border border-zinc-900 shadow-xl col-span-2 md:col-span-1">
+                        <img src="cozyinterior.jpg" decoding="async" width="400" height="300" alt="Warm cozy interior layout" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5 w-full">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="space-y-1">
+                    <span class="text-red-500 uppercase tracking-widest text-[10px]">Customer Reviews</span>
+                    <h3 class="serif-font text-3xl font-normal tracking-wide">What Our Guests Say</h3>
+                </div>
+                
+                <div class="bg-[#161412] border border-red-500/20 p-6 md:p-8 rounded-sm max-w-2xl mx-auto flex flex-col md:flex-row items-center gap-6 text-left shadow-xl">
+                    <div class="space-y-2 w-full">
+                        <h4 class="serif-font text-lg text-red-200 font-medium">Emma R.</h4>
+                        <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light">"Absolutely fantastic! The food was delicious and the atmosphere was perfect. Highly recommend the special burger options!"</p>
+                        <div class="text-red-500 text-xs tracking-wider">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C] w-full">
+            <div class="max-w-5xl mx-auto space-y-8">
+                <div class="text-center space-y-1">
+                    <span class="text-red-500 uppercase tracking-widest text-[10px]">Our Footprint</span>
+                    <h3 class="serif-font text-3xl font-normal tracking-wide">Addis Ababa Luxury Outlets</h3>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Bole Medhanialem</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Premium Lounge &amp; Dine-in</p>
+                    </div>
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Sarbet Ground</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Cozy Indoor Layout &amp; Garden Patio</p>
+                    </div>
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">CMC Square</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Spacious Family Seating Matrix</p>
+                    </div>
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Lebu Hub</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Dynamic Modern Express Desk</p>
+                    </div>
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Megenagna Outpost</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Central Transit Gourmet Spot</p>
+                    </div>
+                    <div class="p-4 border border-zinc-900 bg-[#161412] rounded-sm">
+                        <h4 class="serif-font font-bold text-red-400 text-sm tracking-wide">Piassa Heritage</h4>
+                        <p class="text-[11px] text-zinc-500 mt-1">Classic Architecture Bistro Room</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20 w-full">
+            <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
+                <div class="text-center space-y-1">
+                    <h3 class="serif-font text-2xl text-red-500 font-normal tracking-wide">Secure Private Booking</h3>
+                    <p class="text-[11px] text-zinc-400 uppercase tracking-widest">WoW Burger Lounge Experience</p>
+                </div>
+                <form onsubmit="handleFooterReservation(event)" class="space-y-4 text-xs">
+                    <div>
+                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Full Name</label>
+                        <input id="res-name" type="text" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Date</label>
+                            <input id="res-date" type="date" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Time Slot</label>
+                            <input id="res-time" type="time" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Select Branch Location</label>
+                        <select id="res-branch" class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                            <option>Bole Medhanialem Outlet</option>
+                            <option>Sarbet Ground Outlet</option>
+                            <option>CMC Square Outlet</option>
+                            <option>Lebu Hub Outlet</option>
+                            <option>Megenagna Outpost</option>
+                            <option>Piassa Heritage Room</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest py-3 text-center transition-colors cinzel-font">
+                        Confirm Seating Request (WhatsApp)
+                    </button>
+                </form>
+                <div class="text-center pt-2 text-[10px] text-zinc-500 border-t border-zinc-900">
+                    Direct Desk: <span class="text-zinc-300 font-mono">0912643473</span> | Location: Addis Ababa, Ethiopia
+                </div>
+            </div>
+        </section>
+
+        <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6 w-full">
+            <div class="space-y-4">
+                <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
+                
+                <div class="flex justify-center items-center space-x-6 text-zinc-500">
+                    <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Facebook Link Placeholder">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
+                    </a>
+                    <a href="#" onclick="event.preventDefault();" class="hover:text-red-500 transition-colors" aria-label="Instagram Link Placeholder">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/></svg>
+                    </a>
+                </div>
+                <p class="text-[10px] text-zinc-600 tracking-wide">&copy; 2026 WoW Burger Luxury. Crafted for fine hospitality.</p>
+            </div>
+        </footer>
+
+        <div class="fixed bottom-4 left-4 z-40">
+            <button onclick="toggleAi(true)" class="bg-red-600 hover:bg-red-700 text-white p-3 rounded-full shadow-2xl focus:outline-none flex items-center justify-center transition-transform active:scale-95" aria-label="Open AI Assistant Chatbot Box">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </button>
+            
+            <div id="ai-chat-box" class="fixed bottom-16 left-4 w-72 bg-[#161412] border border-zinc-800 rounded-sm shadow-2xl flex flex-col hidden overflow-hidden">
+                <div class="bg-zinc-900 border-b border-zinc-800 px-4 py-2.5 flex items-center justify-between">
+                    <span class="text-xs font-bold text-red-500 uppercase tracking-widest cinzel-font">AI Guest Desk</span>
+                    <button onclick="toggleAi(false)" class="text-zinc-500 hover:text-white text-sm focus:outline-none">&times;</button>
+                </div>
+                <div id="ai-messages-stream" class="p-3 h-48 overflow-y-auto space-y-2.5 text-[11px] leading-relaxed flex flex-col">
+                    <div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm">Greetings! Ask me anything about our menu specialties, pricing metrics, or flagship locations in Addis Ababa!</div>
+                </div>
+                <form onsubmit="handleAiChat(event)" class="border-t border-zinc-800 flex">
+                    <input id="ai-input-field" type="text" placeholder="Type message..." autocomplete="off" class="w-full bg-[#0F0E0C] text-xs px-3 py-2 text-[#F5F5F0] focus:outline-none">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 text-xs font-bold uppercase tracking-wider text-white transition-colors">Send</button>
+                </form>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -322,7 +356,21 @@
         let cart = [];
         let activeCategory = 'burgers';
 
-        window.onload = () => { renderMenuGrid(); };
+        // ENGINE APP LOADING ROUTINE (Splash screen animation timeline control)
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            const content = document.getElementById('app-content');
+            
+            renderMenuGrid();
+
+            setTimeout(() => {
+                splash.style.opacity = '0';
+                content.classList.remove('hidden');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 1200);
+            }, 2000); 
+        });
 
         function renderMenuGrid() {
             const container = document.getElementById('food-grid');
@@ -353,8 +401,7 @@
 
         function switchCategory(cat) {
             activeCategory = cat;
-            const tabs = ['burgers', 'wraps', 'drinks'];
-            tabs.forEach(t => {
+            ['burgers', 'wraps', 'drinks'].forEach(t => {
                 const element = document.getElementById(`tab-${t}`);
                 if (element) {
                     element.className = "px-3 py-1.5 text-xs tracking-wider border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-all cinzel-font";
@@ -507,15 +554,6 @@
                 stream.innerHTML += `<div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">${botAnswer}</div>`;
                 stream.scrollTop = stream.scrollHeight;
             }, 600);
-        }
-
-        // PWA SERVICE WORKER AUTOMATED REGISTER ENGINE
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Live and Registered Successfully!', reg))
-                    .catch(err => console.error('Service Worker Activation Failed:', err));
-            });
         }
     </script>
 </body>
