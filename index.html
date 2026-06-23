@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WoW Burger - Fine Dining Experience</title>
     <!-- Tailwind CSS for styling via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,26 +19,28 @@
         img { content-visibility: auto; }
     </style>
 </head>
-<body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen">
+<body class="bg-[#0F0E0C] text-[#F5F5F0] selection:bg-red-600 selection:text-white relative overflow-x-hidden min-h-screen w-full">
 
     <!-- Ambient glowing backdrops -->
-    <div class="absolute top-0 left-1/4 w-[300px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-[800px] right-0 w-[250px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/4 w-[250px] md:w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="absolute top-[800px] right-0 w-[200px] md:w-[400px] h-[400px] bg-red-600/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
     <!-- NAVBAR HEADER -->
-    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between">
+    <header class="sticky top-0 z-40 bg-[#0F0E0C]/90 backdrop-blur-md border-b border-zinc-900 px-4 md:px-16 py-3 flex items-center justify-between w-full">
         <button onclick="toggleHamburger(true)" class="p-2 text-zinc-400 hover:text-red-500 transition-colors focus:outline-none" aria-label="Open Navigation Menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
 
-        <!-- Brand Name Only (Removed Subtext for Slimmer Layout) -->
-        <div class="flex flex-col text-center pr-8 py-1">
-            <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic">WoW <span class="text-amber-500 not-italic tracking-widest text-xl md:text-2xl block md:inline font-bold">Burger</span></h1>
+        <!-- Brand Name Fixed Side-by-Side Configuration -->
+        <div class="flex items-center justify-center py-1">
+            <h1 class="text-2xl md:text-3xl font-black tracking-tight text-red-600 uppercase cinzel-font italic whitespace-nowrap">
+                WoW <span class="text-amber-500 not-italic tracking-wide text-2xl md:text-3xl ml-1 font-bold">Burger</span>
+            </h1>
         </div>
         
-        <!-- Empty utility placeholder to preserve flex layout balance after removal -->
+        <!-- Empty layout balancer wrapper -->
         <div class="w-10"></div>
     </header>
 
@@ -64,7 +66,7 @@
     </div>
 
     <!-- HERO SECTION -->
-    <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden">
+    <section class="relative h-[65vh] flex items-center justify-center px-4 text-center overflow-hidden w-full">
         <div class="absolute inset-0 z-0">
             <img src="hero.jpg" width="1200" height="650" alt="Wow Burger Gourmet Hero Platter" class="w-full h-full object-cover opacity-25">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-[#0F0E0C]/40 to-[#0F0E0C]"></div>
@@ -84,7 +86,7 @@
     </section>
 
     <!-- ABOUT US SECTION -->
-    <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900">
+    <section id="about-section" class="py-16 px-4 max-w-4xl mx-auto text-center space-y-4 border-t border-zinc-900 w-full">
         <div class="flex items-center justify-center space-x-4 max-w-xs mx-auto">
             <div class="h-[1px] bg-red-500/30 flex-1"></div>
             <span class="text-red-500 uppercase tracking-widest text-[11px]">Discover</span>
@@ -97,7 +99,7 @@
     </section>
 
     <!-- DYNAMIC INTERACTIVE MENU SECTION -->
-    <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900">
+    <section id="menu-section" class="py-12 px-4 md:px-16 bg-zinc-900/10 border-t border-zinc-900 w-full">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-8 space-y-2">
                 <h3 id="category-heading" class="serif-font text-3xl font-normal text-stone-100 tracking-wide">Our Burgers Menu</h3>
@@ -116,7 +118,7 @@
     </section>
 
     <!-- RESTAURANT GALLERY SECTION (AMBIENT OUTLETS) -->
-    <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C]">
+    <section class="py-16 px-4 md:px-16 border-t border-zinc-900 bg-[#0F0E0C] w-full">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
                 <span class="text-red-500 uppercase tracking-widest text-[10px]">The Vibe</span>
@@ -138,7 +140,7 @@
     </section>
 
     <!-- CUSTOMER REVIEWS SECTION -->
-    <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5">
+    <section id="reviews-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/5 w-full">
         <div class="max-w-4xl mx-auto text-center space-y-8">
             <div class="space-y-1">
                 <span class="text-red-500 uppercase tracking-widest text-[10px]">Customer Reviews</span>
@@ -156,7 +158,7 @@
     </section>
 
     <!-- REGIONAL BRANCHES SECTION -->
-    <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C]">
+    <section id="branches-section" class="py-16 px-4 border-t border-zinc-900 bg-[#0F0E0C] w-full">
         <div class="max-w-5xl mx-auto space-y-8">
             <div class="text-center space-y-1">
                 <span class="text-red-500 uppercase tracking-widest text-[10px]">Our Footprint</span>
@@ -192,33 +194,30 @@
     </section>
 
     <!-- RESERVATION & BOOKING FORM -->
-    <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20">
+    <section id="booking-section" class="py-16 px-4 border-t border-zinc-900 bg-zinc-900/20 w-full">
         <div class="w-full max-w-md mx-auto bg-[#0F0E0C] border border-zinc-900 p-6 md:p-8 rounded-sm space-y-6 shadow-xl">
             <div class="text-center space-y-1">
                 <h3 class="serif-font text-2xl text-red-500 font-normal tracking-wide">Secure Private Booking</h3>
                 <p class="text-[11px] text-zinc-400 uppercase tracking-widest">WoW Burger Lounge Experience</p>
             </div>
-            <div id="footer-reservation-success" class="hidden text-center py-4 bg-emerald-950/20 border border-emerald-900/50 rounded-sm">
-                <span class="text-emerald-400 text-xs font-bold block">✓ Table Reservation Allocated Successfully!</span>
-            </div>
             <form onsubmit="handleFooterReservation(event)" class="space-y-4 text-xs">
                 <div>
                     <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Full Name</label>
-                    <input type="text" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                    <input id="res-name" type="text" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Date</label>
-                        <input type="date" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                        <input id="res-date" type="date" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
                     </div>
                     <div>
                         <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Time Slot</label>
-                        <input type="time" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                        <input id="res-time" type="time" required class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
                     </div>
                 </div>
                 <div>
                     <label class="text-zinc-400 tracking-wider block mb-1 uppercase font-medium">Select Branch Location</label>
-                    <select class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
+                    <select id="res-branch" class="w-full bg-zinc-900 border border-zinc-800 p-2.5 text-[#F5F5F0] focus:outline-none focus:border-red-500 transition-colors">
                         <option>Bole Medhanialem Outlet</option>
                         <option>Sarbet Ground Outlet</option>
                         <option>CMC Square Outlet</option>
@@ -228,17 +227,17 @@
                     </select>
                 </div>
                 <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-widest py-3 text-center transition-colors cinzel-font">
-                    Confirm Seating Request
+                    Confirm Seating Request (WhatsApp)
                 </button>
             </form>
             <div class="text-center pt-2 text-[10px] text-zinc-500 border-t border-zinc-900">
-                Direct Desk: <span class="text-zinc-300 font-mono">+251 922 785 816</span> | Location: Addis Ababa, Ethiopia
+                Direct Desk: <span class="text-zinc-300 font-mono">0912643473</span> | Location: Addis Ababa, Ethiopia
             </div>
         </div>
     </section>
 
     <!-- FOOTER WITH SOCIAL MEDIA ICONS -->
-    <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6">
+    <footer class="border-t border-zinc-900 bg-[#0F0E0C] py-12 px-4 text-center space-y-6 w-full">
         <div class="space-y-4">
             <p class="tracking-widest uppercase text-zinc-400 font-medium serif-font text-base">WoW Burger</p>
             
@@ -275,7 +274,7 @@
                     <span id="cart-total" class="text-lg text-red-500 font-bold">0.00 ETB</span>
                 </div>
                 <button onclick="triggerOrderCheckout()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 text-center uppercase tracking-wider text-xs cinzel-font">
-                    Send Order to Kitchen
+                    Send Order to Kitchen (WhatsApp)
                 </button>
             </div>
         </div>
@@ -313,8 +312,9 @@
 
     <!-- APP ENGINE WORKER JAVASCRIPT -->
     <script>
+        const OWNER_PHONE = "251912643473"; // Internationally styled format for WhatsApp routing links
+
         const MENU_DATA = [
-            // Burgers
             { id: 'burg-1', name: 'Wow Special Burger', category: 'burgers', price: 564.00, desc: 'Our signature gourmet build premium special blend.', img: 'specialburger.jpg' },
             { id: 'burg-2', name: 'Wow Double Burger', category: 'burgers', price: 494.00, desc: 'Double flame-grilled beef patty with extra melted cheese layers.', img: 'doubleburger.jpg' },
             { id: 'burg-3', name: 'Cheese Burger', category: 'burgers', price: 399.00, desc: 'Classic melted cheddar layered over a juicy prime patty.', img: 'cheeseburger.jpg' },
@@ -323,14 +323,12 @@
             { id: 'burg-6', name: 'Chicken Burger', category: 'burgers', price: 538.00, desc: 'Crispy seasoned premium chicken breast fillet on a toasted bun.', img: 'chickenburger.jpg' },
             { id: 'burg-7', name: 'Chicken Special Burger', category: 'burgers', price: 599.00, desc: 'Luxury loaded chicken build layered with our unique house sauces.', img: 'chickenspecialburger.jpg' },
             
-            // Wraps and Sandwiches
             { id: 'wrap-1', name: 'Chicken Wrap Big', category: 'wraps', price: 694.00, desc: 'Large premium grilled chicken pieces bundled in a fresh warm tortilla.', img: 'chickenwrapbig.jpg' },
             { id: 'wrap-2', name: 'Chicken Wrap Medium', category: 'wraps', price: 477.00, desc: 'Perfectly portioned wrapped tender chicken strips with fresh greens.', img: 'chickenwrapmedium.jpg' },
             { id: 'wrap-3', name: 'Fish Wrap', category: 'wraps', price: 390.00, desc: 'Crisp golden seasoned fish fillet wrapped with house tartar blend.', img: 'Fishwrap.jpg' },
             { id: 'wrap-4', name: 'Tuna Wrap', category: 'wraps', price: 477.00, desc: 'Premium flaked tuna combined beautifully with fresh garden herbs.', img: 'tunawrap.jpg' },
             { id: 'wrap-5', name: 'Vegetable Wrap', category: 'wraps', price: 299.00, desc: 'A refreshing medley of crisp locally sourced garden vegetables.', img: 'vegetablewrap.jpg' },
             
-            // Cold and Hot Drinks
             { id: 'drk-1', name: 'Softdrink', category: 'drinks', price: 60.00, desc: 'Chilled refreshing classic fountain drink selection.', img: 'glasssoftdrink.jpg' },
             { id: 'drk-2', name: 'Plastic Bottled Soft Drinks', category: 'drinks', price: 80.00, desc: 'Convenient sealed individual bottled carbonated choices.', img: 'plasticsoftdrink.jpg' },
             { id: 'drk-3', name: 'Spring Water', category: 'drinks', price: 50.00, desc: 'Pure premium refreshing natural mountain spring water.', img: 'water.jpg' },
@@ -347,6 +345,7 @@
 
         function renderMenuGrid() {
             const container = document.getElementById('food-grid');
+            if(!container) return;
             container.innerHTML = '';
             const currentFilteredItems = MENU_DATA.filter(item => item.category === activeCategory);
             
@@ -373,7 +372,6 @@
 
         function switchCategory(cat) {
             activeCategory = cat;
-            
             const tabs = ['burgers', 'wraps', 'drinks'];
             tabs.forEach(t => {
                 const element = document.getElementById(`tab-${t}`);
@@ -424,6 +422,7 @@
         function renderCartUI() {
             const stream = document.getElementById('cart-container');
             const footerBox = document.getElementById('cart-checkout-box');
+            if(!stream || !footerBox) return;
             stream.innerHTML = '';
 
             if (cart.length === 0) {
@@ -454,19 +453,48 @@
             document.getElementById('cart-total').innerText = `${total.toFixed(2)} ETB`;
         }
 
+        // OPTION B: DISPATCH FOOD ORDERS LIVE OVER WHATSAPP
         function triggerOrderCheckout() {
-            alert('Your order has been transmitted directly to the kitchen team. Thank you!');
+            if (cart.length === 0) return;
+            
+            let message = `🍔 *NEW ORDER FROM WOW BURGER WEB* 🍔\n\n`;
+            let total = 0;
+            
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                message += `• *${item.qty}x* ${item.name} (${subtotal.toFixed(2)} ETB)\n`;
+            });
+            
+            message += `\n💵 *Total Bill Amount:* ${total.toFixed(2)} ETB`;
+            message += `\n\n_Please reply to confirm availability and start kitchen prep!_`;
+            
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${OWNER_PHONE}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
             cart = [];
             toggleCart(false);
         }
 
+        // OPTION B: DISPATCH RESERVATIONS LIVE OVER WHATSAPP
         function handleFooterReservation(e) {
             e.preventDefault();
-            document.getElementById('footer-reservation-success').classList.remove('hidden');
-            setTimeout(() => {
-                document.getElementById('footer-reservation-success').classList.add('hidden');
-                e.target.reset();
-            }, 3000);
+            const name = document.getElementById('res-name').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const branch = document.getElementById('res-branch').value;
+            
+            let message = `📅 *NEW TABLE RESERVATION REQUEST* 📅\n\n`;
+            message += `👤 *Guest Name:* ${name}\n`;
+            message += `📆 *Date Requested:* ${date}\n`;
+            message += `⏰ *Time Slot:* ${time}\n`;
+            message += `📍 *Selected Flagship Outlet:* ${branch}\n\n`;
+            message += `_Please review and text back to finalize the booking reference!_`;
+            
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${OWNER_PHONE}&text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            e.target.reset();
         }
 
         function toggleAi(show) {
@@ -497,7 +525,7 @@
                 } else if (query.includes('location') || query.includes('where') || query.includes('place') || query.includes('address') || query.includes('branch')) {
                     botAnswer = "We have six premium locations across Addis Ababa: Bole Medhanialem, Sarbet Ground, CMC Square, Lebu Hub, Megenagna Outpost, and Piassa Heritage.";
                 } else if (query.includes('number') || query.includes('phone') || query.includes('contact') || query.includes('call')) {
-                    botAnswer = "You can reach our main customer booking desk directly at +251 922 785 816.";
+                    botAnswer = "You can reach our main customer booking desk directly at 0912643473.";
                 }
 
                 stream.innerHTML += `<div class="bg-zinc-900 text-zinc-300 p-2 rounded-sm max-w-[90%]">${botAnswer}</div>`;
